@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VXUI Showcase</title>
+    <link rel="stylesheet" href="../css/vxui-framework.css">
+    <link rel="stylesheet" href="../css/vxui-showcase.css">
+</head>
+<body>
+    <div class="vx-app" id="vx-app">
+        <div class="vx-shell vx-layout vx-showcase-shell" id="vx-layout">
+            <div class="vx-sidebar-overlay" data-vx-sidebar-overlay></div>
+
+            <aside class="vx-sidebar" id="vx-sidebar">
+                <div class="vx-sidebar-header">
+                    <button class="vx-sidebar-brand" type="button" data-vx-route="workspace">
+                        <img src="../../img/ico/logo-new.svg" alt="Logo" class="vx-sidebar-brand-logo">
+                        <span class="vx-sidebar-brand-text">VXUI Kit</span>
+                    </button>
+                </div>
+
+                <nav class="vx-sidebar-nav" id="vx-sidebar-nav">
+                    <div class="vx-nav-static" id="vx-sidebar-static">
+                        <div class="vx-nav-section">
+                            <div class="vx-nav-list" id="vx-sidebar-static-list"></div>
+                            <button class="vx-nav-item" type="button" id="showcase-login-btn" data-auth="logged-out">
+                                <iconpark-icon name="user"></iconpark-icon>
+                                <span class="vx-nav-item-text">Sign in</span>
+                            </button>
+                            <button class="vx-nav-item" type="button" id="showcase-register-btn" data-auth="logged-out">
+                                <iconpark-icon name="user-plus"></iconpark-icon>
+                                <span class="vx-nav-item-text">Create account</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="vx-nav-divider" id="vx-sidebar-divider"></div>
+                    <div id="vx-sidebar-dynamic"></div>
+                </nav>
+
+                <div class="vx-sidebar-bottom-menu" id="vx-sidebar-bottom-menu">
+                    <div class="vx-nav-section">
+                        <button class="vx-nav-item" type="button" data-vx-route="library" data-auth="logged-in">
+                            <iconpark-icon name="bag-shopping"></iconpark-icon>
+                            <span class="vx-nav-item-text">Library</span>
+                        </button>
+                        <button class="vx-nav-item" type="button" data-vx-route="reports" data-auth="logged-in">
+                            <iconpark-icon name="funds"></iconpark-icon>
+                            <span class="vx-nav-item-text">Reports</span>
+                        </button>
+                        <button class="vx-nav-item" type="button" data-vx-route="profile" data-auth="logged-in">
+                            <iconpark-icon name="user"></iconpark-icon>
+                            <span class="vx-nav-item-text">Profile</span>
+                        </button>
+                        <button class="vx-nav-item" type="button" data-vx-route="settings" data-auth="logged-in">
+                            <iconpark-icon name="gear"></iconpark-icon>
+                            <span class="vx-nav-item-text">Settings</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="vx-sidebar-footer">
+                    <div class="vx-lang-switcher" id="vx-lang-dropdown">
+                        <a href="javascript:;" class="vx-nav-item" data-action="vx-lang-toggle">
+                            <iconpark-icon name="globe"></iconpark-icon>
+                            <span class="vx-nav-item-text" id="vx-lang-label">Language</span>
+                            <iconpark-icon name="chevron-down" class="vx-lang-arrow"></iconpark-icon>
+                        </a>
+                        <div class="vx-lang-options">
+                            <div class="vx-lang-option" data-action="vx-lang-set" data-lang="en">English</div>
+                            <div class="vx-lang-option" data-action="vx-lang-set" data-lang="cn">简体中�?/div>
+                            <div class="vx-lang-option" data-action="vx-lang-set" data-lang="hk">繁體中文</div>
+                            <div class="vx-lang-option" data-action="vx-lang-set" data-lang="jp">日本�?/div>
+                        </div>
+                    </div>
+
+                    <a href="https://bbs.tmp.link" class="vx-nav-item" id="vx-community-link" target="_blank" rel="noopener" style="display: none;">
+                        <iconpark-icon name="comments"></iconpark-icon>
+                        <span class="vx-nav-item-text">Community</span>
+                    </a>
+
+                    <button class="vx-nav-item" type="button" id="showcase-logout-btn" data-auth="logged-in">
+                        <iconpark-icon name="right-from-bracket"></iconpark-icon>
+                        <span class="vx-nav-item-text">Sign out</span>
+                    </button>
+                </div>
+            </aside>
+
+            <main class="vx-main">
+                <div class="vx-page vx-showcase-page">
+                    <section class="vx-view" id="vx-view"></section>
+                </div>
+            </main>
+
+            <nav class="vx-mobile-bar" id="vx-mobile-bar"></nav>
+        </div>
+    </div>
+
+    <script src="../lib/iconpark.js"></script>
+    <script src="../js/vxui-framework.js"></script>
+    <script src="../js/vxui-components.js"></script>
+    <script src="./showcase.js"></script>
+</body>
+</html>
