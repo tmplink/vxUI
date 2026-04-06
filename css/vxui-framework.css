@@ -1,3 +1,8 @@
+/*!
+ * vxUI Framework v0.0.1
+ * Copyright (c) 2026 TMPLINK STUDIO
+ * Released under the MIT License
+ */
 :root {
     --vx-primary: #2563eb;
     --vx-primary-strong: #1d4ed8;
@@ -365,13 +370,13 @@ html.vx-dark .vx-lang-option:hover {
     box-shadow: 0 0 0 2px var(--vx-primary-light);
 }
 
-.vx-nav-item iconpark-icon,
-.vx-mobile-btn iconpark-icon,
-.vx-icon-button iconpark-icon,
-.vx-stat-icon iconpark-icon,
-.vx-feature-icon iconpark-icon,
-.vx-empty-icon iconpark-icon,
-.vx-mob-topbar-btn iconpark-icon {
+.vx-nav-item svg,
+.vx-mobile-btn svg,
+.vx-icon-button svg,
+.vx-stat-icon svg,
+.vx-feature-icon svg,
+.vx-empty-icon svg,
+.vx-mob-topbar-btn svg {
     font-size: 18px;
     width: 20px;
     flex-shrink: 0;
@@ -407,7 +412,8 @@ html.vx-dark .vx-lang-option:hover {
 .vx-layout.sidebar-collapsed .vx-sidebar-brand-text,
 .vx-layout.sidebar-collapsed .vx-nav-title,
 .vx-layout.sidebar-collapsed .vx-nav-item-text,
-.vx-layout.sidebar-collapsed .vx-lang-arrow {
+.vx-layout.sidebar-collapsed .vx-lang-arrow,
+.vx-layout.sidebar-collapsed .vx-sidebar-copyright {
     display: none;
 }
 
@@ -514,7 +520,7 @@ body.vx-sidebar-open .vx-sidebar {
     color: var(--vx-text);
 }
 
-.vx-page-title iconpark-icon {
+.vx-page-title svg {
     font-size: 22px;
     flex-shrink: 0;
 }
@@ -553,7 +559,7 @@ body.vx-sidebar-open .vx-sidebar {
     transform: scale(0.92);
 }
 
-.vx-btn-icon iconpark-icon {
+.vx-btn-icon svg {
     font-size: 18px;
 }
 
@@ -701,7 +707,7 @@ body.vx-sidebar-open .vx-sidebar {
     flex-shrink: 0;
 }
 
-.vx-list-icon iconpark-icon {
+.vx-list-icon svg {
     font-size: 24px;
     color: var(--vx-primary) !important;
 }
@@ -744,7 +750,7 @@ body.vx-sidebar-open .vx-sidebar {
     transition: all 0.15s ease;
 }
 
-.vx-list-action-btn iconpark-icon {
+.vx-list-action-btn svg {
     font-size: 18px;
 }
 
@@ -1081,7 +1087,7 @@ body.vx-sidebar-open .vx-sidebar {
     cursor: not-allowed;
 }
 
-.vx-btn iconpark-icon {
+.vx-btn svg {
     font-size: 16px;
 }
 
@@ -1570,8 +1576,20 @@ body.vx-sidebar-open .vx-sidebar {
     font-size: var(--vx-text-sm);
 }
 
-.vx-sidebar-meta iconpark-icon {
+.vx-sidebar-meta svg {
     color: var(--vx-primary);
+}
+
+.vx-sidebar-copyright {
+    padding: 10px 16px;
+    border-top: 1px solid var(--vx-border);
+    font-size: var(--vx-text-xs);
+    color: var(--vx-text-muted);
+    opacity: 0.7;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .vx-sidebar-actions {
@@ -1603,7 +1621,7 @@ body.vx-sidebar-open .vx-sidebar {
     color: var(--vx-primary);
 }
 
-.vx-sidebar-action-btn iconpark-icon {
+.vx-sidebar-action-btn svg {
     font-size: 18px;
 }
 

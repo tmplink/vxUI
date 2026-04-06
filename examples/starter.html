@@ -1,3 +1,8 @@
+<!--
+  vxUI Framework v0.0.1
+  Copyright (c) 2026 TMPLINK STUDIO
+  Released under the MIT License
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +23,7 @@
                     <span class="vx-sidebar-brand-text">My App</span>
                 </button>
                 <button class="vx-btn-icon" type="button" data-vx-sidebar-toggle style="margin-left:auto" title="Toggle sidebar">
-                    <iconpark-icon name="alignment-horizontal-center"></iconpark-icon>
+                    <i data-lucide="align-center-horizontal"></i>
                 </button>
             </div>
 
@@ -28,7 +33,7 @@
             <div class="vx-sidebar-bottom-menu">
                 <div class="vx-nav-section">
                     <button class="vx-nav-item" type="button" id="theme-toggle">
-                        <iconpark-icon name="sun-one"></iconpark-icon>
+                        <i data-lucide="sun"></i>
                         <span class="vx-nav-item-text">Theme</span>
                     </button>
                 </div>
@@ -39,7 +44,7 @@
             <header class="vx-header">
                 <div class="vx-header-left">
                     <button class="vx-btn-icon vx-portrait-sidebar-btn" type="button" data-vx-sidebar-toggle title="Menu">
-                        <iconpark-icon name="hamburger-button"></iconpark-icon>
+                        <i data-lucide="menu"></i>
                     </button>
                     <h1 class="vx-page-title" id="vx-current-title">Overview</h1>
                 </div>
@@ -54,7 +59,7 @@
     </div>
 </div>
 
-<script src="../lib/iconpark.js"></script>
+<script src="../lib/lucide.js"></script>
 <script src="../js/vxui-framework.js"></script>
 <script>
 (function () {
@@ -75,9 +80,9 @@
                 return [
                     '<div class="vx-view">',
                         '<div class="vx-stat-grid">',
-                            '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Users</span><span class="vx-stat-icon"><iconpark-icon name="user"></iconpark-icon></span></div><div class="vx-stat-value">1,024</div></div>',
-                            '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Revenue</span><span class="vx-stat-icon"><iconpark-icon name="dollar"></iconpark-icon></span></div><div class="vx-stat-value">$8.4k</div></div>',
-                            '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Uptime</span><span class="vx-stat-icon"><iconpark-icon name="chart"></iconpark-icon></span></div><div class="vx-stat-value">99.9%</div></div>',
+                            '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Users</span><span class="vx-stat-icon"><i data-lucide="user"></i></span></div><div class="vx-stat-value">1,024</div></div>',
+                            '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Revenue</span><span class="vx-stat-icon"><i data-lucide="dollar-sign"></i></span></div><div class="vx-stat-value">$8.4k</div></div>',
+                            '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Uptime</span><span class="vx-stat-icon"><i data-lucide="bar-chart-2"></i></span></div><div class="vx-stat-value">99.9%</div></div>',
                         '</div>',
                         '<section class="vx-panel">',
                             '<h2 class="vx-panel-title">Welcome to vxUI</h2>',
@@ -115,7 +120,7 @@
 
     app.setNavigation([
         { view: 'overview', label: 'Overview', icon: 'house' },
-        { view: 'settings', label: 'Settings', icon: 'setting', showWhenLoggedIn: true }
+        { view: 'settings', label: 'Settings', icon: 'settings', showWhenLoggedIn: true }
     ]);
 
     app.init().then(function () {

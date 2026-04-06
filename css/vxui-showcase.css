@@ -1,3 +1,8 @@
+/*!
+ * vxUI Showcase v0.0.1
+ * Copyright (c) 2026 TMPLINK STUDIO
+ * Released under the MIT License
+ */
 /* Showcase specific minor adjustments */
 .vx-showcase-shell {
     --vx-primary: #2563eb;
@@ -56,7 +61,7 @@ html.vx-dark .vx-showcase-shell {
     font-weight: 600;
 }
 
-.vx-replica-list-container .vx-list-action-btn iconpark-icon {
+.vx-replica-list-container .vx-list-action-btn svg {
     font-size: 16px;
 }
 
@@ -98,7 +103,7 @@ html.vx-dark .vx-showcase-shell {
     justify-content: center;
 }
 
-.vx-album-card-thumb iconpark-icon {
+.vx-album-card-thumb svg {
     font-size: 24px;
     color: var(--vx-primary);
 }
@@ -178,7 +183,7 @@ html.vx-dark .vx-showcase-shell {
     color: var(--vx-text-secondary);
 }
 
-.vx-sidebar-stat-item iconpark-icon {
+.vx-sidebar-stat-item svg {
     width: 16px;
     color: var(--vx-text-muted);
 }
@@ -241,7 +246,7 @@ html.vx-dark .vx-showcase-shell {
     margin-bottom: 14px;
 }
 
-.vx-settings-title iconpark-icon {
+.vx-settings-title svg {
     font-size: 18px;
     color: var(--vx-primary);
 }
@@ -266,7 +271,7 @@ html.vx-dark .vx-showcase-shell {
     margin-bottom: 10px;
 }
 
-.vx-pref-item-head iconpark-icon {
+.vx-pref-item-head svg {
     font-size: 16px;
     color: var(--vx-text-secondary);
 }
@@ -452,7 +457,7 @@ input.vx-switch:checked::before {
     flex-shrink: 0;
 }
 
-.vx-stat-icon iconpark-icon {
+.vx-stat-icon svg {
     font-size: 22px;
     color: var(--vx-primary);
 }
@@ -660,7 +665,7 @@ input.vx-switch:checked::before {
     gap: 6px;
 }
 
-.vx-profile-stat-card iconpark-icon {
+.vx-profile-stat-card svg {
     color: var(--vx-primary);
 }
 

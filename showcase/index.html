@@ -1,3 +1,8 @@
+<!--
+  vxUI Framework v0.0.1
+  Copyright (c) 2026 TMPLINK STUDIO
+  Released under the MIT License
+-->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -25,11 +30,11 @@
                         <div class="vx-nav-section">
                             <div class="vx-nav-list" id="vx-sidebar-static-list"></div>
                             <button class="vx-nav-item" type="button" id="showcase-login-btn" data-auth="logged-out">
-                                <iconpark-icon name="user"></iconpark-icon>
+                                <i data-lucide="user"></i>
                                 <span class="vx-nav-item-text">Sign in</span>
                             </button>
                             <button class="vx-nav-item" type="button" id="showcase-register-btn" data-auth="logged-out">
-                                <iconpark-icon name="user-plus"></iconpark-icon>
+                                <i data-lucide="user-plus"></i>
                                 <span class="vx-nav-item-text">Create account</span>
                             </button>
                         </div>
@@ -42,19 +47,19 @@
                 <div class="vx-sidebar-bottom-menu" id="vx-sidebar-bottom-menu">
                     <div class="vx-nav-section">
                         <button class="vx-nav-item" type="button" data-vx-route="library" data-auth="logged-in">
-                            <iconpark-icon name="bag-shopping"></iconpark-icon>
+                            <i data-lucide="shopping-bag"></i>
                             <span class="vx-nav-item-text">Library</span>
                         </button>
                         <button class="vx-nav-item" type="button" data-vx-route="reports" data-auth="logged-in">
-                            <iconpark-icon name="funds"></iconpark-icon>
+                            <i data-lucide="trending-up"></i>
                             <span class="vx-nav-item-text">Reports</span>
                         </button>
                         <button class="vx-nav-item" type="button" data-vx-route="profile" data-auth="logged-in">
-                            <iconpark-icon name="user"></iconpark-icon>
+                            <i data-lucide="user"></i>
                             <span class="vx-nav-item-text">Profile</span>
                         </button>
                         <button class="vx-nav-item" type="button" data-vx-route="settings" data-auth="logged-in">
-                            <iconpark-icon name="gear"></iconpark-icon>
+                            <i data-lucide="settings"></i>
                             <span class="vx-nav-item-text">Settings</span>
                         </button>
                     </div>
@@ -63,27 +68,28 @@
                 <div class="vx-sidebar-footer">
                     <div class="vx-lang-switcher" id="vx-lang-dropdown">
                         <a href="javascript:;" class="vx-nav-item" data-action="vx-lang-toggle">
-                            <iconpark-icon name="globe"></iconpark-icon>
+                            <i data-lucide="globe"></i>
                             <span class="vx-nav-item-text" id="vx-lang-label">Language</span>
-                            <iconpark-icon name="chevron-down" class="vx-lang-arrow"></iconpark-icon>
+                            <i data-lucide="chevron-down" class="vx-lang-arrow"></i>
                         </a>
                         <div class="vx-lang-options">
                             <div class="vx-lang-option" data-action="vx-lang-set" data-lang="en">English</div>
-                            <div class="vx-lang-option" data-action="vx-lang-set" data-lang="cn">简体中�?/div>
+                            <div class="vx-lang-option" data-action="vx-lang-set" data-lang="cn">简体中�?/div>
                             <div class="vx-lang-option" data-action="vx-lang-set" data-lang="hk">繁體中文</div>
-                            <div class="vx-lang-option" data-action="vx-lang-set" data-lang="jp">日本�?/div>
+                            <div class="vx-lang-option" data-action="vx-lang-set" data-lang="jp">日本�?/div>
                         </div>
                     </div>
 
                     <a href="https://bbs.tmp.link" class="vx-nav-item" id="vx-community-link" target="_blank" rel="noopener" style="display: none;">
-                        <iconpark-icon name="comments"></iconpark-icon>
+                        <i data-lucide="message-circle"></i>
                         <span class="vx-nav-item-text">Community</span>
                     </a>
 
                     <button class="vx-nav-item" type="button" id="showcase-logout-btn" data-auth="logged-in">
-                        <iconpark-icon name="right-from-bracket"></iconpark-icon>
+                        <i data-lucide="log-out"></i>
                         <span class="vx-nav-item-text">Sign out</span>
                     </button>
+                    <div class="vx-sidebar-copyright">&copy; v0.0.1 &middot; TMPLINK STUDIO</div>
                 </div>
             </aside>
 
@@ -97,7 +103,7 @@
         </div>
     </div>
 
-    <script src="../lib/iconpark.js"></script>
+    <script src="../lib/lucide.js"></script>
     <script src="../js/vxui-framework.js"></script>
     <script src="../js/vxui-components.js"></script>
     <script src="./showcase.js"></script>

@@ -1,3 +1,8 @@
+/*!
+ * vxUI Framework v0.0.1
+ * Copyright (c) 2026 TMPLINK STUDIO
+ * Released under the MIT License
+ */
 (function (window, document) {
     'use strict';
 
@@ -93,6 +98,12 @@
                 detail: detail || {},
                 bubbles: true
             }));
+        }
+
+        _renderIcons() {
+            if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                window.lucide.createIcons();
+            }
         }
 
         _findElements() {
@@ -498,6 +509,7 @@
                 this.elements.view.innerHTML = '';
             }
 
+            this._renderIcons();
             this._updateShell(view);
             this.refreshAuth(this.elements.view);
 
@@ -563,7 +575,7 @@
                 }
 
                 const title = item.label || view.title || item.view;
-                const icon = item.icon ? '<iconpark-icon name="' + escapeHtml(item.icon) + '"></iconpark-icon>' : '';
+                const icon = item.icon ? '<i data-lucide="' + escapeHtml(item.icon) + '"></i>' : '';
                 const authAttr = item.auth ? ' data-auth="' + escapeHtml(item.auth) + '"' : '';
                 const ownerAttr = item.ownerOnly ? ' data-owner="true"' : '';
 
@@ -590,6 +602,7 @@
                 this.elements.mobileNav.innerHTML = mobileHtml.join('');
             }
 
+            this._renderIcons();
             this._markActiveNavigation();
             this.refreshAuth();
         }
@@ -755,18 +768,18 @@
             const toast = document.createElement('div');
             const toastId = 'vx-toast-' + (++this.toastCount);
             const iconMap = {
-                info: 'circle-info',
-                success: 'circle-check',
-                warning: 'circle-exclamation',
-                error: 'circle-xmark'
+                info: 'info',
+                success: 'check-circle',
+                warning: 'alert-circle',
+                error: 'x-circle'
             };
 
             toast.className = 'vx-toast vx-toast-' + tone;
             toast.dataset.toastId = toastId;
             toast.innerHTML = [
-                '<div class="vx-toast-icon-wrap"><iconpark-icon class="vx-toast-icon" name="' + (iconMap[tone] || iconMap.info) + '"></iconpark-icon></div>',
+                '<div class="vx-toast-icon-wrap"><i class="vx-toast-icon" data-lucide="' + (iconMap[tone] || iconMap.info) + '"></i></div>',
                 '<div class="vx-toast-message">' + escapeHtml(message) + '</div>',
-                '<button class="vx-toast-close" type="button" aria-label="close"><iconpark-icon name="circle-xmark"></iconpark-icon></button>'
+                '<button class="vx-toast-close" type="button" aria-label="close"><i data-lucide="x"></i></button>'
             ].join('');
 
             const closeToast = () => {
@@ -781,6 +794,7 @@
             toast.querySelector('.vx-toast-close').addEventListener('click', closeToast);
 
             this.elements.toastRoot.appendChild(toast);
+            this._renderIcons();
             window.requestAnimationFrame(() => {
                 toast.classList.add('is-visible');
             });
@@ -833,7 +847,7 @@
                             '<div class="vx-eyebrow">' + escapeHtml(options.eyebrow || '') + '</div>',
                             '<h3 class="vx-modal-title" id="' + modalId + '-title">' + escapeHtml(options.title || '') + '</h3>',
                         '</div>',
-                        '<button class="vx-icon-button" type="button" data-vx-modal-close aria-label="close"><iconpark-icon name="circle-xmark"></iconpark-icon></button>',
+                        '<button class="vx-icon-button" type="button" data-vx-modal-close aria-label="close"><i data-lucide="x-circle"></i></button>',
                     '</div>',
                     '<div class="vx-modal-body"></div>',
                     '<div class="vx-modal-footer"></div>',

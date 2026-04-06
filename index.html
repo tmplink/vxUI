@@ -1,3 +1,8 @@
+<!--
+  vxUI Framework v0.0.1
+  Copyright (c) 2026 TMPLINK STUDIO
+  Released under the MIT License
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,7 +93,7 @@
                     <span class="vx-sidebar-brand-text">vxUI</span>
                 </button>
                 <button class="vx-btn-icon" type="button" data-vx-sidebar-toggle style="margin-left:auto" title="Toggle sidebar">
-                    <iconpark-icon name="alignment-horizontal-center"></iconpark-icon>
+                    <i data-lucide="align-center-horizontal"></i>
                 </button>
             </div>
 
@@ -97,11 +102,11 @@
                 <div class="vx-nav-section">
                     <span class="vx-nav-title">Getting Started</span>
                     <button class="vx-nav-item" type="button" data-vx-route="introduction">
-                        <iconpark-icon name="house"></iconpark-icon>
+                        <i data-lucide="house"></i>
                         <span class="vx-nav-item-text">Introduction</span>
                     </button>
                     <button class="vx-nav-item" type="button" data-vx-route="quickstart">
-                        <iconpark-icon name="lightning"></iconpark-icon>
+                        <i data-lucide="zap"></i>
                         <span class="vx-nav-item-text">Quick Start</span>
                     </button>
                 </div>
@@ -112,11 +117,11 @@
                 <div class="vx-nav-section">
                     <span class="vx-nav-title">Layout</span>
                     <button class="vx-nav-item" type="button" data-vx-route="layout">
-                        <iconpark-icon name="layout-two"></iconpark-icon>
+                        <i data-lucide="layout-dashboard"></i>
                         <span class="vx-nav-item-text">Shell &amp; Sidebar</span>
                     </button>
                     <button class="vx-nav-item" type="button" data-vx-route="grid">
-                        <iconpark-icon name="table-report"></iconpark-icon>
+                        <i data-lucide="table"></i>
                         <span class="vx-nav-item-text">Grid &amp; Page</span>
                     </button>
                 </div>
@@ -127,35 +132,35 @@
                 <div class="vx-nav-section">
                     <span class="vx-nav-title">Components</span>
                     <button class="vx-nav-item" type="button" data-vx-route="buttons">
-                        <iconpark-icon name="hand-click"></iconpark-icon>
+                        <i data-lucide="mouse-pointer-click"></i>
                         <span class="vx-nav-item-text">Buttons</span>
                     </button>
                     <button class="vx-nav-item" type="button" data-vx-route="cards">
-                        <iconpark-icon name="rectangle-one"></iconpark-icon>
+                        <i data-lucide="rectangle-horizontal"></i>
                         <span class="vx-nav-item-text">Cards &amp; Panels</span>
                     </button>
                     <button class="vx-nav-item" type="button" data-vx-route="badges">
-                        <iconpark-icon name="tag-one"></iconpark-icon>
+                        <i data-lucide="tag"></i>
                         <span class="vx-nav-item-text">Badges &amp; Chips</span>
                     </button>
                     <button class="vx-nav-item" type="button" data-vx-route="forms">
-                        <iconpark-icon name="edit-two"></iconpark-icon>
+                        <i data-lucide="pencil"></i>
                         <span class="vx-nav-item-text">Forms</span>
                     </button>
                     <button class="vx-nav-item" type="button" data-vx-route="switches">
-                        <iconpark-icon name="toggle-right"></iconpark-icon>
+                        <i data-lucide="toggle-right"></i>
                         <span class="vx-nav-item-text">Switches</span>
                     </button>
                     <button class="vx-nav-item" type="button" data-vx-route="navigation">
-                        <iconpark-icon name="compass"></iconpark-icon>
+                        <i data-lucide="compass"></i>
                         <span class="vx-nav-item-text">Navigation</span>
                     </button>
                     <button class="vx-nav-item" type="button" data-vx-route="list">
-                        <iconpark-icon name="list"></iconpark-icon>
+                        <i data-lucide="list"></i>
                         <span class="vx-nav-item-text">Data List</span>
                     </button>
                     <button class="vx-nav-item" type="button" data-vx-route="empty">
-                        <iconpark-icon name="inbox"></iconpark-icon>
+                        <i data-lucide="inbox"></i>
                         <span class="vx-nav-item-text">Empty States</span>
                     </button>
                 </div>
@@ -166,15 +171,15 @@
                 <div class="vx-nav-section">
                     <span class="vx-nav-title">Feedback</span>
                     <button class="vx-nav-item" type="button" data-vx-route="toasts">
-                        <iconpark-icon name="announcement"></iconpark-icon>
+                        <i data-lucide="megaphone"></i>
                         <span class="vx-nav-item-text">Toasts</span>
                     </button>
                     <button class="vx-nav-item" type="button" data-vx-route="modals">
-                        <iconpark-icon name="expand-text-input"></iconpark-icon>
+                        <i data-lucide="text-cursor-input"></i>
                         <span class="vx-nav-item-text">Modals</span>
                     </button>
                     <button class="vx-nav-item" type="button" data-vx-route="dialogs">
-                        <iconpark-icon name="message-one"></iconpark-icon>
+                        <i data-lucide="message-square"></i>
                         <span class="vx-nav-item-text">Dialogs</span>
                     </button>
                 </div>
@@ -183,10 +188,11 @@
             <div class="vx-sidebar-bottom-menu">
                 <div class="vx-nav-section">
                     <button class="vx-nav-item" type="button" id="vx-theme-btn">
-                        <iconpark-icon name="sun-one" id="vx-theme-icon"></iconpark-icon>
+                        <i data-lucide="sun" id="vx-theme-icon"></i>
                         <span class="vx-nav-item-text" id="vx-theme-label">Light</span>
                     </button>
                 </div>
+                <div class="vx-sidebar-copyright">&copy; v0.0.1 &middot; TMPLINK STUDIO</div>
             </div>
         </aside>
 
@@ -194,7 +200,7 @@
             <header class="vx-header">
                 <div class="vx-header-left">
                     <button class="vx-btn-icon vx-portrait-sidebar-btn" type="button" data-vx-sidebar-toggle title="Menu">
-                        <iconpark-icon name="hamburger-button"></iconpark-icon>
+                        <i data-lucide="menu"></i>
                     </button>
                     <nav id="vx-breadcrumb" class="vx-breadcrumb" aria-label="breadcrumb"></nav>
                 </div>
@@ -212,7 +218,7 @@
 <!-- Framework nav mount (hidden — used internally by the runtime) -->
 <div id="vx-nav-managed" hidden></div>
 
-<script src="lib/iconpark.js"></script>
+<script src="lib/lucide.js"></script>
 <script src="js/vxui-framework.js"></script>
 <script src="js/vxui-components.js"></script>
 <script>
@@ -286,7 +292,7 @@
                     '</p>',
                     '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">',
                         '<button class="vx-btn vx-btn-primary" type="button" data-vx-route="quickstart">',
-                            '<iconpark-icon name="lightning"></iconpark-icon><span>Get Started</span>',
+                            '<i data-lucide="zap"></i><span>Get Started</span>',
                         '</button>',
                         '<button class="vx-btn vx-btn-secondary" type="button" data-vx-route="buttons">',
                             'Browse Components',
@@ -297,10 +303,10 @@
                 '<div class="vx-doc-section">',
                     '<h2 class="vx-doc-heading">At a Glance</h2>',
                     '<div class="vx-stat-grid">',
-                        '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Zero dependencies</span><span class="vx-stat-icon"><iconpark-icon name="check-one"></iconpark-icon></span></div><div class="vx-stat-value">0</div></div>',
-                        '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Components</span><span class="vx-stat-icon"><iconpark-icon name="puzzle"></iconpark-icon></span></div><div class="vx-stat-value">30+</div></div>',
-                        '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Core CSS</span><span class="vx-stat-icon"><iconpark-icon name="file-code"></iconpark-icon></span></div><div class="vx-stat-value">~24 KB</div></div>',
-                        '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Dark mode</span><span class="vx-stat-icon"><iconpark-icon name="moon"></iconpark-icon></span></div><div class="vx-stat-value">Built-in</div></div>',
+                        '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Zero dependencies</span><span class="vx-stat-icon"><i data-lucide="check"></i></span></div><div class="vx-stat-value">0</div></div>',
+                        '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Components</span><span class="vx-stat-icon"><i data-lucide="puzzle"></i></span></div><div class="vx-stat-value">30+</div></div>',
+                        '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Core CSS</span><span class="vx-stat-icon"><i data-lucide="file-code"></i></span></div><div class="vx-stat-value">~24 KB</div></div>',
+                        '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Dark mode</span><span class="vx-stat-icon"><i data-lucide="moon"></i></span></div><div class="vx-stat-value">Built-in</div></div>',
                     '</div>',
                 '</div>',
 
@@ -320,10 +326,10 @@
                 '<div class="vx-doc-section">',
                     '<h2 class="vx-doc-heading">Key Features</h2>',
                     '<div class="vx-feature-list">',
-                        '<div class="vx-feature"><span class="vx-stat-icon"><iconpark-icon name="moon"></iconpark-icon></span><div><strong>Dark mode</strong><p class="vx-doc-desc" style="margin:4px 0 0">Automatic system preference detection plus manual light / dark / system toggle.</p></div></div>',
-                        '<div class="vx-feature"><span class="vx-stat-icon"><iconpark-icon name="route"></iconpark-icon></span><div><strong>Hash router</strong><p class="vx-doc-desc" style="margin:4px 0 0">Built-in SPA routing. Register named views, navigate programmatically or via <code class="vx-mono">data-vx-route</code>.</p></div></div>',
-                        '<div class="vx-feature"><span class="vx-stat-icon"><iconpark-icon name="lock"></iconpark-icon></span><div><strong>Auth visibility</strong><p class="vx-doc-desc" style="margin:4px 0 0">Show or hide elements based on login state using <code class="vx-mono">data-auth</code> attributes — no JS required.</p></div></div>',
-                        '<div class="vx-feature"><span class="vx-stat-icon"><iconpark-icon name="mobile"></iconpark-icon></span><div><strong>Responsive sidebar</strong><p class="vx-doc-desc" style="margin:4px 0 0">Collapses to an icon rail on desktop; slides in as a drawer with backdrop on mobile.</p></div></div>',
+                        '<div class="vx-feature"><span class="vx-stat-icon"><i data-lucide="moon"></i></span><div><strong>Dark mode</strong><p class="vx-doc-desc" style="margin:4px 0 0">Automatic system preference detection plus manual light / dark / system toggle.</p></div></div>',
+                        '<div class="vx-feature"><span class="vx-stat-icon"><i data-lucide="route"></i></span><div><strong>Hash router</strong><p class="vx-doc-desc" style="margin:4px 0 0">Built-in SPA routing. Register named views, navigate programmatically or via <code class="vx-mono">data-vx-route</code>.</p></div></div>',
+                        '<div class="vx-feature"><span class="vx-stat-icon"><i data-lucide="lock"></i></span><div><strong>Auth visibility</strong><p class="vx-doc-desc" style="margin:4px 0 0">Show or hide elements based on login state using <code class="vx-mono">data-auth</code> attributes — no JS required.</p></div></div>',
+                        '<div class="vx-feature"><span class="vx-stat-icon"><i data-lucide="smartphone"></i></span><div><strong>Responsive sidebar</strong><p class="vx-doc-desc" style="margin:4px 0 0">Collapses to an icon rail on desktop; slides in as a drawer with backdrop on mobile.</p></div></div>',
                     '</div>',
                 '</div>',
 
@@ -479,7 +485,7 @@
                     '<div class="vx-demo-area is-block" style="padding:0;overflow:hidden">',
                         '<header class="vx-header" style="position:relative;border-radius:16px 16px 0 0">',
                             '<div class="vx-header-left">',
-                                '<button class="vx-btn-icon" type="button" title="Menu"><iconpark-icon name="hamburger-button"></iconpark-icon></button>',
+                                '<button class="vx-btn-icon" type="button" title="Menu"><i data-lucide="menu"></i></button>',
                                 '<nav class="vx-breadcrumb">',
                                     '<span class="vx-breadcrumb-item">vxUI</span>',
                                     '<span class="vx-breadcrumb-separator">/</span>',
@@ -487,7 +493,7 @@
                                 '</nav>',
                             '</div>',
                             '<div class="vx-header-right">',
-                                '<span class="vx-auth-pill"><iconpark-icon name="user"></iconpark-icon> Admin</span>',
+                                '<span class="vx-auth-pill"><i data-lucide="user"></i> Admin</span>',
                                 '<button class="vx-btn vx-btn-secondary vx-btn-sm" type="button">Settings</button>',
                             '</div>',
                         '</header>',
@@ -523,10 +529,10 @@
                     '<code class="vx-mono">.vx-stat-grid</code> — auto-fit columns, minimum 180 px each. Used for KPI dashboards.',
                     '<div class="vx-stat-grid" style="width:100%">' +
                         ['Storage', 'Files', 'Members'].map(function (l, i) {
-                            return '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">' + esc(l) + '</span><span class="vx-stat-icon"><iconpark-icon name="folder"></iconpark-icon></span></div><div class="vx-stat-value">' + ['12 GB', '4.2k', '8'][i] + '</div></div>';
+                            return '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">' + esc(l) + '</span><span class="vx-stat-icon"><i data-lucide="folder"></i></span></div><div class="vx-stat-value">' + ['12 GB', '4.2k', '8'][i] + '</div></div>';
                         }).join('') +
                     '</div>',
-                    '&lt;div class="vx-stat-grid"&gt;\n  &lt;div class="vx-stat"&gt;\n    &lt;div class="vx-stat-top"&gt;\n      &lt;span class="vx-stat-label"&gt;Storage&lt;/span&gt;\n      &lt;span class="vx-stat-icon"&gt;&lt;iconpark-icon name="folder"&gt;&lt;/iconpark-icon&gt;&lt;/span&gt;\n    &lt;/div&gt;\n    &lt;div class="vx-stat-value"&gt;12 GB&lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;'
+                    '&lt;div class="vx-stat-grid"&gt;\n  &lt;div class="vx-stat"&gt;\n    &lt;div class="vx-stat-top"&gt;\n      &lt;span class="vx-stat-label"&gt;Storage&lt;/span&gt;\n      &lt;span class="vx-stat-icon"&gt;&lt;i data-lucide="folder"&gt;&lt;/i&gt;&lt;/span&gt;\n    &lt;/div&gt;\n    &lt;div class="vx-stat-value"&gt;12 GB&lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;'
                 ),
 
                 blockSection('Card grid',
@@ -570,24 +576,24 @@
                 ),
 
                 section('With icons',
-                    'Pair any <code class="vx-mono">&lt;iconpark-icon&gt;</code> with a <code class="vx-mono">&lt;span&gt;</code> label inside the button.',
+                    'Pair any <code class="vx-mono">&lt;i data-lucide&gt;</code> with a <code class="vx-mono">&lt;span&gt;</code> label inside the button.',
                     [
-                        '<button class="vx-btn vx-btn-primary" type="button"><iconpark-icon name="upload-one"></iconpark-icon><span>Upload</span></button>',
-                        '<button class="vx-btn vx-btn-secondary" type="button"><iconpark-icon name="download"></iconpark-icon><span>Download</span></button>',
-                        '<button class="vx-btn vx-btn-ghost" type="button"><iconpark-icon name="share"></iconpark-icon><span>Share</span></button>',
+                        '<button class="vx-btn vx-btn-primary" type="button"><i data-lucide="upload"></i><span>Upload</span></button>',
+                        '<button class="vx-btn vx-btn-secondary" type="button"><i data-lucide="download"></i><span>Download</span></button>',
+                        '<button class="vx-btn vx-btn-ghost" type="button"><i data-lucide="share-2"></i><span>Share</span></button>',
                     ].join(''),
-                    '&lt;button class="vx-btn vx-btn-primary"&gt;\n  &lt;iconpark-icon name="upload-one"&gt;&lt;/iconpark-icon&gt;\n  &lt;span&gt;Upload&lt;/span&gt;\n&lt;/button&gt;'
+                    '&lt;button class="vx-btn vx-btn-primary"&gt;\n  &lt;i data-lucide="upload"&gt;&lt;/i&gt;\n  &lt;span&gt;Upload&lt;/span&gt;\n&lt;/button&gt;'
                 ),
 
                 section('Icon-only buttons',
                     '<code class="vx-mono">.vx-btn-icon</code> — square, no border, for toolbars and header actions.',
                     [
-                        '<button class="vx-btn-icon" type="button" title="Search"><iconpark-icon name="search"></iconpark-icon></button>',
-                        '<button class="vx-btn-icon" type="button" title="Settings"><iconpark-icon name="setting"></iconpark-icon></button>',
-                        '<button class="vx-btn-icon" type="button" title="More"><iconpark-icon name="more"></iconpark-icon></button>',
-                        '<button class="vx-btn-icon" type="button" title="Delete"><iconpark-icon name="delete"></iconpark-icon></button>',
+                        '<button class="vx-btn-icon" type="button" title="Search"><i data-lucide="search"></i></button>',
+                        '<button class="vx-btn-icon" type="button" title="Settings"><i data-lucide="settings"></i></button>',
+                        '<button class="vx-btn-icon" type="button" title="More"><i data-lucide="more-horizontal"></i></button>',
+                        '<button class="vx-btn-icon" type="button" title="Delete"><i data-lucide="trash-2"></i></button>',
                     ].join(''),
-                    '&lt;button class="vx-btn-icon" title="Search"&gt;\n  &lt;iconpark-icon name="search"&gt;&lt;/iconpark-icon&gt;\n&lt;/button&gt;'
+                    '&lt;button class="vx-btn-icon" title="Search"&gt;\n  &lt;i data-lucide="search"&gt;&lt;/i&gt;\n&lt;/button&gt;'
                 ),
 
                 section('Disabled state',
@@ -627,7 +633,7 @@
 
                 blockSection('Hero',
                     '<code class="vx-mono">.vx-hero</code> — two-column feature panel. Left column for copy, right for visual or stats.',
-                    '<div class="vx-hero" style="width:100%"><div><p class="vx-eyebrow">Product</p><h2 class="vx-hero-title" style="font-size:28px">Hero Headline</h2><p class="vx-hero-copy">A longer introductory paragraph that describes the feature or product being highlighted.</p><div class="vx-hero-actions"><button class="vx-btn vx-btn-primary" type="button">Get Started</button><button class="vx-btn vx-btn-secondary" type="button">Learn More</button></div></div><div class="vx-stat-grid" style="align-self:center"><div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Metric</span><span class="vx-stat-icon"><iconpark-icon name="chart"></iconpark-icon></span></div><div class="vx-stat-value">99.9%</div></div></div></div>',
+                    '<div class="vx-hero" style="width:100%"><div><p class="vx-eyebrow">Product</p><h2 class="vx-hero-title" style="font-size:28px">Hero Headline</h2><p class="vx-hero-copy">A longer introductory paragraph that describes the feature or product being highlighted.</p><div class="vx-hero-actions"><button class="vx-btn vx-btn-primary" type="button">Get Started</button><button class="vx-btn vx-btn-secondary" type="button">Learn More</button></div></div><div class="vx-stat-grid" style="align-self:center"><div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Metric</span><span class="vx-stat-icon"><i data-lucide="bar-chart-2"></i></span></div><div class="vx-stat-value">99.9%</div></div></div></div>',
                     '&lt;div class="vx-hero"&gt;\n  &lt;div&gt;\n    &lt;p class="vx-eyebrow"&gt;Label&lt;/p&gt;\n    &lt;h2 class="vx-hero-title"&gt;Headline&lt;/h2&gt;\n    &lt;p class="vx-hero-copy"&gt;Description&lt;/p&gt;\n    &lt;div class="vx-hero-actions"&gt;...buttons...&lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div&gt; &lt;!-- visual / stats --&gt; &lt;/div&gt;\n&lt;/div&gt;'
                 ),
 
@@ -669,15 +675,15 @@
 
                 section('Chip row',
                     '<code class="vx-mono">.vx-chip-row</code> — a grid wrapper that auto-fits chips.',
-                    '<div class="vx-chip-row" style="width:100%"><button class="vx-btn-chip is-active" type="button"><iconpark-icon name="photo"></iconpark-icon> Photos</button><button class="vx-btn-chip" type="button"><iconpark-icon name="file-text"></iconpark-icon> Docs</button><button class="vx-btn-chip" type="button"><iconpark-icon name="video-one"></iconpark-icon> Video</button><button class="vx-btn-chip" type="button"><iconpark-icon name="music-one"></iconpark-icon> Audio</button></div>',
+                    '<div class="vx-chip-row" style="width:100%"><button class="vx-btn-chip is-active" type="button"><i data-lucide="image"></i> Photos</button><button class="vx-btn-chip" type="button"><i data-lucide="file-text"></i> Docs</button><button class="vx-btn-chip" type="button"><i data-lucide="video"></i> Video</button><button class="vx-btn-chip" type="button"><i data-lucide="music"></i> Audio</button></div>',
                     '&lt;div class="vx-chip-row"&gt;\n  &lt;button class="vx-btn-chip is-active"&gt;Photos&lt;/button&gt;\n  &lt;button class="vx-btn-chip"&gt;Docs&lt;/button&gt;\n&lt;/div&gt;'
                 ),
 
                 section('Auth pill',
                     '<code class="vx-mono">.vx-auth-pill</code> — used in the header to show the current user. Add <code class="vx-mono">.is-guest</code> for unauthenticated state.',
                     [
-                        '<span class="vx-auth-pill"><iconpark-icon name="user"></iconpark-icon> Signed in as Admin</span>',
-                        '<span class="vx-auth-pill is-guest"><iconpark-icon name="eyes"></iconpark-icon> Guest mode</span>',
+                        '<span class="vx-auth-pill"><i data-lucide="user"></i> Signed in as Admin</span>',
+                        '<span class="vx-auth-pill is-guest"><i data-lucide="eye"></i> Guest mode</span>',
                     ].join(''),
                     '&lt;span class="vx-auth-pill"&gt;Signed in as Admin&lt;/span&gt;\n&lt;span class="vx-auth-pill is-guest"&gt;Guest mode&lt;/span&gt;'
                 ),
@@ -739,7 +745,7 @@
 
                 blockSection('Selection bar',
                     '<code class="vx-mono">.vx-selection-bar</code> — appears when rows are checked in a data list. Shows selected count and bulk actions.',
-                    '<div class="vx-selection-bar" style="display:flex;max-width:600px;width:100%"><div class="vx-inline-actions"><strong>3</strong><span class="vx-muted">selected</span></div><div class="vx-inline-actions"><button class="vx-btn vx-btn-ghost vx-btn-sm" type="button"><iconpark-icon name="download"></iconpark-icon><span>Download</span></button><button class="vx-btn vx-btn-ghost vx-btn-sm" type="button"><iconpark-icon name="share"></iconpark-icon><span>Share</span></button><button class="vx-btn vx-btn-ghost vx-btn-sm" type="button" style="color:var(--vx-danger)"><iconpark-icon name="delete"></iconpark-icon><span>Delete</span></button></div></div>',
+                    '<div class="vx-selection-bar" style="display:flex;max-width:600px;width:100%"><div class="vx-inline-actions"><strong>3</strong><span class="vx-muted">selected</span></div><div class="vx-inline-actions"><button class="vx-btn vx-btn-ghost vx-btn-sm" type="button"><i data-lucide="download"></i><span>Download</span></button><button class="vx-btn vx-btn-ghost vx-btn-sm" type="button"><i data-lucide="share-2"></i><span>Share</span></button><button class="vx-btn vx-btn-ghost vx-btn-sm" type="button" style="color:var(--vx-danger)"><i data-lucide="trash-2"></i><span>Delete</span></button></div></div>',
                     '&lt;div class="vx-selection-bar"&gt;\n  &lt;div class="vx-inline-actions"&gt;\n    &lt;strong&gt;3&lt;/strong&gt;&lt;span class="vx-muted"&gt;selected&lt;/span&gt;\n  &lt;/div&gt;\n  &lt;div class="vx-inline-actions"&gt;\n    &lt;button class="vx-btn vx-btn-ghost vx-btn-sm"&gt;Download&lt;/button&gt;\n  &lt;/div&gt;\n&lt;/div&gt;'
                 ),
 
@@ -754,13 +760,13 @@
                 section('Nav items',
                     '<code class="vx-mono">.vx-nav-item</code> — sidebar navigation buttons. Active state uses <code class="vx-mono">.is-active</code>.',
                     '<div style="display:flex;flex-direction:column;gap:2px;width:220px">' +
-                        '<button class="vx-nav-item is-active" type="button"><iconpark-icon name="house"></iconpark-icon><span class="vx-nav-item-text">Dashboard</span></button>' +
-                        '<button class="vx-nav-item" type="button"><iconpark-icon name="folder"></iconpark-icon><span class="vx-nav-item-text">Files</span></button>' +
-                        '<button class="vx-nav-item" type="button"><iconpark-icon name="user"></iconpark-icon><span class="vx-nav-item-text">Users</span></button>' +
+                        '<button class="vx-nav-item is-active" type="button"><i data-lucide="house"></i><span class="vx-nav-item-text">Dashboard</span></button>' +
+                        '<button class="vx-nav-item" type="button"><i data-lucide="folder"></i><span class="vx-nav-item-text">Files</span></button>' +
+                        '<button class="vx-nav-item" type="button"><i data-lucide="user"></i><span class="vx-nav-item-text">Users</span></button>' +
                         '<div class="vx-nav-divider"></div>' +
-                        '<button class="vx-nav-item" type="button"><iconpark-icon name="setting"></iconpark-icon><span class="vx-nav-item-text">Settings</span></button>' +
+                        '<button class="vx-nav-item" type="button"><i data-lucide="settings"></i><span class="vx-nav-item-text">Settings</span></button>' +
                     '</div>',
-                    '&lt;button class="vx-nav-item is-active" data-vx-route="view-name"&gt;\n  &lt;iconpark-icon name="house"&gt;&lt;/iconpark-icon&gt;\n  &lt;span class="vx-nav-item-text"&gt;Dashboard&lt;/span&gt;\n&lt;/button&gt;'
+                    '&lt;button class="vx-nav-item is-active" data-vx-route="view-name"&gt;\n  &lt;i data-lucide="house"&gt;&lt;/i&gt;\n  &lt;span class="vx-nav-item-text"&gt;Dashboard&lt;/span&gt;\n&lt;/button&gt;'
                 ),
 
                 section('Nav section with title',
@@ -768,13 +774,13 @@
                     '<div style="display:flex;flex-direction:column;width:220px">' +
                         '<div class="vx-nav-section">' +
                             '<span class="vx-nav-title">Workspace</span>' +
-                            '<button class="vx-nav-item" type="button"><iconpark-icon name="folder"></iconpark-icon><span class="vx-nav-item-text">Files</span></button>' +
-                            '<button class="vx-nav-item" type="button"><iconpark-icon name="share"></iconpark-icon><span class="vx-nav-item-text">Shared</span></button>' +
+                            '<button class="vx-nav-item" type="button"><i data-lucide="folder"></i><span class="vx-nav-item-text">Files</span></button>' +
+                            '<button class="vx-nav-item" type="button"><i data-lucide="share-2"></i><span class="vx-nav-item-text">Shared</span></button>' +
                         '</div>' +
                         '<div class="vx-nav-divider"></div>' +
                         '<div class="vx-nav-section">' +
                             '<span class="vx-nav-title">Account</span>' +
-                            '<button class="vx-nav-item" type="button"><iconpark-icon name="user"></iconpark-icon><span class="vx-nav-item-text">Profile</span></button>' +
+                            '<button class="vx-nav-item" type="button"><i data-lucide="user"></i><span class="vx-nav-item-text">Profile</span></button>' +
                         '</div>' +
                     '</div>',
                     '&lt;div class="vx-nav-section"&gt;\n  &lt;span class="vx-nav-title"&gt;Workspace&lt;/span&gt;\n  &lt;button class="vx-nav-item"&gt;...&lt;/button&gt;\n&lt;/div&gt;'
@@ -819,15 +825,15 @@
             return [
                 '<div class="vx-list-row">',
                     '<div class="vx-list-col vx-list-col-name">',
-                        '<div class="vx-list-icon"><iconpark-icon name="' + esc(icons[row.type]) + '"></iconpark-icon></div>',
+                        '<div class="vx-list-icon"><i data-lucide="' + esc(icons[row.type]) + '"></i></div>',
                         '<div class="vx-list-filename"><a href="#">' + esc(row.name) + '</a></div>',
                     '</div>',
                     '<div class="vx-list-col vx-list-col-size">' + esc(row.size) + '</div>',
                     '<div class="vx-list-col vx-list-col-date">' + esc(row.date) + '</div>',
                     '<div class="vx-list-col vx-list-col-actions">',
                         '<div class="vx-list-actions">',
-                            '<button class="vx-list-action-btn" type="button" title="Download"><iconpark-icon name="download"></iconpark-icon></button>',
-                            '<button class="vx-list-action-btn vx-action-danger" type="button" title="Delete"><iconpark-icon name="delete"></iconpark-icon></button>',
+                            '<button class="vx-list-action-btn" type="button" title="Download"><i data-lucide="download"></i></button>',
+                            '<button class="vx-list-action-btn vx-action-danger" type="button" title="Delete"><i data-lucide="trash-2"></i></button>',
                         '</div>',
                     '</div>',
                 '</div>'
@@ -867,8 +873,8 @@
 
                 blockSection('Empty state',
                     '<code class="vx-mono">.vx-empty</code> — shown when a list or section has no content yet.',
-                    '<div class="vx-empty" style="max-width:400px;width:100%"><span class="vx-empty-icon"><iconpark-icon name="inbox"></iconpark-icon></span><div><strong style="font-size:16px">No files yet</strong><p class="vx-empty-copy" style="margin:6px 0 0">Upload your first file to get started.</p></div><button class="vx-btn vx-btn-primary" type="button"><iconpark-icon name="upload-one"></iconpark-icon><span>Upload</span></button></div>',
-                    '&lt;div class="vx-empty"&gt;\n  &lt;span class="vx-empty-icon"&gt;&lt;iconpark-icon name="inbox"&gt;&lt;/iconpark-icon&gt;&lt;/span&gt;\n  &lt;div&gt;\n    &lt;strong&gt;No files yet&lt;/strong&gt;\n    &lt;p class="vx-empty-copy"&gt;Upload your first file.&lt;/p&gt;\n  &lt;/div&gt;\n  &lt;button class="vx-btn vx-btn-primary"&gt;Upload&lt;/button&gt;\n&lt;/div&gt;'
+                    '<div class="vx-empty" style="max-width:400px;width:100%"><span class="vx-empty-icon"><i data-lucide="inbox"></i></span><div><strong style="font-size:16px">No files yet</strong><p class="vx-empty-copy" style="margin:6px 0 0">Upload your first file to get started.</p></div><button class="vx-btn vx-btn-primary" type="button"><i data-lucide="upload"></i><span>Upload</span></button></div>',
+                    '&lt;div class="vx-empty"&gt;\n  &lt;span class="vx-empty-icon"&gt;&lt;i data-lucide="inbox"&gt;&lt;/i&gt;&lt;/span&gt;\n  &lt;div&gt;\n    &lt;strong&gt;No files yet&lt;/strong&gt;\n    &lt;p class="vx-empty-copy"&gt;Upload your first file.&lt;/p&gt;\n  &lt;/div&gt;\n  &lt;button class="vx-btn vx-btn-primary"&gt;Upload&lt;/button&gt;\n&lt;/div&gt;'
                 ),
 
                 blockSection('Skeleton loading',
@@ -889,16 +895,16 @@
                     '<p class="vx-doc-desc">Non-blocking notifications that appear in the top-right corner and dismiss automatically after 4 seconds. Triggered via the framework instance.</p>',
                     '<div class="vx-demo-area">',
                         '<button class="vx-btn vx-btn-secondary" type="button" id="toast-success">',
-                            '<iconpark-icon name="check-one"></iconpark-icon><span>Success</span>',
+                            '<i data-lucide="check"></i><span>Success</span>',
                         '</button>',
                         '<button class="vx-btn vx-btn-secondary" type="button" id="toast-warning">',
-                            '<iconpark-icon name="attention"></iconpark-icon><span>Warning</span>',
+                            '<i data-lucide="alert-triangle"></i><span>Warning</span>',
                         '</button>',
                         '<button class="vx-btn vx-btn-secondary" type="button" id="toast-error">',
-                            '<iconpark-icon name="close-one"></iconpark-icon><span>Error</span>',
+                            '<i data-lucide="x-circle"></i><span>Error</span>',
                         '</button>',
                         '<button class="vx-btn vx-btn-secondary" type="button" id="toast-info">',
-                            '<iconpark-icon name="info"></iconpark-icon><span>Info</span>',
+                            '<i data-lucide="info"></i><span>Info</span>',
                         '</button>',
                     '</div>',
                     '<div class="vx-code-block">',
@@ -986,16 +992,24 @@
 
     app.init().then(function () {
 
+        lucide.createIcons();
+
         /* Theme toggle */
         var themeBtn   = document.getElementById('vx-theme-btn');
-        var themeIcon  = document.getElementById('vx-theme-icon');
         var themeLabel = document.getElementById('vx-theme-label');
 
         function syncThemeUI() {
             var mode = app.getThemeMode();
-            var map = { light: ['sun-one', 'Light'], dark: ['moon', 'Dark'], system: ['computer', 'System'] };
+            var map = { light: ['sun', 'Light'], dark: ['moon', 'Dark'], system: ['monitor', 'System'] };
             var info = map[mode] || map.system;
-            if (themeIcon)  themeIcon.setAttribute('name', info[0]);
+            var iconEl = document.getElementById('vx-theme-icon');
+            if (iconEl) {
+                var newI = document.createElement('i');
+                newI.setAttribute('data-lucide', info[0]);
+                newI.id = 'vx-theme-icon';
+                iconEl.parentNode.replaceChild(newI, iconEl);
+                lucide.createIcons();
+            }
             if (themeLabel) themeLabel.textContent = info[1];
         }
 

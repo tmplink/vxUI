@@ -1,5 +1,7 @@
 # vxUI
 
+**v0.0.1** · Copyright © 2026 [TMPLINK STUDIO](https://tmplink.com)
+
 A lightweight, dependency-free UI framework for building clean admin interfaces. Design tokens, components, and a minimal SPA runtime — no jQuery, no build tools required.
 
 ## Quick Start
@@ -21,7 +23,7 @@ vxUI/
 │   ├── vxui-components.js      ← Component builder helpers (VXUIComponents)
 │   └── vxui-tmpui-bridge.js    ← Optional: adapter for tmpUI host integration
 ├── lib/
-│   └── iconpark.js             ← Icon library (IconPark web components)
+│   └── lucide.js               ← Icon library (Lucide 1.7.0)
 └── examples/
     ├── starter.html            ← Minimal integration template
     └── bridge.html             ← tmpUI bridge demo
@@ -31,7 +33,7 @@ vxUI/
 
 ```html
 <link rel="stylesheet" href="css/vxui-framework.css">
-<script src="lib/iconpark.js"></script>
+<script src="lib/lucide.js"></script>
 <script src="js/vxui-framework.js"></script>
 ```
 
@@ -108,6 +110,32 @@ State classes are applied to the `.vx-layout` element:
 | `sidebar-open` | Mobile drawer open. |
 | `vx-logged-in` | Auth-state CSS visibility. |
 | `vx-logged-out` | Auth-state CSS visibility. |
+
+## Icons
+
+### Lucide (recommended)
+
+vxUI uses [Lucide](https://lucide.dev/) (v1.7.0) as the primary icon library. It is loaded via CDN and exposes a global `lucide` object.
+
+```html
+<!-- already included in all templates -->
+<script src="https://unpkg.com/lucide@1.7.0"></script>
+```
+
+After the DOM is ready, call `lucide.createIcons()` to render all `<i data-lucide="icon-name">` elements:
+
+```html
+<i data-lucide="house"></i>
+<i data-lucide="settings"></i>
+```
+
+```javascript
+lucide.createIcons();
+```
+
+For a full list of available icons, visit [lucide.dev/icons](https://lucide.dev/icons/).
+
+Lucide is licensed under the [ISC License](https://lucide.dev/license).
 
 ## Optional: tmpUI Bridge
 

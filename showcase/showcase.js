@@ -52,7 +52,7 @@
     }
 
     function fileTypeIcon(row) {
-        return row.type === 'folder' ? 'folder-open-e1ad2j7l' : 'file';
+        return row.type === 'folder' ? 'folder-open' : 'file';
     }
 
     function fileTypeClass(row) {
@@ -64,15 +64,15 @@
             '<div class="vx-list-row" data-type="' + escapeHtml(row.type) + '">',
                 '<button class="vx-list-checkbox" type="button" data-row-checkbox="' + index + '"></button>',
                 '<div class="vx-list-name">',
-                    '<span class="vx-list-icon ' + fileTypeClass(row) + '"><iconpark-icon name="' + fileTypeIcon(row) + '"></iconpark-icon></span>',
+                    '<span class="vx-list-icon ' + fileTypeClass(row) + '"><i data-lucide="' + fileTypeIcon(row) + '"></i></span>',
                     '<div class="vx-list-filename"><a href="javascript:;">' + escapeHtml(row.name) + '</a></div>',
                 '</div>',
                 '<div class="vx-list-size">' + escapeHtml(row.size) + '</div>',
                 '<div class="vx-list-date">' + escapeHtml(row.date) + '</div>',
                 '<div class="vx-list-actions">',
-                    '<button class="vx-list-action-btn" type="button" title="open"><iconpark-icon name="share-from-square"></iconpark-icon></button>',
-                    '<button class="vx-list-action-btn" type="button" title="rename"><iconpark-icon name="pen-to-square"></iconpark-icon></button>',
-                    '<button class="vx-list-action-btn vx-action-danger" type="button" title="delete"><iconpark-icon name="trash"></iconpark-icon></button>',
+                    '<button class="vx-list-action-btn" type="button" title="open"><i data-lucide="external-link"></i></button>',
+                    '<button class="vx-list-action-btn" type="button" title="rename"><i data-lucide="pencil"></i></button>',
+                    '<button class="vx-list-action-btn vx-action-danger" type="button" title="delete"><i data-lucide="trash-2"></i></button>',
                 '</div>',
             '</div>'
         ].join('');
@@ -81,7 +81,7 @@
     function buildWorkspaceCard(row) {
         return [
             '<article class="vx-album-card" data-type="' + escapeHtml(row.type) + '">',
-                '<div class="vx-album-card-thumb ' + fileTypeClass(row) + '"><iconpark-icon name="' + fileTypeIcon(row) + '"></iconpark-icon></div>',
+                '<div class="vx-album-card-thumb ' + fileTypeClass(row) + '"><i data-lucide="' + fileTypeIcon(row) + '"></i></div>',
                 '<div class="vx-album-card-main">',
                     '<h3>' + escapeHtml(row.name) + '</h3>',
                     '<div class="vx-muted">' + escapeHtml(row.size) + '</div>',
@@ -98,16 +98,16 @@
         return [
             '<header class="vx-header vx-header-minimal vx-filelist-head">',
                 '<div class="vx-header-left">',
-                    UI.iconButton({ className: 'vx-btn-icon vx-portrait-sidebar-btn', icon: 'bars', title: 'menu', attrs: 'data-vx-sidebar-toggle' }),
+                    UI.iconButton({ className: 'vx-btn-icon vx-portrait-sidebar-btn', icon: 'menu', title: 'menu', attrs: 'data-vx-sidebar-toggle' }),
                     '<nav class="vx-breadcrumb"><a href="javascript:;">Workspace</a></nav>',
                 '</div>',
                 '<div class="vx-header-right">',
                     UI.iconButton({ icon: 'search', title: 'search' }),
                     '<div class="vx-btn-group vx-view-toggle">',
-                        '<button class="vx-btn-icon ' + listActive + '" type="button" data-workspace-mode="list" title="List"><iconpark-icon name="list"></iconpark-icon></button>',
-                        '<button class="vx-btn-icon ' + albumActive + '" type="button" data-workspace-mode="album" title="Album"><iconpark-icon name="picture"></iconpark-icon></button>',
+                        '<button class="vx-btn-icon ' + listActive + '" type="button" data-workspace-mode="list" title="List"><i data-lucide="list"></i></button>',
+                        '<button class="vx-btn-icon ' + albumActive + '" type="button" data-workspace-mode="album" title="Album"><i data-lucide="image"></i></button>',
                     '</div>',
-                    UI.button({ className: 'vx-btn vx-btn-ghost', icon: 'cloud-arrow-up', label: 'Upload', attrs: 'data-auth="logged-in" data-owner="true"' }),
+                    UI.button({ className: 'vx-btn vx-btn-ghost', icon: 'upload-cloud', label: 'Upload', attrs: 'data-auth="logged-in" data-owner="true"' }),
                     UI.button({ className: 'vx-btn vx-btn-ghost', icon: 'folder-plus', label: 'New Folder', attrs: 'data-auth="logged-in" data-owner="true"' }),
                 '</div>',
             '</header>'
@@ -123,7 +123,7 @@
                     headerHtml: [
                         '<button class="vx-list-checkbox" id="vx-ws-select-all" type="button"></button>',
                         '<span>Name</span>',
-                        '<iconpark-icon name="sort-amount-down" class="vx-sort-icon active"></iconpark-icon>'
+                        '<i data-lucide="arrow-down-wide-narrow" class="vx-sort-icon active"></i>'
                     ].join('')
                 },
                 {
@@ -166,10 +166,10 @@
                     countId: 'vx-ws-selection-count',
                     caption: 'Selected',
                     actions: [
-                        { icon: 'cloud-arrow-down', label: 'Download' },
+                        { icon: 'download-cloud', label: 'Download' },
                         { icon: 'copy', label: 'Copy Link' },
-                        { icon: 'folder-open-e1ad2j7l', label: 'Move' },
-                        { icon: 'trash', label: 'Delete', className: 'vx-btn vx-btn-ghost vx-btn-sm vx-text-danger' },
+                        { icon: 'folder-open', label: 'Move' },
+                        { icon: 'trash-2', label: 'Delete', className: 'vx-btn vx-btn-ghost vx-btn-sm vx-text-danger' },
                         { label: 'Cancel', className: 'vx-btn vx-btn-secondary vx-btn-sm', attrs: 'id="vx-ws-selection-cancel"' }
                     ]
                 }),
@@ -180,13 +180,13 @@
     function renderSettingsView() {
         return [
             UI.moduleHeader({
-                icon: 'gear',
+                icon: 'settings',
                 title: 'Settings',
-                rightHtml: UI.iconButton({ icon: 'rotate', title: 'refresh' })
+                rightHtml: UI.iconButton({ icon: 'refresh-cw', title: 'refresh' })
             }),
             '<div class="vx-content vx-account-content">',
                 '<div class="vx-settings-section">',
-                    '<h3 class="vx-settings-title"><iconpark-icon name="sliders"></iconpark-icon><span>Workspace Preferences</span></h3>',
+                    '<h3 class="vx-settings-title"><i data-lucide="sliders-horizontal"></i><span>Workspace Preferences</span></h3>',
                     '<div class="vx-settings-card">',
                         UI.switchItem({
                             title: 'Enable quick copy',
@@ -201,12 +201,12 @@
                             attrs: 'data-setting-switch="confirm-delete"'
                         }),
                         '<div class="vx-pref-item">',
-                            '<div class="vx-pref-item-head"><iconpark-icon name="layer-group"></iconpark-icon><span class="vx-switch-label">Concurrent uploads</span></div>',
+                            '<div class="vx-pref-item-head"><i data-lucide="layers"></i><span class="vx-switch-label">Concurrent uploads</span></div>',
                             '<input class="vx-input" type="number" value="6" min="1" max="20">',
                         '</div>',
                         '<div class="vx-inline-actions">',
-                            UI.button({ className: 'vx-btn vx-btn-secondary', icon: 'circle-info', label: 'Info modal', attrs: 'id="vx-open-info-modal"' }),
-                            UI.button({ className: 'vx-btn vx-btn-primary', icon: 'circle-check', label: 'Confirm modal', attrs: 'id="vx-open-confirm-modal"' }),
+                            UI.button({ className: 'vx-btn vx-btn-secondary', icon: 'info', label: 'Info modal', attrs: 'id="vx-open-info-modal"' }),
+                            UI.button({ className: 'vx-btn vx-btn-primary', icon: 'check-circle', label: 'Confirm modal', attrs: 'id="vx-open-confirm-modal"' }),
                         '</div>',
                     '</div>',
                 '</div>',
@@ -219,12 +219,12 @@
             UI.moduleHeader({
                 icon: 'user',
                 title: 'Profile',
-                rightHtml: UI.iconButton({ icon: 'rotate', title: 'refresh' })
+                rightHtml: UI.iconButton({ icon: 'refresh-cw', title: 'refresh' })
             }),
             '<div class="vx-content vx-account-content">',
                 '<div class="vx-profile-card">',
                     '<div class="vx-profile-header">',
-                        '<div class="vx-profile-avatar"><div class="vx-profile-avatar-placeholder"><iconpark-icon name="user"></iconpark-icon></div></div>',
+                        '<div class="vx-profile-avatar"><div class="vx-profile-avatar-placeholder"><i data-lucide="user"></i></div></div>',
                         '<div class="vx-profile-info">',
                             '<h2 class="vx-profile-name">' + escapeHtml(showcaseState.user.name) + '</h2>',
                             '<p class="vx-profile-intro">Generic framework profile for shell preview and permissions.</p>',
@@ -236,10 +236,10 @@
                     '</div>',
                 '</div>',
                 '<div class="vx-stats-grid">',
-                    '<div class="vx-stat-card"><div class="vx-stat-icon"><iconpark-icon name="file"></iconpark-icon></div><div class="vx-stat-content"><div class="vx-stat-label">Resources</div><div class="vx-stat-value">128</div></div></div>',
-                    '<div class="vx-stat-card"><div class="vx-stat-icon"><iconpark-icon name="files"></iconpark-icon></div><div class="vx-stat-content"><div class="vx-stat-label">Shared folders</div><div class="vx-stat-value">26</div></div></div>',
-                    '<div class="vx-stat-card"><div class="vx-stat-icon"><iconpark-icon name="database"></iconpark-icon></div><div class="vx-stat-content"><div class="vx-stat-label">Used storage</div><div class="vx-stat-value">927 MB</div></div></div>',
-                    '<div class="vx-stat-card"><div class="vx-stat-icon"><iconpark-icon name="chart-network"></iconpark-icon></div><div class="vx-stat-content"><div class="vx-stat-label">Activity score</div><div class="vx-stat-value">150</div></div></div>',
+                    '<div class="vx-stat-card"><div class="vx-stat-icon"><i data-lucide="file"></i></div><div class="vx-stat-content"><div class="vx-stat-label">Resources</div><div class="vx-stat-value">128</div></div></div>',
+                    '<div class="vx-stat-card"><div class="vx-stat-icon"><i data-lucide="files"></i></div><div class="vx-stat-content"><div class="vx-stat-label">Shared folders</div><div class="vx-stat-value">26</div></div></div>',
+                    '<div class="vx-stat-card"><div class="vx-stat-icon"><i data-lucide="database"></i></div><div class="vx-stat-content"><div class="vx-stat-label">Used storage</div><div class="vx-stat-value">927 MB</div></div></div>',
+                    '<div class="vx-stat-card"><div class="vx-stat-icon"><i data-lucide="network"></i></div><div class="vx-stat-content"><div class="vx-stat-label">Activity score</div><div class="vx-stat-value">150</div></div></div>',
                 '</div>',
             '</div>'
         ].join('');
@@ -252,8 +252,8 @@
                 '<div class="vx-points-balance-value">12.8 GB</div>',
             '</section>',
             '<section class="vx-points-actions-panel">',
-                '<button class="vx-points-quick-btn is-primary" type="button"><iconpark-icon name="chart-line"></iconpark-icon><span>Open dashboard</span></button>',
-                '<button class="vx-points-quick-btn" type="button"><iconpark-icon name="download"></iconpark-icon><span>Export CSV</span></button>',
+                '<button class="vx-points-quick-btn is-primary" type="button"><i data-lucide="trending-up"></i><span>Open dashboard</span></button>',
+                '<button class="vx-points-quick-btn" type="button"><i data-lucide="download"></i><span>Export CSV</span></button>',
             '</section>'
         ].join('');
     }
@@ -270,7 +270,7 @@
             rowBuilder: function (row) {
                 return [
                     '<div class="vx-list-row">',
-                        '<div class="vx-list-name"><span class="vx-list-icon vx-icon-file"><iconpark-icon name="file-lines"></iconpark-icon></span><div class="vx-list-filename"><a href="javascript:;">' + escapeHtml(row.event) + '</a></div></div>',
+                        '<div class="vx-list-name"><span class="vx-list-icon vx-icon-file"><i data-lucide="file-text"></i></span><div class="vx-list-filename"><a href="javascript:;">' + escapeHtml(row.event) + '</a></div></div>',
                         '<div class="vx-list-size">' + escapeHtml(row.channel) + '</div>',
                         '<div class="vx-list-date">' + escapeHtml(row.date) + '</div>',
                         '<div class="vx-list-actions"><span class="vx-muted">' + escapeHtml(row.status) + '</span></div>',
@@ -295,14 +295,14 @@
         } else if (showcaseState.reportsTab === 'events') {
             content = renderReportsEvents();
         } else {
-            content = '<section class="vx-empty"><div class="vx-empty-icon"><iconpark-icon name="download"></iconpark-icon></div><h3>Export queue is empty</h3><p>Generated reports will appear here.</p></section>';
+            content = '<section class="vx-empty"><div class="vx-empty-icon"><i data-lucide="download"></i></div><h3>Export queue is empty</h3><p>Generated reports will appear here.</p></section>';
         }
 
         return [
             UI.moduleHeader({
-                icon: 'funds',
+                icon: 'trending-up',
                 title: 'Reports',
-                rightHtml: UI.iconButton({ icon: 'rotate', title: 'refresh' })
+                rightHtml: UI.iconButton({ icon: 'refresh-cw', title: 'refresh' })
             }),
             '<section class="vx-points-shell">',
                 tabs,
@@ -340,7 +340,7 @@
                 rowBuilder: function (row) {
                     return [
                         '<div class="vx-list-row">',
-                            '<div class="vx-list-name"><span class="vx-list-icon vx-icon-file"><iconpark-icon name="link"></iconpark-icon></span><div class="vx-list-filename"><a href="javascript:;">' + escapeHtml(row.name) + '</a></div></div>',
+                            '<div class="vx-list-name"><span class="vx-list-icon vx-icon-file"><i data-lucide="link"></i></span><div class="vx-list-filename"><a href="javascript:;">' + escapeHtml(row.name) + '</a></div></div>',
                             '<div class="vx-list-size">' + escapeHtml(row.target) + '</div>',
                             '<div class="vx-list-date">' + escapeHtml(row.visits) + '</div>',
                             '<div class="vx-list-actions"><span class="vx-muted">' + escapeHtml(row.status) + '</span></div>',
@@ -349,14 +349,14 @@
                 }
             });
         } else {
-            panel = '<section class="vx-empty"><div class="vx-empty-icon"><iconpark-icon name="globe"></iconpark-icon></div><h3>No custom domains yet</h3><p>Attach a domain to route friendly links.</p></section>';
+            panel = '<section class="vx-empty"><div class="vx-empty-icon"><i data-lucide="globe"></i></div><h3>No custom domains yet</h3><p>Attach a domain to route friendly links.</p></section>';
         }
 
         return [
             UI.moduleHeader({
                 icon: 'link',
                 title: 'Links',
-                rightHtml: UI.iconButton({ icon: 'rotate', title: 'refresh' })
+                rightHtml: UI.iconButton({ icon: 'refresh-cw', title: 'refresh' })
             }),
             '<div class="vx-content vx-account-content">',
                 tabs,
@@ -387,7 +387,7 @@
                 rowBuilder: function (row) {
                     return [
                         '<div class="vx-list-row">',
-                            '<div class="vx-list-name"><span class="vx-list-icon vx-icon-file"><iconpark-icon name="file"></iconpark-icon></span><div class="vx-list-filename"><a href="javascript:;">' + escapeHtml(row.name) + '</a></div></div>',
+                            '<div class="vx-list-name"><span class="vx-list-icon vx-icon-file"><i data-lucide="file"></i></span><div class="vx-list-filename"><a href="javascript:;">' + escapeHtml(row.name) + '</a></div></div>',
                             '<div class="vx-list-size">' + escapeHtml(row.kind) + '</div>',
                             '<div class="vx-list-date">' + escapeHtml(row.date) + '</div>',
                             '<div class="vx-list-actions"><button class="vx-btn vx-btn-secondary vx-btn-sm" type="button">' + escapeHtml(row.action) + '</button></div>',
@@ -396,16 +396,16 @@
                 }
             });
         } else if (showcaseState.libraryTab === 'saved') {
-            content = '<section class="vx-empty"><div class="vx-empty-icon"><iconpark-icon name="bookmark"></iconpark-icon></div><h3>No saved items</h3><p>Save frequently used assets to access them quickly.</p></section>';
+            content = '<section class="vx-empty"><div class="vx-empty-icon"><i data-lucide="bookmark"></i></div><h3>No saved items</h3><p>Save frequently used assets to access them quickly.</p></section>';
         } else {
             content = '<section class="vx-card"><h3 class="vx-card-title">Redeem Access Code</h3><div class="vx-card-copy">Enter a code to unlock premium patterns.</div><div class="vx-inline-actions" style="margin-top:10px;"><input class="vx-input" value="UI-KIT-2026"><button class="vx-btn vx-btn-primary" type="button">Apply</button></div></section>';
         }
 
         return [
             UI.moduleHeader({
-                icon: 'bag-shopping',
+                icon: 'shopping-bag',
                 title: 'Library',
-                rightHtml: UI.iconButton({ icon: 'rotate', title: 'refresh' })
+                rightHtml: UI.iconButton({ icon: 'refresh-cw', title: 'refresh' })
             }),
             '<div class="vx-content vx-account-content">',
                 tabs,
@@ -419,7 +419,7 @@
             UI.moduleHeader({
                 icon: 'lock',
                 title: 'Notes',
-                rightHtml: UI.iconButton({ icon: 'rotate', title: 'refresh' })
+                rightHtml: UI.iconButton({ icon: 'refresh-cw', title: 'refresh' })
             }),
             '<div class="vx-content vx-account-content">',
                 '<section class="vx-card">',
@@ -437,9 +437,9 @@
     function renderAssistantView() {
         return [
             UI.moduleHeader({
-                icon: 'comments',
+                icon: 'message-circle',
                 title: 'Assistant',
-                rightHtml: UI.iconButton({ icon: 'rotate', title: 'refresh' })
+                rightHtml: UI.iconButton({ icon: 'refresh-cw', title: 'refresh' })
             }),
             '<div class="vx-content vx-account-content">',
                 '<section class="vx-card">',
@@ -565,10 +565,10 @@
                     '<div class="vx-sidebar-folder-info">',
                         '<h3 class="vx-sidebar-folder-name">Workspace Root</h3>',
                         '<div class="vx-sidebar-stats">',
-                            '<div class="vx-sidebar-stat-item"><iconpark-icon name="folder-open-e1ad2j7l"></iconpark-icon><div class="vx-sidebar-stat-text"><span class="vx-sidebar-stat-val">5</span><span class="vx-sidebar-stat-lbl">folders</span></div></div>',
-                            '<div class="vx-sidebar-stat-item"><iconpark-icon name="file-lines"></iconpark-icon><div class="vx-sidebar-stat-text"><span class="vx-sidebar-stat-val">3</span><span class="vx-sidebar-stat-lbl">files</span></div></div>',
-                            '<div class="vx-sidebar-stat-item"><iconpark-icon name="compact-disc"></iconpark-icon><div class="vx-sidebar-stat-text"><span class="vx-sidebar-stat-val">143 KB</span></div></div>',
-                            '<div class="vx-sidebar-stat-item"><iconpark-icon name="clock-rotate-left"></iconpark-icon><div class="vx-sidebar-stat-text"><span>Using latest index</span><button class="vx-sidebar-stat-action" type="button" data-vx-refresh-index>Refresh</button></div></div>',
+                            '<div class="vx-sidebar-stat-item"><i data-lucide="folder-open"></i><div class="vx-sidebar-stat-text"><span class="vx-sidebar-stat-val">5</span><span class="vx-sidebar-stat-lbl">folders</span></div></div>',
+                            '<div class="vx-sidebar-stat-item"><i data-lucide="file-text"></i><div class="vx-sidebar-stat-text"><span class="vx-sidebar-stat-val">3</span><span class="vx-sidebar-stat-lbl">files</span></div></div>',
+                            '<div class="vx-sidebar-stat-item"><i data-lucide="disc"></i><div class="vx-sidebar-stat-text"><span class="vx-sidebar-stat-val">143 KB</span></div></div>',
+                            '<div class="vx-sidebar-stat-item"><i data-lucide="rotate-ccw"></i><div class="vx-sidebar-stat-text"><span>Using latest index</span><button class="vx-sidebar-stat-action" type="button" data-vx-refresh-index>Refresh</button></div></div>',
                         '</div>',
                     '</div>',
                 '</div>'
@@ -577,44 +577,44 @@
             dynamicContainer.innerHTML = [
                 '<div class="vx-nav-section">',
                     '<div class="vx-nav-title">Reports</div>',
-                    '<button class="vx-nav-item" type="button" data-reports-tab="overview"><iconpark-icon name="chart-line"></iconpark-icon><span class="vx-nav-item-text">Overview</span></button>',
-                    '<button class="vx-nav-item" type="button" data-reports-tab="events"><iconpark-icon name="list-check"></iconpark-icon><span class="vx-nav-item-text">Events</span></button>',
-                    '<button class="vx-nav-item" type="button" data-reports-tab="exports"><iconpark-icon name="download"></iconpark-icon><span class="vx-nav-item-text">Exports</span></button>',
+                    '<button class="vx-nav-item" type="button" data-reports-tab="overview"><i data-lucide="trending-up"></i><span class="vx-nav-item-text">Overview</span></button>',
+                    '<button class="vx-nav-item" type="button" data-reports-tab="events"><i data-lucide="list-checks"></i><span class="vx-nav-item-text">Events</span></button>',
+                    '<button class="vx-nav-item" type="button" data-reports-tab="exports"><i data-lucide="download"></i><span class="vx-nav-item-text">Exports</span></button>',
                 '</div>'
             ].join('');
         } else if (viewName === 'links') {
             dynamicContainer.innerHTML = [
                 '<div class="vx-nav-section">',
                     '<div class="vx-nav-title">Links</div>',
-                    '<button class="vx-nav-item" type="button" data-links-tab="dashboard"><iconpark-icon name="gauge-circle-bolt"></iconpark-icon><span class="vx-nav-item-text">Dashboard</span></button>',
-                    '<button class="vx-nav-item" type="button" data-links-tab="targets"><iconpark-icon name="file"></iconpark-icon><span class="vx-nav-item-text">Targets</span></button>',
-                    '<button class="vx-nav-item" type="button" data-links-tab="domains"><iconpark-icon name="globe"></iconpark-icon><span class="vx-nav-item-text">Domains</span></button>',
+                    '<button class="vx-nav-item" type="button" data-links-tab="dashboard"><i data-lucide="gauge"></i><span class="vx-nav-item-text">Dashboard</span></button>',
+                    '<button class="vx-nav-item" type="button" data-links-tab="targets"><i data-lucide="file"></i><span class="vx-nav-item-text">Targets</span></button>',
+                    '<button class="vx-nav-item" type="button" data-links-tab="domains"><i data-lucide="globe"></i><span class="vx-nav-item-text">Domains</span></button>',
                 '</div>'
             ].join('');
         } else if (viewName === 'library') {
             dynamicContainer.innerHTML = [
                 '<div class="vx-nav-section">',
                     '<div class="vx-nav-title">Library</div>',
-                    '<button class="vx-nav-item" type="button" data-library-tab="catalog"><iconpark-icon name="bag-shopping"></iconpark-icon><span class="vx-nav-item-text">Catalog</span></button>',
-                    '<button class="vx-nav-item" type="button" data-library-tab="saved"><iconpark-icon name="bookmark"></iconpark-icon><span class="vx-nav-item-text">Saved</span></button>',
-                    '<button class="vx-nav-item" type="button" data-library-tab="redeem"><iconpark-icon name="gift-card"></iconpark-icon><span class="vx-nav-item-text">Redeem</span></button>',
+                    '<button class="vx-nav-item" type="button" data-library-tab="catalog"><i data-lucide="shopping-bag"></i><span class="vx-nav-item-text">Catalog</span></button>',
+                    '<button class="vx-nav-item" type="button" data-library-tab="saved"><i data-lucide="bookmark"></i><span class="vx-nav-item-text">Saved</span></button>',
+                    '<button class="vx-nav-item" type="button" data-library-tab="redeem"><i data-lucide="gift"></i><span class="vx-nav-item-text">Redeem</span></button>',
                 '</div>'
             ].join('');
         } else if (viewName === 'notes') {
             dynamicContainer.innerHTML = [
                 '<div class="vx-nav-section">',
                     '<div class="vx-nav-title">Notes</div>',
-                    '<button class="vx-nav-item active" type="button"><iconpark-icon name="lock"></iconpark-icon><span class="vx-nav-item-text">Implementation checklist</span></button>',
-                    '<button class="vx-nav-item" type="button"><iconpark-icon name="lock"></iconpark-icon><span class="vx-nav-item-text">Component backlog</span></button>',
-                    '<button class="vx-nav-item" type="button"><iconpark-icon name="lock"></iconpark-icon><span class="vx-nav-item-text">Release draft</span></button>',
+                    '<button class="vx-nav-item active" type="button"><i data-lucide="lock"></i><span class="vx-nav-item-text">Implementation checklist</span></button>',
+                    '<button class="vx-nav-item" type="button"><i data-lucide="lock"></i><span class="vx-nav-item-text">Component backlog</span></button>',
+                    '<button class="vx-nav-item" type="button"><i data-lucide="lock"></i><span class="vx-nav-item-text">Release draft</span></button>',
                 '</div>'
             ].join('');
         } else if (viewName === 'assistant') {
             dynamicContainer.innerHTML = [
                 '<div class="vx-nav-section">',
                     '<div class="vx-nav-title">Sessions</div>',
-                    '<button class="vx-nav-item active" type="button"><iconpark-icon name="message"></iconpark-icon><span class="vx-nav-item-text">UI review</span></button>',
-                    '<button class="vx-nav-item" type="button"><iconpark-icon name="message"></iconpark-icon><span class="vx-nav-item-text">Migration notes</span></button>',
+                    '<button class="vx-nav-item active" type="button"><i data-lucide="message-square"></i><span class="vx-nav-item-text">UI review</span></button>',
+                    '<button class="vx-nav-item" type="button"><i data-lucide="message-square"></i><span class="vx-nav-item-text">Migration notes</span></button>',
                 '</div>'
             ].join('');
         } else {
@@ -628,6 +628,7 @@
         }
 
         syncDynamicSidebarState();
+        if (window.lucide) window.lucide.createIcons();
     }
 
     function syncDynamicSidebarState() {
@@ -836,13 +837,14 @@
     });
 
     framework.setNavigation([
-        { view: 'workspace', label: 'Workspace', icon: 'folder-open-e1ad2j7l' },
+        { view: 'workspace', label: 'Workspace', icon: 'folder-open' },
         { view: 'links', label: 'Links', icon: 'link', showWhenLoggedIn: true },
         { view: 'notes', label: 'Notes', icon: 'lock', showWhenLoggedIn: true },
-        { view: 'assistant', label: 'Assistant', icon: 'comments', showWhenLoggedIn: true }
+        { view: 'assistant', label: 'Assistant', icon: 'message-circle', showWhenLoggedIn: true }
     ]);
 
     framework.init().then(function () {
+        if (window.lucide) window.lucide.createIcons();
         bindGlobalEvents(framework);
         renderDynamicSidebar(framework.currentView || 'workspace');
     });

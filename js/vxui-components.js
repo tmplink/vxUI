@@ -1,3 +1,8 @@
+/*!
+ * vxUI Components v0.0.1
+ * Copyright (c) 2026 TMPLINK STUDIO
+ * Released under the MIT License
+ */
 (function (window) {
     'use strict';
 
@@ -12,7 +17,7 @@
 
     function icon(name, className) {
         const cls = className ? ' class="' + escapeHtml(className) + '"' : '';
-        return '<iconpark-icon name="' + escapeHtml(name) + '"' + cls + '></iconpark-icon>';
+        return '<i data-lucide="' + escapeHtml(name) + '"' + cls + '></i>';
     }
 
     function button(options) {
