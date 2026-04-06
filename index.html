@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vxUI — UI Framework</title>
+    <link rel="stylesheet" href="css/vxui-framework.css">
+    <style>
+        /* ── Docs-specific styles ─────────────────────────── */
+        .vx-doc-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-bottom: 40px;
+        }
+        .vx-doc-section + .vx-doc-section {
+            border-top: 1px solid var(--vx-border);
+            padding-top: 40px;
+        }
+        .vx-doc-heading {
+            margin: 0 0 4px;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--vx-text);
+        }
+        .vx-doc-desc {
+            margin: 0 0 4px;
+            color: var(--vx-text-secondary);
+            line-height: 1.7;
+            font-size: 14px;
+        }
+        .vx-demo-area {
+            padding: 24px;
+            border: 1px solid var(--vx-border);
+            border-radius: 16px;
+            background: var(--vx-bg-accent);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .vx-demo-area.is-block {
+            flex-direction: column;
+        }
+        .vx-color-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .vx-color-chip {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .vx-color-chip-swatch {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            border: 1px solid var(--vx-border);
+        }
+        .vx-color-chip-label {
+            font-size: 11px;
+            color: var(--vx-text-secondary);
+            font-family: var(--vx-mono);
+        }
+        .vx-intro-page-title {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 800;
+            margin: 0 0 12px;
+            line-height: 1.1;
+        }
+        .vx-view > .vx-doc-section:first-child {
+            padding-top: 0;
+            border-top: none;
+        }
+    </style>
+</head>
+<body>
+<div id="vx-app" class="vx-app">
+    <div id="vx-layout" class="vx-shell vx-layout">
+
+        <div class="vx-sidebar-overlay" data-vx-sidebar-overlay></div>
+
+        <aside id="vx-sidebar" class="vx-sidebar">
+            <div class="vx-sidebar-header">
+                <button class="vx-sidebar-brand" type="button" data-vx-route="introduction">
+                    <span class="vx-sidebar-brand-text">vxUI</span>
+                </button>
+                <button class="vx-btn-icon" type="button" data-vx-sidebar-toggle style="margin-left:auto" title="Toggle sidebar">
+                    <iconpark-icon name="alignment-horizontal-center"></iconpark-icon>
+                </button>
+            </div>
+
+            <nav class="vx-sidebar-nav">
+                <!-- Getting Started -->
+                <div class="vx-nav-section">
+                    <span class="vx-nav-title">Getting Started</span>
+                    <button class="vx-nav-item" type="button" data-vx-route="introduction">
+                        <iconpark-icon name="house"></iconpark-icon>
+                        <span class="vx-nav-item-text">Introduction</span>
+                    </button>
+                    <button class="vx-nav-item" type="button" data-vx-route="quickstart">
+                        <iconpark-icon name="lightning"></iconpark-icon>
+                        <span class="vx-nav-item-text">Quick Start</span>
+                    </button>
+                </div>
+
+                <div class="vx-nav-divider"></div>
+
+                <!-- Layout -->
+                <div class="vx-nav-section">
+                    <span class="vx-nav-title">Layout</span>
+                    <button class="vx-nav-item" type="button" data-vx-route="layout">
+                        <iconpark-icon name="layout-two"></iconpark-icon>
+                        <span class="vx-nav-item-text">Shell &amp; Sidebar</span>
+                    </button>
+                    <button class="vx-nav-item" type="button" data-vx-route="grid">
+                        <iconpark-icon name="table-report"></iconpark-icon>
+                        <span class="vx-nav-item-text">Grid &amp; Page</span>
+                    </button>
+                </div>
+
+                <div class="vx-nav-divider"></div>
+
+                <!-- Components -->
+                <div class="vx-nav-section">
+                    <span class="vx-nav-title">Components</span>
+                    <button class="vx-nav-item" type="button" data-vx-route="buttons">
+                        <iconpark-icon name="hand-click"></iconpark-icon>
+                        <span class="vx-nav-item-text">Buttons</span>
+                    </button>
+                    <button class="vx-nav-item" type="button" data-vx-route="cards">
+                        <iconpark-icon name="rectangle-one"></iconpark-icon>
+                        <span class="vx-nav-item-text">Cards &amp; Panels</span>
+                    </button>
+                    <button class="vx-nav-item" type="button" data-vx-route="badges">
+                        <iconpark-icon name="tag-one"></iconpark-icon>
+                        <span class="vx-nav-item-text">Badges &amp; Chips</span>
+                    </button>
+                    <button class="vx-nav-item" type="button" data-vx-route="forms">
+                        <iconpark-icon name="edit-two"></iconpark-icon>
+                        <span class="vx-nav-item-text">Forms</span>
+                    </button>
+                    <button class="vx-nav-item" type="button" data-vx-route="switches">
+                        <iconpark-icon name="toggle-right"></iconpark-icon>
+                        <span class="vx-nav-item-text">Switches</span>
+                    </button>
+                    <button class="vx-nav-item" type="button" data-vx-route="navigation">
+                        <iconpark-icon name="compass"></iconpark-icon>
+                        <span class="vx-nav-item-text">Navigation</span>
+                    </button>
+                    <button class="vx-nav-item" type="button" data-vx-route="list">
+                        <iconpark-icon name="list"></iconpark-icon>
+                        <span class="vx-nav-item-text">Data List</span>
+                    </button>
+                    <button class="vx-nav-item" type="button" data-vx-route="empty">
+                        <iconpark-icon name="inbox"></iconpark-icon>
+                        <span class="vx-nav-item-text">Empty States</span>
+                    </button>
+                </div>
+
+                <div class="vx-nav-divider"></div>
+
+                <!-- Feedback -->
+                <div class="vx-nav-section">
+                    <span class="vx-nav-title">Feedback</span>
+                    <button class="vx-nav-item" type="button" data-vx-route="toasts">
+                        <iconpark-icon name="announcement"></iconpark-icon>
+                        <span class="vx-nav-item-text">Toasts</span>
+                    </button>
+                    <button class="vx-nav-item" type="button" data-vx-route="modals">
+                        <iconpark-icon name="expand-text-input"></iconpark-icon>
+                        <span class="vx-nav-item-text">Modals</span>
+                    </button>
+                    <button class="vx-nav-item" type="button" data-vx-route="dialogs">
+                        <iconpark-icon name="message-one"></iconpark-icon>
+                        <span class="vx-nav-item-text">Dialogs</span>
+                    </button>
+                </div>
+            </nav>
+
+            <div class="vx-sidebar-bottom-menu">
+                <div class="vx-nav-section">
+                    <button class="vx-nav-item" type="button" id="vx-theme-btn">
+                        <iconpark-icon name="sun-one" id="vx-theme-icon"></iconpark-icon>
+                        <span class="vx-nav-item-text" id="vx-theme-label">Light</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <div class="vx-main">
+            <header class="vx-header">
+                <div class="vx-header-left">
+                    <button class="vx-btn-icon vx-portrait-sidebar-btn" type="button" data-vx-sidebar-toggle title="Menu">
+                        <iconpark-icon name="hamburger-button"></iconpark-icon>
+                    </button>
+                    <nav id="vx-breadcrumb" class="vx-breadcrumb" aria-label="breadcrumb"></nav>
+                </div>
+                <div class="vx-header-right">
+                    <span class="vx-badge">v1.0</span>
+                </div>
+            </header>
+
+            <div id="vx-view" class="vx-content"></div>
+        </div>
+
+    </div><!-- /.vx-shell -->
+</div><!-- /#vx-app -->
+
+<!-- Framework nav mount (hidden — used internally by the runtime) -->
+<div id="vx-nav-managed" hidden></div>
+
+<script src="lib/iconpark.js"></script>
+<script src="js/vxui-framework.js"></script>
+<script src="js/vxui-components.js"></script>
+<script>
+(function () {
+    'use strict';
+
+    /* ── Shared helpers ───────────────────────────────────── */
+    function esc(s) {
+        return String(s == null ? '' : s)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function section(heading, desc, demoHtml, codeStr) {
+        return [
+            '<div class="vx-doc-section">',
+                '<h2 class="vx-doc-heading">', esc(heading), '</h2>',
+                desc ? '<p class="vx-doc-desc">' + desc + '</p>' : '',
+                '<div class="vx-demo-area">', demoHtml, '</div>',
+                codeStr ? [
+                    '<div class="vx-code-block">',
+                        '<div class="vx-code-head">',
+                            '<span>HTML</span>',
+                        '</div>',
+                        '<pre>', codeStr, '</pre>',
+                    '</div>'
+                ].join('') : '',
+            '</div>'
+        ].join('');
+    }
+
+    function blockSection(heading, desc, demoHtml, codeStr) {
+        return [
+            '<div class="vx-doc-section">',
+                '<h2 class="vx-doc-heading">', esc(heading), '</h2>',
+                desc ? '<p class="vx-doc-desc">' + desc + '</p>' : '',
+                '<div class="vx-demo-area is-block">', demoHtml, '</div>',
+                codeStr ? [
+                    '<div class="vx-code-block">',
+                        '<div class="vx-code-head"><span>HTML</span></div>',
+                        '<pre>', codeStr, '</pre>',
+                    '</div>'
+                ].join('') : '',
+            '</div>'
+        ].join('');
+    }
+
+    /* ── Views ────────────────────────────────────────────── */
+
+    function viewIntroduction() {
+        var colors = ['primary','success','warning','danger','info','secondary'];
+        var surfaces = ['bg','surface','bg-accent'];
+        var swatches = colors.concat(surfaces).map(function (c) {
+            var border = ['bg','surface','bg-accent'].indexOf(c) >= 0 ? ' border:1px solid var(--vx-border)' : '';
+            return [
+                '<div class="vx-color-chip">',
+                    '<div class="vx-color-chip-swatch" style="background:var(--vx-' + c + ');' + border + '"></div>',
+                    '<span class="vx-color-chip-label">--vx-' + c + '</span>',
+                '</div>'
+            ].join('');
+        }).join('');
+
+        return [
+            '<div class="vx-view">',
+
+                '<div class="vx-doc-section">',
+                    '<h1 class="vx-intro-page-title">vxUI</h1>',
+                    '<p class="vx-doc-desc" style="font-size:16px;max-width:600px">',
+                        'A lightweight, dependency-free UI framework for building clean admin interfaces.',
+                        ' Design tokens, components, and a minimal SPA runtime &mdash; no jQuery, no build tools required.',
+                    '</p>',
+                    '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">',
+                        '<button class="vx-btn vx-btn-primary" type="button" data-vx-route="quickstart">',
+                            '<iconpark-icon name="lightning"></iconpark-icon><span>Get Started</span>',
+                        '</button>',
+                        '<button class="vx-btn vx-btn-secondary" type="button" data-vx-route="buttons">',
+                            'Browse Components',
+                        '</button>',
+                    '</div>',
+                '</div>',
+
+                '<div class="vx-doc-section">',
+                    '<h2 class="vx-doc-heading">At a Glance</h2>',
+                    '<div class="vx-stat-grid">',
+                        '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Zero dependencies</span><span class="vx-stat-icon"><iconpark-icon name="check-one"></iconpark-icon></span></div><div class="vx-stat-value">0</div></div>',
+                        '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Components</span><span class="vx-stat-icon"><iconpark-icon name="puzzle"></iconpark-icon></span></div><div class="vx-stat-value">30+</div></div>',
+                        '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Core CSS</span><span class="vx-stat-icon"><iconpark-icon name="file-code"></iconpark-icon></span></div><div class="vx-stat-value">~24 KB</div></div>',
+                        '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Dark mode</span><span class="vx-stat-icon"><iconpark-icon name="moon"></iconpark-icon></span></div><div class="vx-stat-value">Built-in</div></div>',
+                    '</div>',
+                '</div>',
+
+                '<div class="vx-doc-section">',
+                    '<h2 class="vx-doc-heading">Design Tokens</h2>',
+                    '<p class="vx-doc-desc">',
+                        'All colors, spacing, and typography values are exposed as CSS custom properties under the <code class="vx-mono">--vx-*</code> namespace.',
+                        ' Override any token to theme the entire framework.',
+                    '</p>',
+                    '<div class="vx-color-row">', swatches, '</div>',
+                    '<div class="vx-code-block">',
+                        '<div class="vx-code-head"><span>CSS</span></div>',
+                        '<pre>:root {\n  --vx-primary: #2563eb;\n  --vx-success: #10b981;\n  --vx-warning: #f59e0b;\n  --vx-danger:  #ef4444;\n  --vx-radius:  8px;\n  --vx-font:    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;\n}</pre>',
+                    '</div>',
+                '</div>',
+
+                '<div class="vx-doc-section">',
+                    '<h2 class="vx-doc-heading">Key Features</h2>',
+                    '<div class="vx-feature-list">',
+                        '<div class="vx-feature"><span class="vx-stat-icon"><iconpark-icon name="moon"></iconpark-icon></span><div><strong>Dark mode</strong><p class="vx-doc-desc" style="margin:4px 0 0">Automatic system preference detection plus manual light / dark / system toggle.</p></div></div>',
+                        '<div class="vx-feature"><span class="vx-stat-icon"><iconpark-icon name="route"></iconpark-icon></span><div><strong>Hash router</strong><p class="vx-doc-desc" style="margin:4px 0 0">Built-in SPA routing. Register named views, navigate programmatically or via <code class="vx-mono">data-vx-route</code>.</p></div></div>',
+                        '<div class="vx-feature"><span class="vx-stat-icon"><iconpark-icon name="lock"></iconpark-icon></span><div><strong>Auth visibility</strong><p class="vx-doc-desc" style="margin:4px 0 0">Show or hide elements based on login state using <code class="vx-mono">data-auth</code> attributes — no JS required.</p></div></div>',
+                        '<div class="vx-feature"><span class="vx-stat-icon"><iconpark-icon name="mobile"></iconpark-icon></span><div><strong>Responsive sidebar</strong><p class="vx-doc-desc" style="margin:4px 0 0">Collapses to an icon rail on desktop; slides in as a drawer with backdrop on mobile.</p></div></div>',
+                    '</div>',
+                '</div>',
+
+            '</div>'
+        ].join('');
+    }
+
+    function viewQuickstart() {
+        var minimalHtml = [
+            '&lt;!DOCTYPE html&gt;\n',
+            '&lt;html lang="en"&gt;\n',
+            '&lt;head&gt;\n',
+            '  &lt;meta charset="UTF-8"&gt;\n',
+            '  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;\n',
+            '  &lt;title&gt;My App&lt;/title&gt;\n',
+            '  &lt;link rel="stylesheet" href="css/vxui-framework.css"&gt;\n',
+            '&lt;/head&gt;\n',
+            '&lt;body&gt;\n',
+            '&lt;div id="vx-app" class="vx-app"&gt;\n',
+            '  &lt;div class="vx-shell vx-layout"&gt;\n',
+            '    &lt;div class="vx-sidebar-overlay" data-vx-sidebar-overlay&gt;&lt;/div&gt;\n',
+            '    &lt;aside id="vx-sidebar" class="vx-sidebar"&gt;\n',
+            '      &lt;div class="vx-sidebar-header"&gt;\n',
+            '        &lt;span class="vx-sidebar-brand-text"&gt;My App&lt;/span&gt;\n',
+            '      &lt;/div&gt;\n',
+            '      &lt;nav class="vx-sidebar-nav" id="vx-sidebar-nav"&gt;&lt;/nav&gt;\n',
+            '    &lt;/aside&gt;\n',
+            '    &lt;div class="vx-main"&gt;\n',
+            '      &lt;div id="vx-view" class="vx-content"&gt;&lt;/div&gt;\n',
+            '    &lt;/div&gt;\n',
+            '  &lt;/div&gt;\n',
+            '&lt;/div&gt;\n\n',
+            '&lt;script src="lib/iconpark.js"&gt;&lt;/script&gt;\n',
+            '&lt;script src="js/vxui-framework.js"&gt;&lt;/script&gt;\n',
+            '&lt;script&gt;\n',
+            '  const app = new VXUIFramework({\n',
+            '    root: \'#vx-app\',\n',
+            '    authProvider: () => ({ loggedIn: true, user: { name: \'Admin\' } })\n',
+            '  });\n\n',
+            '  app.registerViews({\n',
+            '    overview: {\n',
+            '      title: \'Overview\',\n',
+            '      render: () => \'&lt;section class="vx-panel"&gt;Hello vxUI&lt;/section&gt;\'\n',
+            '    }\n',
+            '  });\n\n',
+            '  app.setNavigation([\n',
+            '    { view: \'overview\', label: \'Overview\', icon: \'house\' }\n',
+            '  ]);\n\n',
+            '  app.init();\n',
+            '&lt;/script&gt;\n',
+            '&lt;/body&gt;\n',
+            '&lt;/html&gt;'
+        ].join('');
+
+        return [
+            '<div class="vx-view">',
+
+                '<div class="vx-doc-section">',
+                    '<h1 class="vx-doc-heading">Quick Start</h1>',
+                    '<p class="vx-doc-desc">',
+                        'No package manager, no bundler. Drop three files into your project and you are ready.',
+                    '</p>',
+                '</div>',
+
+                '<div class="vx-doc-section">',
+                    '<h2 class="vx-doc-heading">1. Add the files</h2>',
+                    '<p class="vx-doc-desc">Copy <code class="vx-mono">css/vxui-framework.css</code>, <code class="vx-mono">js/vxui-framework.js</code>, and <code class="vx-mono">lib/iconpark.js</code> into your project. Optionally add <code class="vx-mono">js/vxui-components.js</code> for component helpers.</p>',
+                '</div>',
+
+                '<div class="vx-doc-section">',
+                    '<h2 class="vx-doc-heading">2. Minimal HTML shell</h2>',
+                    '<p class="vx-doc-desc">Build the page scaffold, register views, then call <code class="vx-mono">app.init()</code>.</p>',
+                    '<div class="vx-code-block">',
+                        '<div class="vx-code-head"><span>index.html</span></div>',
+                        '<pre>', minimalHtml, '</pre>',
+                    '</div>',
+                '</div>',
+
+                '<div class="vx-doc-section">',
+                    '<h2 class="vx-doc-heading">Core API</h2>',
+                    '<div class="vx-panel">',
+                        '<table style="width:100%;border-collapse:collapse;font-size:13px">',
+                            '<thead><tr style="border-bottom:1px solid var(--vx-border)">',
+                                '<th style="padding:10px 12px;text-align:left;color:var(--vx-text-secondary);font-weight:600">Method</th>',
+                                '<th style="padding:10px 12px;text-align:left;color:var(--vx-text-secondary);font-weight:600">Description</th>',
+                            '</tr></thead>',
+                            '<tbody>',
+                                ['registerView(name, config)', 'registerViews(map)', 'setNavigation(items)', 'navigate(name, state)', 'setTheme(mode) / cycleTheme()', 'refreshAuth()', 'toastSuccess / toastWarning / toastError / toastInfo', 'alert / confirm / prompt / openModal'].map(function (m, i) {
+                                    var descs = [
+                                        'Register a single named view with a render function.',
+                                        'Register multiple views at once from a plain object.',
+                                        'Set the sidebar navigation items array.',
+                                        'Navigate to a view, updating the hash route.',
+                                        'Switch theme. Modes: <code class="vx-mono">light</code>, <code class="vx-mono">dark</code>, <code class="vx-mono">system</code>.',
+                                        'Re-evaluate auth state and update data-auth visibility.',
+                                        'Show a timed toast notification in four severity flavors.',
+                                        'Open a feedback dialog (blocking or promise-based).'
+                                    ];
+                                    return '<tr style="border-bottom:1px solid var(--vx-border)"><td style="padding:10px 12px;font-family:var(--vx-mono);color:var(--vx-primary)">' + esc(m) + '</td><td style="padding:10px 12px;color:var(--vx-text-secondary)">' + descs[i] + '</td></tr>';
+                                }).join(''),
+                            '</tbody>',
+                        '</table>',
+                    '</div>',
+                '</div>',
+
+            '</div>'
+        ].join('');
+    }
+
+    function viewLayout() {
+        return [
+            '<div class="vx-view">',
+
+                '<div class="vx-doc-section">',
+                    '<h1 class="vx-doc-heading">Shell &amp; Sidebar</h1>',
+                    '<p class="vx-doc-desc">',
+                        'The outer shell uses a flex row. The sidebar is fixed-position; the main area uses <code class="vx-mono">margin-left</code> to offset. On mobile (&le;768 px) or portrait tablets (&le;1024 px) the sidebar becomes a slide-in drawer.',
+                    '</p>',
+                    '<div class="vx-code-block">',
+                        '<div class="vx-code-head"><span>HTML structure</span></div>',
+                        '<pre>&lt;div class="vx-shell vx-layout"&gt;\n  &lt;div class="vx-sidebar-overlay" data-vx-sidebar-overlay&gt;&lt;/div&gt;\n\n  &lt;aside class="vx-sidebar" id="vx-sidebar"&gt;\n    &lt;div class="vx-sidebar-header"&gt; &lt;!-- brand + collapse toggle --&gt; &lt;/div&gt;\n    &lt;nav class="vx-sidebar-nav"&gt;\n      &lt;div class="vx-nav-section"&gt;\n        &lt;span class="vx-nav-title"&gt;Section&lt;/span&gt;\n        &lt;button class="vx-nav-item" data-vx-route="view-name"&gt;...&lt;/button&gt;\n      &lt;/div&gt;\n    &lt;/nav&gt;\n    &lt;div class="vx-sidebar-bottom-menu"&gt; &lt;!-- always-visible actions --&gt; &lt;/div&gt;\n  &lt;/aside&gt;\n\n  &lt;div class="vx-main"&gt;\n    &lt;header class="vx-header"&gt;...&lt;/header&gt;\n    &lt;div id="vx-view" class="vx-content"&gt;&lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;</pre>',
+                    '</div>',
+                '</div>',
+
+                '<div class="vx-doc-section">',
+                    '<h2 class="vx-doc-heading">Sidebar States</h2>',
+                    '<p class="vx-doc-desc">',
+                        'The framework adds state classes to the <code class="vx-mono">.vx-layout</code> element. CSS handles all the visual transitions.',
+                    '</p>',
+                    '<div class="vx-panel">',
+                        '<table style="width:100%;border-collapse:collapse;font-size:13px">',
+                            '<thead><tr style="border-bottom:1px solid var(--vx-border)">',
+                                '<th style="padding:10px 12px;text-align:left;color:var(--vx-text-secondary);font-weight:600">Class on .vx-layout</th>',
+                                '<th style="padding:10px 12px;text-align:left;color:var(--vx-text-secondary);font-weight:600">Effect</th>',
+                            '</tr></thead>',
+                            '<tbody>',
+                                [
+                                    ['sidebar-collapsed', 'Desktop — sidebar narrows to 64 px icon rail; text labels hidden.'],
+                                    ['sidebar-open', 'Mobile — sidebar slides in as a drawer; overlay visible.'],
+                                    ['vx-logged-in', 'Auth-aware — bottom menu visible, logged-out elements hidden.'],
+                                    ['vx-logged-out', 'Auth-aware — bottom menu hidden, logged-in elements hidden.']
+                                ].map(function (r) {
+                                    return '<tr style="border-bottom:1px solid var(--vx-border)"><td style="padding:10px 12px;font-family:var(--vx-mono);color:var(--vx-primary)">' + esc(r[0]) + '</td><td style="padding:10px 12px;color:var(--vx-text-secondary)">' + r[1] + '</td></tr>';
+                                }).join(''),
+                            '</tbody>',
+                        '</table>',
+                    '</div>',
+                '</div>',
+
+                '<div class="vx-doc-section">',
+                    '<h2 class="vx-doc-heading">Header</h2>',
+                    '<p class="vx-doc-desc">The sticky page header sits at the top of <code class="vx-mono">.vx-main</code>. Use <code class="vx-mono">.vx-header-left</code> and <code class="vx-mono">.vx-header-right</code> clusters for layout.</p>',
+                    '<div class="vx-demo-area is-block" style="padding:0;overflow:hidden">',
+                        '<header class="vx-header" style="position:relative;border-radius:16px 16px 0 0">',
+                            '<div class="vx-header-left">',
+                                '<button class="vx-btn-icon" type="button" title="Menu"><iconpark-icon name="hamburger-button"></iconpark-icon></button>',
+                                '<nav class="vx-breadcrumb">',
+                                    '<span class="vx-breadcrumb-item">vxUI</span>',
+                                    '<span class="vx-breadcrumb-separator">/</span>',
+                                    '<span class="vx-breadcrumb-item is-current">Layout</span>',
+                                '</nav>',
+                            '</div>',
+                            '<div class="vx-header-right">',
+                                '<span class="vx-auth-pill"><iconpark-icon name="user"></iconpark-icon> Admin</span>',
+                                '<button class="vx-btn vx-btn-secondary vx-btn-sm" type="button">Settings</button>',
+                            '</div>',
+                        '</header>',
+                        '<div style="padding:16px;border-radius:0 0 16px 16px;background:var(--vx-bg-accent);min-height:48px;color:var(--vx-text-muted);font-size:13px">Content area</div>',
+                    '</div>',
+                '</div>',
+
+            '</div>'
+        ].join('');
+    }
+
+    function viewGrid() {
+        var card = function (label) {
+            return '<article class="vx-card" style="padding:16px"><span class="vx-muted" style="font-size:13px">' + esc(label) + '</span></article>';
+        };
+
+        return [
+            '<div class="vx-view">',
+
+                blockSection('Two-column grid',
+                    'Use <code class="vx-mono">.vx-grid.is-two</code> for a fixed two-column layout. Collapses to a single column below 960 px.',
+                    '<div class="vx-grid is-two" style="width:100%">' + card('Column A') + card('Column B') + '</div>',
+                    '&lt;div class="vx-grid is-two"&gt;\n  &lt;article class="vx-card"&gt;...&lt;/article&gt;\n  &lt;article class="vx-card"&gt;...&lt;/article&gt;\n&lt;/div&gt;'
+                ),
+
+                blockSection('Three-column grid',
+                    '<code class="vx-mono">.vx-grid.is-three</code> — also collapses below 960 px.',
+                    '<div class="vx-grid is-three" style="width:100%">' + card('A') + card('B') + card('C') + '</div>',
+                    '&lt;div class="vx-grid is-three"&gt; ... &lt;/div&gt;'
+                ),
+
+                blockSection('Stat grid',
+                    '<code class="vx-mono">.vx-stat-grid</code> — auto-fit columns, minimum 180 px each. Used for KPI dashboards.',
+                    '<div class="vx-stat-grid" style="width:100%">' +
+                        ['Storage', 'Files', 'Members'].map(function (l, i) {
+                            return '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">' + esc(l) + '</span><span class="vx-stat-icon"><iconpark-icon name="folder"></iconpark-icon></span></div><div class="vx-stat-value">' + ['12 GB', '4.2k', '8'][i] + '</div></div>';
+                        }).join('') +
+                    '</div>',
+                    '&lt;div class="vx-stat-grid"&gt;\n  &lt;div class="vx-stat"&gt;\n    &lt;div class="vx-stat-top"&gt;\n      &lt;span class="vx-stat-label"&gt;Storage&lt;/span&gt;\n      &lt;span class="vx-stat-icon"&gt;&lt;iconpark-icon name="folder"&gt;&lt;/iconpark-icon&gt;&lt;/span&gt;\n    &lt;/div&gt;\n    &lt;div class="vx-stat-value"&gt;12 GB&lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;'
+                ),
+
+                blockSection('Card grid',
+                    '<code class="vx-mono">.vx-card-grid</code> — auto-fit columns, minimum 240 px. Good for feature / product cards.',
+                    '<div class="vx-card-grid" style="width:100%">' +
+                        ['Fast', 'Lightweight', 'Accessible'].map(function (l) {
+                            return '<div class="vx-card"><h3 class="vx-card-title">' + esc(l) + '</h3><p class="vx-card-copy">A short description of this capability.</p></div>';
+                        }).join('') +
+                    '</div>',
+                    '&lt;div class="vx-card-grid"&gt;\n  &lt;div class="vx-card"&gt;\n    &lt;h3 class="vx-card-title"&gt;Title&lt;/h3&gt;\n    &lt;p class="vx-card-copy"&gt;Description&lt;/p&gt;\n  &lt;/div&gt;\n&lt;/div&gt;'
+                ),
+
+            '</div>'
+        ].join('');
+    }
+
+    function viewButtons() {
+        return [
+            '<div class="vx-view">',
+
+                section('Variants',
+                    'Four semantic variants. Always use the variant that matches the action\'s intent.',
+                    [
+                        '<button class="vx-btn vx-btn-primary" type="button">Primary</button>',
+                        '<button class="vx-btn vx-btn-secondary" type="button">Secondary</button>',
+                        '<button class="vx-btn vx-btn-ghost" type="button">Ghost</button>',
+                        '<button class="vx-btn vx-btn-danger" type="button">Danger</button>',
+                    ].join(''),
+                    '&lt;button class="vx-btn vx-btn-primary"&gt;Primary&lt;/button&gt;\n&lt;button class="vx-btn vx-btn-secondary"&gt;Secondary&lt;/button&gt;\n&lt;button class="vx-btn vx-btn-ghost"&gt;Ghost&lt;/button&gt;\n&lt;button class="vx-btn vx-btn-danger"&gt;Danger&lt;/button&gt;'
+                ),
+
+                section('Sizes',
+                    'Default and small. Apply <code class="vx-mono">.vx-btn-sm</code> for compact contexts like toolbars.',
+                    [
+                        '<button class="vx-btn vx-btn-primary" type="button">Default</button>',
+                        '<button class="vx-btn vx-btn-primary vx-btn-sm" type="button">Small</button>',
+                        '<button class="vx-btn vx-btn-secondary" type="button">Default</button>',
+                        '<button class="vx-btn vx-btn-secondary vx-btn-sm" type="button">Small</button>',
+                    ].join(''),
+                    '&lt;button class="vx-btn vx-btn-primary vx-btn-sm"&gt;Small&lt;/button&gt;'
+                ),
+
+                section('With icons',
+                    'Pair any <code class="vx-mono">&lt;iconpark-icon&gt;</code> with a <code class="vx-mono">&lt;span&gt;</code> label inside the button.',
+                    [
+                        '<button class="vx-btn vx-btn-primary" type="button"><iconpark-icon name="upload-one"></iconpark-icon><span>Upload</span></button>',
+                        '<button class="vx-btn vx-btn-secondary" type="button"><iconpark-icon name="download"></iconpark-icon><span>Download</span></button>',
+                        '<button class="vx-btn vx-btn-ghost" type="button"><iconpark-icon name="share"></iconpark-icon><span>Share</span></button>',
+                    ].join(''),
+                    '&lt;button class="vx-btn vx-btn-primary"&gt;\n  &lt;iconpark-icon name="upload-one"&gt;&lt;/iconpark-icon&gt;\n  &lt;span&gt;Upload&lt;/span&gt;\n&lt;/button&gt;'
+                ),
+
+                section('Icon-only buttons',
+                    '<code class="vx-mono">.vx-btn-icon</code> — square, no border, for toolbars and header actions.',
+                    [
+                        '<button class="vx-btn-icon" type="button" title="Search"><iconpark-icon name="search"></iconpark-icon></button>',
+                        '<button class="vx-btn-icon" type="button" title="Settings"><iconpark-icon name="setting"></iconpark-icon></button>',
+                        '<button class="vx-btn-icon" type="button" title="More"><iconpark-icon name="more"></iconpark-icon></button>',
+                        '<button class="vx-btn-icon" type="button" title="Delete"><iconpark-icon name="delete"></iconpark-icon></button>',
+                    ].join(''),
+                    '&lt;button class="vx-btn-icon" title="Search"&gt;\n  &lt;iconpark-icon name="search"&gt;&lt;/iconpark-icon&gt;\n&lt;/button&gt;'
+                ),
+
+                section('Disabled state',
+                    'Add the native <code class="vx-mono">disabled</code> attribute. The button becomes non-interactive at 50% opacity.',
+                    [
+                        '<button class="vx-btn vx-btn-primary" type="button" disabled>Disabled</button>',
+                        '<button class="vx-btn vx-btn-secondary" type="button" disabled>Disabled</button>',
+                    ].join(''),
+                    '&lt;button class="vx-btn vx-btn-primary" disabled&gt;Disabled&lt;/button&gt;'
+                ),
+
+                section('Button group',
+                    '<code class="vx-mono">.vx-btn-group</code> wraps multiple buttons with consistent 4 px spacing.',
+                    '<div class="vx-btn-group"><button class="vx-btn vx-btn-secondary vx-btn-sm" type="button">List</button><button class="vx-btn vx-btn-secondary vx-btn-sm" type="button">Grid</button><button class="vx-btn vx-btn-secondary vx-btn-sm" type="button">Map</button></div>',
+                    '&lt;div class="vx-btn-group"&gt;\n  &lt;button class="vx-btn vx-btn-secondary vx-btn-sm"&gt;List&lt;/button&gt;\n  &lt;button class="vx-btn vx-btn-secondary vx-btn-sm"&gt;Grid&lt;/button&gt;\n&lt;/div&gt;'
+                ),
+
+            '</div>'
+        ].join('');
+    }
+
+    function viewCards() {
+        return [
+            '<div class="vx-view">',
+
+                blockSection('Card',
+                    '<code class="vx-mono">.vx-card</code> — the base surface unit. Rounded corners, subtle border, and backdrop blur.',
+                    '<div class="vx-card-grid" style="width:100%"><div class="vx-card"><h3 class="vx-card-title">Card Title</h3><p class="vx-card-copy">A short description or body text for this card.</p><div style="margin-top:14px"><button class="vx-btn vx-btn-primary vx-btn-sm" type="button">Action</button></div></div><div class="vx-card"><h3 class="vx-card-title">Another Card</h3><p class="vx-card-copy">Cards auto-fill the grid with a 240 px minimum column width.</p></div></div>',
+                    '&lt;article class="vx-card"&gt;\n  &lt;h3 class="vx-card-title"&gt;Title&lt;/h3&gt;\n  &lt;p class="vx-card-copy"&gt;Description&lt;/p&gt;\n&lt;/article&gt;'
+                ),
+
+                blockSection('Panel',
+                    '<code class="vx-mono">.vx-panel</code> — like a card but full-width, used for content sections.',
+                    '<div class="vx-panel" style="width:100%"><h2 class="vx-panel-title">Panel Title</h2><p class="vx-copy">Panels span the full available width. Use them to group related form fields, settings, or data.</p></div>',
+                    '&lt;section class="vx-panel"&gt;\n  &lt;h2 class="vx-panel-title"&gt;Title&lt;/h2&gt;\n  &lt;p class="vx-copy"&gt;...&lt;/p&gt;\n&lt;/section&gt;'
+                ),
+
+                blockSection('Hero',
+                    '<code class="vx-mono">.vx-hero</code> — two-column feature panel. Left column for copy, right for visual or stats.',
+                    '<div class="vx-hero" style="width:100%"><div><p class="vx-eyebrow">Product</p><h2 class="vx-hero-title" style="font-size:28px">Hero Headline</h2><p class="vx-hero-copy">A longer introductory paragraph that describes the feature or product being highlighted.</p><div class="vx-hero-actions"><button class="vx-btn vx-btn-primary" type="button">Get Started</button><button class="vx-btn vx-btn-secondary" type="button">Learn More</button></div></div><div class="vx-stat-grid" style="align-self:center"><div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Metric</span><span class="vx-stat-icon"><iconpark-icon name="chart"></iconpark-icon></span></div><div class="vx-stat-value">99.9%</div></div></div></div>',
+                    '&lt;div class="vx-hero"&gt;\n  &lt;div&gt;\n    &lt;p class="vx-eyebrow"&gt;Label&lt;/p&gt;\n    &lt;h2 class="vx-hero-title"&gt;Headline&lt;/h2&gt;\n    &lt;p class="vx-hero-copy"&gt;Description&lt;/p&gt;\n    &lt;div class="vx-hero-actions"&gt;...buttons...&lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div&gt; &lt;!-- visual / stats --&gt; &lt;/div&gt;\n&lt;/div&gt;'
+                ),
+
+                blockSection('Code block',
+                    '<code class="vx-mono">.vx-code-block</code> — framed block for syntax-highlighted code snippets.',
+                    '<div class="vx-code-block" style="width:100%"><div class="vx-code-head"><span>JavaScript</span></div><pre>const app = new VXUIFramework({\n  root: \'#vx-app\',\n  authProvider: () => ({ loggedIn: true })\n});\napp.init();</pre></div>',
+                    '&lt;div class="vx-code-block"&gt;\n  &lt;div class="vx-code-head"&gt;&lt;span&gt;JavaScript&lt;/span&gt;&lt;/div&gt;\n  &lt;pre&gt;...code...&lt;/pre&gt;\n&lt;/div&gt;'
+                ),
+
+            '</div>'
+        ].join('');
+    }
+
+    function viewBadges() {
+        return [
+            '<div class="vx-view">',
+
+                section('Badge',
+                    '<code class="vx-mono">.vx-badge</code> — a pill-shaped label for status, counts, or version tags.',
+                    [
+                        '<span class="vx-badge">v1.0</span>',
+                        '<span class="vx-badge" style="background:rgba(16,185,129,0.12);color:var(--vx-success)">Active</span>',
+                        '<span class="vx-badge" style="background:rgba(245,158,11,0.12);color:var(--vx-warning)">Pending</span>',
+                        '<span class="vx-badge" style="background:rgba(239,68,68,0.12);color:var(--vx-danger)">Error</span>',
+                    ].join(''),
+                    '&lt;span class="vx-badge"&gt;v1.0&lt;/span&gt;'
+                ),
+
+                section('Chip',
+                    '<code class="vx-mono">.vx-btn-chip</code> — filter chips for multi-select or category switching. Add <code class="vx-mono">.is-active</code> for the selected state.',
+                    [
+                        '<button class="vx-btn-chip is-active" type="button">All</button>',
+                        '<button class="vx-btn-chip" type="button">Images</button>',
+                        '<button class="vx-btn-chip" type="button">Documents</button>',
+                        '<button class="vx-btn-chip" type="button">Videos</button>',
+                    ].join(''),
+                    '&lt;button class="vx-btn-chip is-active"&gt;All&lt;/button&gt;\n&lt;button class="vx-btn-chip"&gt;Images&lt;/button&gt;'
+                ),
+
+                section('Chip row',
+                    '<code class="vx-mono">.vx-chip-row</code> — a grid wrapper that auto-fits chips.',
+                    '<div class="vx-chip-row" style="width:100%"><button class="vx-btn-chip is-active" type="button"><iconpark-icon name="photo"></iconpark-icon> Photos</button><button class="vx-btn-chip" type="button"><iconpark-icon name="file-text"></iconpark-icon> Docs</button><button class="vx-btn-chip" type="button"><iconpark-icon name="video-one"></iconpark-icon> Video</button><button class="vx-btn-chip" type="button"><iconpark-icon name="music-one"></iconpark-icon> Audio</button></div>',
+                    '&lt;div class="vx-chip-row"&gt;\n  &lt;button class="vx-btn-chip is-active"&gt;Photos&lt;/button&gt;\n  &lt;button class="vx-btn-chip"&gt;Docs&lt;/button&gt;\n&lt;/div&gt;'
+                ),
+
+                section('Auth pill',
+                    '<code class="vx-mono">.vx-auth-pill</code> — used in the header to show the current user. Add <code class="vx-mono">.is-guest</code> for unauthenticated state.',
+                    [
+                        '<span class="vx-auth-pill"><iconpark-icon name="user"></iconpark-icon> Signed in as Admin</span>',
+                        '<span class="vx-auth-pill is-guest"><iconpark-icon name="eyes"></iconpark-icon> Guest mode</span>',
+                    ].join(''),
+                    '&lt;span class="vx-auth-pill"&gt;Signed in as Admin&lt;/span&gt;\n&lt;span class="vx-auth-pill is-guest"&gt;Guest mode&lt;/span&gt;'
+                ),
+
+            '</div>'
+        ].join('');
+    }
+
+    function viewForms() {
+        return [
+            '<div class="vx-view">',
+
+                blockSection('Text input',
+                    'Use <code class="vx-mono">.vx-form-group</code> to pair a <code class="vx-mono">.vx-label</code> with any <code class="vx-mono">.vx-input</code>.',
+                    '<div style="max-width:480px;width:100%"><div class="vx-form-group"><label class="vx-label">Display name</label><input class="vx-input" type="text" placeholder="Enter your name"></div></div>',
+                    '&lt;div class="vx-form-group"&gt;\n  &lt;label class="vx-label"&gt;Display name&lt;/label&gt;\n  &lt;input class="vx-input" type="text" placeholder="Enter your name"&gt;\n&lt;/div&gt;'
+                ),
+
+                blockSection('Textarea',
+                    '<code class="vx-mono">.vx-textarea</code> — vertically resizable. Minimum height 120 px.',
+                    '<div style="max-width:480px;width:100%"><div class="vx-form-group"><label class="vx-label">Description</label><textarea class="vx-textarea" placeholder="Write something..."></textarea></div></div>',
+                    '&lt;div class="vx-form-group"&gt;\n  &lt;label class="vx-label"&gt;Description&lt;/label&gt;\n  &lt;textarea class="vx-textarea" placeholder="..."&gt;&lt;/textarea&gt;\n&lt;/div&gt;'
+                ),
+
+                blockSection('Select',
+                    '<code class="vx-mono">.vx-select</code> — same height and radius as inputs for visual consistency.',
+                    '<div style="max-width:480px;width:100%"><div class="vx-form-group"><label class="vx-label">Role</label><select class="vx-select"><option>Owner</option><option>Editor</option><option>Viewer</option></select></div></div>',
+                    '&lt;div class="vx-form-group"&gt;\n  &lt;label class="vx-label"&gt;Role&lt;/label&gt;\n  &lt;select class="vx-select"&gt;\n    &lt;option&gt;Owner&lt;/option&gt;\n  &lt;/select&gt;\n&lt;/div&gt;'
+                ),
+
+                blockSection('Form grid',
+                    '<code class="vx-mono">.vx-form-grid</code> — two equal columns for compact form layouts.',
+                    '<div class="vx-form-grid" style="width:100%;max-width:600px"><div class="vx-form-group"><label class="vx-label">First name</label><input class="vx-input" type="text" placeholder="Alice"></div><div class="vx-form-group"><label class="vx-label">Last name</label><input class="vx-input" type="text" placeholder="Smith"></div></div>',
+                    '&lt;div class="vx-form-grid"&gt;\n  &lt;div class="vx-form-group"&gt;...&lt;/div&gt;\n  &lt;div class="vx-form-group"&gt;...&lt;/div&gt;\n&lt;/div&gt;'
+                ),
+
+            '</div>'
+        ].join('');
+    }
+
+    function viewSwitches() {
+        return [
+            '<div class="vx-view">',
+
+                blockSection('Switch',
+                    '<code class="vx-mono">.vx-switch</code> — a toggle row with title, optional description, and a visual knob. Add <code class="vx-mono">.is-active</code> for the on state.',
+                    [
+                        '<label class="vx-switch" onclick="this.classList.toggle(\'is-active\')" style="cursor:pointer;max-width:480px;width:100%">',
+                            '<div class="vx-switch-copy"><strong>Notifications</strong><span>Receive email updates about your account.</span></div>',
+                            '<span class="vx-switch-knob"></span>',
+                        '</label>',
+                        '<label class="vx-switch is-active" onclick="this.classList.toggle(\'is-active\')" style="cursor:pointer;max-width:480px;width:100%">',
+                            '<div class="vx-switch-copy"><strong>Auto-save</strong><span>Automatically save your work every 30 seconds.</span></div>',
+                            '<span class="vx-switch-knob"></span>',
+                        '</label>',
+                    ].join(''),
+                    '&lt;label class="vx-switch"&gt;\n  &lt;div class="vx-switch-copy"&gt;\n    &lt;strong&gt;Notifications&lt;/strong&gt;\n    &lt;span&gt;Receive email updates.&lt;/span&gt;\n  &lt;/div&gt;\n  &lt;span class="vx-switch-knob"&gt;&lt;/span&gt;\n&lt;/label&gt;\n\n&lt;!-- Active state --&gt;\n&lt;label class="vx-switch is-active"&gt;...&lt;/label&gt;'
+                ),
+
+                blockSection('Selection bar',
+                    '<code class="vx-mono">.vx-selection-bar</code> — appears when rows are checked in a data list. Shows selected count and bulk actions.',
+                    '<div class="vx-selection-bar" style="display:flex;max-width:600px;width:100%"><div class="vx-inline-actions"><strong>3</strong><span class="vx-muted">selected</span></div><div class="vx-inline-actions"><button class="vx-btn vx-btn-ghost vx-btn-sm" type="button"><iconpark-icon name="download"></iconpark-icon><span>Download</span></button><button class="vx-btn vx-btn-ghost vx-btn-sm" type="button"><iconpark-icon name="share"></iconpark-icon><span>Share</span></button><button class="vx-btn vx-btn-ghost vx-btn-sm" type="button" style="color:var(--vx-danger)"><iconpark-icon name="delete"></iconpark-icon><span>Delete</span></button></div></div>',
+                    '&lt;div class="vx-selection-bar"&gt;\n  &lt;div class="vx-inline-actions"&gt;\n    &lt;strong&gt;3&lt;/strong&gt;&lt;span class="vx-muted"&gt;selected&lt;/span&gt;\n  &lt;/div&gt;\n  &lt;div class="vx-inline-actions"&gt;\n    &lt;button class="vx-btn vx-btn-ghost vx-btn-sm"&gt;Download&lt;/button&gt;\n  &lt;/div&gt;\n&lt;/div&gt;'
+                ),
+
+            '</div>'
+        ].join('');
+    }
+
+    function viewNavigation() {
+        return [
+            '<div class="vx-view">',
+
+                section('Nav items',
+                    '<code class="vx-mono">.vx-nav-item</code> — sidebar navigation buttons. Active state uses <code class="vx-mono">.is-active</code>.',
+                    '<div style="display:flex;flex-direction:column;gap:2px;width:220px">' +
+                        '<button class="vx-nav-item is-active" type="button"><iconpark-icon name="house"></iconpark-icon><span class="vx-nav-item-text">Dashboard</span></button>' +
+                        '<button class="vx-nav-item" type="button"><iconpark-icon name="folder"></iconpark-icon><span class="vx-nav-item-text">Files</span></button>' +
+                        '<button class="vx-nav-item" type="button"><iconpark-icon name="user"></iconpark-icon><span class="vx-nav-item-text">Users</span></button>' +
+                        '<div class="vx-nav-divider"></div>' +
+                        '<button class="vx-nav-item" type="button"><iconpark-icon name="setting"></iconpark-icon><span class="vx-nav-item-text">Settings</span></button>' +
+                    '</div>',
+                    '&lt;button class="vx-nav-item is-active" data-vx-route="view-name"&gt;\n  &lt;iconpark-icon name="house"&gt;&lt;/iconpark-icon&gt;\n  &lt;span class="vx-nav-item-text"&gt;Dashboard&lt;/span&gt;\n&lt;/button&gt;'
+                ),
+
+                section('Nav section with title',
+                    'Group related nav items with <code class="vx-mono">.vx-nav-section</code> and an optional <code class="vx-mono">.vx-nav-title</code> label.',
+                    '<div style="display:flex;flex-direction:column;width:220px">' +
+                        '<div class="vx-nav-section">' +
+                            '<span class="vx-nav-title">Workspace</span>' +
+                            '<button class="vx-nav-item" type="button"><iconpark-icon name="folder"></iconpark-icon><span class="vx-nav-item-text">Files</span></button>' +
+                            '<button class="vx-nav-item" type="button"><iconpark-icon name="share"></iconpark-icon><span class="vx-nav-item-text">Shared</span></button>' +
+                        '</div>' +
+                        '<div class="vx-nav-divider"></div>' +
+                        '<div class="vx-nav-section">' +
+                            '<span class="vx-nav-title">Account</span>' +
+                            '<button class="vx-nav-item" type="button"><iconpark-icon name="user"></iconpark-icon><span class="vx-nav-item-text">Profile</span></button>' +
+                        '</div>' +
+                    '</div>',
+                    '&lt;div class="vx-nav-section"&gt;\n  &lt;span class="vx-nav-title"&gt;Workspace&lt;/span&gt;\n  &lt;button class="vx-nav-item"&gt;...&lt;/button&gt;\n&lt;/div&gt;'
+                ),
+
+                section('Breadcrumb',
+                    '<code class="vx-mono">.vx-breadcrumb</code> — a horizontal path trail. Current item uses <code class="vx-mono">.is-current</code>.',
+                    '<nav class="vx-breadcrumb">' +
+                        '<a href="#" class="vx-breadcrumb-item">Home</a>' +
+                        '<span class="vx-breadcrumb-separator">/</span>' +
+                        '<a href="#" class="vx-breadcrumb-item">Projects</a>' +
+                        '<span class="vx-breadcrumb-separator">/</span>' +
+                        '<span class="vx-breadcrumb-item is-current">Alpha</span>' +
+                    '</nav>',
+                    '&lt;nav class="vx-breadcrumb"&gt;\n  &lt;a class="vx-breadcrumb-item" href="#"&gt;Home&lt;/a&gt;\n  &lt;span class="vx-breadcrumb-separator"&gt;/&lt;/span&gt;\n  &lt;span class="vx-breadcrumb-item is-current"&gt;Current&lt;/span&gt;\n&lt;/nav&gt;'
+                ),
+
+                section('Chip tabs',
+                    'Use <code class="vx-mono">.vx-btn-chip</code> buttons as horizontal tab selectors.',
+                    '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
+                        '<button class="vx-btn-chip is-active" type="button">Overview</button>' +
+                        '<button class="vx-btn-chip" type="button">Activity</button>' +
+                        '<button class="vx-btn-chip" type="button">Members</button>' +
+                        '<button class="vx-btn-chip" type="button">Settings</button>' +
+                    '</div>',
+                    '&lt;button class="vx-btn-chip is-active"&gt;Overview&lt;/button&gt;\n&lt;button class="vx-btn-chip"&gt;Activity&lt;/button&gt;'
+                ),
+
+            '</div>'
+        ].join('');
+    }
+
+    function viewList() {
+        var rows = [
+            { name: 'Project Proposal', size: '248 KB', date: 'Apr 5, 2026', type: 'doc' },
+            { name: 'Design Assets', size: '12.4 MB', date: 'Apr 4, 2026', type: 'folder' },
+            { name: 'Presentation', size: '3.1 MB', date: 'Apr 3, 2026', type: 'ppt' }
+        ];
+        var icons = { doc: 'file-text', folder: 'folder', ppt: 'file-display' };
+
+        var rowsHtml = rows.map(function (row) {
+            return [
+                '<div class="vx-list-row">',
+                    '<div class="vx-list-col vx-list-col-name">',
+                        '<div class="vx-list-icon"><iconpark-icon name="' + esc(icons[row.type]) + '"></iconpark-icon></div>',
+                        '<div class="vx-list-filename"><a href="#">' + esc(row.name) + '</a></div>',
+                    '</div>',
+                    '<div class="vx-list-col vx-list-col-size">' + esc(row.size) + '</div>',
+                    '<div class="vx-list-col vx-list-col-date">' + esc(row.date) + '</div>',
+                    '<div class="vx-list-col vx-list-col-actions">',
+                        '<div class="vx-list-actions">',
+                            '<button class="vx-list-action-btn" type="button" title="Download"><iconpark-icon name="download"></iconpark-icon></button>',
+                            '<button class="vx-list-action-btn vx-action-danger" type="button" title="Delete"><iconpark-icon name="delete"></iconpark-icon></button>',
+                        '</div>',
+                    '</div>',
+                '</div>'
+            ].join('');
+        }).join('');
+
+        return [
+            '<div class="vx-view">',
+
+                '<div class="vx-doc-section">',
+                    '<h1 class="vx-doc-heading">Data List</h1>',
+                    '<p class="vx-doc-desc">A flexible list component with a sticky column header, row selection, and action buttons. Configured programmatically via <code class="vx-mono">VXUIComponents.dataList()</code> or hand-coded with the CSS classes below.</p>',
+
+                    '<div class="vx-list-container">',
+                        '<div class="vx-list-header">',
+                            '<div class="vx-list-col vx-list-col-name">Name</div>',
+                            '<div class="vx-list-col vx-list-col-size">Size</div>',
+                            '<div class="vx-list-col vx-list-col-date">Modified</div>',
+                            '<div class="vx-list-col vx-list-col-actions">Actions</div>',
+                        '</div>',
+                        '<div class="vx-list-body">', rowsHtml, '</div>',
+                    '</div>',
+
+                    '<div class="vx-code-block">',
+                        '<div class="vx-code-head"><span>JavaScript — VXUIComponents.dataList()</span></div>',
+                        '<pre>VXUIComponents.dataList({\n  columns: [\n    { key: \'name\', label: \'Name\', className: \'vx-list-col-name\' },\n    { key: \'size\', label: \'Size\', className: \'vx-list-col-size\' }\n  ],\n  rows: [\n    { name: \'Project Proposal\', size: \'248 KB\' }\n  ]\n});</pre>',
+                    '</div>',
+                '</div>',
+
+            '</div>'
+        ].join('');
+    }
+
+    function viewEmpty() {
+        return [
+            '<div class="vx-view">',
+
+                blockSection('Empty state',
+                    '<code class="vx-mono">.vx-empty</code> — shown when a list or section has no content yet.',
+                    '<div class="vx-empty" style="max-width:400px;width:100%"><span class="vx-empty-icon"><iconpark-icon name="inbox"></iconpark-icon></span><div><strong style="font-size:16px">No files yet</strong><p class="vx-empty-copy" style="margin:6px 0 0">Upload your first file to get started.</p></div><button class="vx-btn vx-btn-primary" type="button"><iconpark-icon name="upload-one"></iconpark-icon><span>Upload</span></button></div>',
+                    '&lt;div class="vx-empty"&gt;\n  &lt;span class="vx-empty-icon"&gt;&lt;iconpark-icon name="inbox"&gt;&lt;/iconpark-icon&gt;&lt;/span&gt;\n  &lt;div&gt;\n    &lt;strong&gt;No files yet&lt;/strong&gt;\n    &lt;p class="vx-empty-copy"&gt;Upload your first file.&lt;/p&gt;\n  &lt;/div&gt;\n  &lt;button class="vx-btn vx-btn-primary"&gt;Upload&lt;/button&gt;\n&lt;/div&gt;'
+                ),
+
+                blockSection('Skeleton loading',
+                    '<code class="vx-mono">.vx-skeleton-group</code> with <code class="vx-mono">.vx-skeleton-line</code> items. Add <code class="vx-mono">.is-short</code> or <code class="vx-mono">.is-medium</code> for varied widths.',
+                    '<div class="vx-skeleton-group" style="max-width:400px;width:100%"><div class="vx-skeleton-line"></div><div class="vx-skeleton-line is-medium"></div><div class="vx-skeleton-line is-short"></div><div class="vx-skeleton-line"></div><div class="vx-skeleton-line is-medium"></div></div>',
+                    '&lt;div class="vx-skeleton-group"&gt;\n  &lt;div class="vx-skeleton-line"&gt;&lt;/div&gt;\n  &lt;div class="vx-skeleton-line is-medium"&gt;&lt;/div&gt;\n  &lt;div class="vx-skeleton-line is-short"&gt;&lt;/div&gt;\n&lt;/div&gt;'
+                ),
+
+            '</div>'
+        ].join('');
+    }
+
+    function viewToasts() {
+        return [
+            '<div class="vx-view">',
+                '<div class="vx-doc-section">',
+                    '<h1 class="vx-doc-heading">Toasts</h1>',
+                    '<p class="vx-doc-desc">Non-blocking notifications that appear in the top-right corner and dismiss automatically after 4 seconds. Triggered via the framework instance.</p>',
+                    '<div class="vx-demo-area">',
+                        '<button class="vx-btn vx-btn-secondary" type="button" id="toast-success">',
+                            '<iconpark-icon name="check-one"></iconpark-icon><span>Success</span>',
+                        '</button>',
+                        '<button class="vx-btn vx-btn-secondary" type="button" id="toast-warning">',
+                            '<iconpark-icon name="attention"></iconpark-icon><span>Warning</span>',
+                        '</button>',
+                        '<button class="vx-btn vx-btn-secondary" type="button" id="toast-error">',
+                            '<iconpark-icon name="close-one"></iconpark-icon><span>Error</span>',
+                        '</button>',
+                        '<button class="vx-btn vx-btn-secondary" type="button" id="toast-info">',
+                            '<iconpark-icon name="info"></iconpark-icon><span>Info</span>',
+                        '</button>',
+                    '</div>',
+                    '<div class="vx-code-block">',
+                        '<div class="vx-code-head"><span>JavaScript</span></div>',
+                        '<pre>app.toastSuccess(\'File uploaded successfully.\');\napp.toastWarning(\'Storage is nearly full.\');\napp.toastError(\'Upload failed. Please try again.\');\napp.toastInfo(\'A new version is available.\');</pre>',
+                    '</div>',
+                '</div>',
+            '</div>'
+        ].join('');
+    }
+
+    function viewModals() {
+        return [
+            '<div class="vx-view">',
+                '<div class="vx-doc-section">',
+                    '<h1 class="vx-doc-heading">Modals</h1>',
+                    '<p class="vx-doc-desc">Stacked modal dialogs with a blurred backdrop. Open with <code class="vx-mono">app.openModal()</code> passing an HTML string and optional hooks. Close by pressing Escape or clicking the backdrop.</p>',
+                    '<div class="vx-demo-area">',
+                        '<button class="vx-btn vx-btn-secondary" type="button" id="modal-default">Default (560 px)</button>',
+                        '<button class="vx-btn vx-btn-secondary" type="button" id="modal-sm">Small (420 px)</button>',
+                        '<button class="vx-btn vx-btn-secondary" type="button" id="modal-lg">Large (760 px)</button>',
+                    '</div>',
+                    '<div class="vx-code-block">',
+                        '<div class="vx-code-head"><span>JavaScript</span></div>',
+                        '<pre>app.openModal({\n  title: \'Confirm action\',\n  body: \'&lt;p class="vx-copy"&gt;Are you sure you want to continue?&lt;/p&gt;\',\n  size: \'sm\',  // sm | (default) | lg | xl | fullscreen\n  footer: \'&lt;button class="vx-btn vx-btn-primary" data-vx-modal-close&gt;Confirm&lt;/button&gt;\'\n});</pre>',
+                    '</div>',
+                '</div>',
+            '</div>'
+        ].join('');
+    }
+
+    function viewDialogs() {
+        return [
+            '<div class="vx-view">',
+                '<div class="vx-doc-section">',
+                    '<h1 class="vx-doc-heading">Dialogs</h1>',
+                    '<p class="vx-doc-desc">Blocking dialogs that replace the native browser <code class="vx-mono">alert()</code>, <code class="vx-mono">confirm()</code>, and <code class="vx-mono">prompt()</code>. All return Promises.</p>',
+                    '<div class="vx-demo-area">',
+                        '<button class="vx-btn vx-btn-secondary" type="button" id="dlg-alert">alert()</button>',
+                        '<button class="vx-btn vx-btn-secondary" type="button" id="dlg-confirm">confirm()</button>',
+                        '<button class="vx-btn vx-btn-secondary" type="button" id="dlg-prompt">prompt()</button>',
+                    '</div>',
+                    '<div class="vx-code-block">',
+                        '<div class="vx-code-head"><span>JavaScript</span></div>',
+                        '<pre>// Alert — no return value\nawait app.alert(\'Session expired. Please sign in again.\');\n\n// Confirm — resolves true / false\nconst ok = await app.confirm(\'Delete this file permanently?\');\nif (ok) deleteFile();\n\n// Prompt — resolves string | null\nconst name = await app.prompt(\'Rename file:\', \'untitled.txt\');\nif (name) rename(name);</pre>',
+                    '</div>',
+                '</div>',
+            '</div>'
+        ].join('');
+    }
+
+    /* ── App init ─────────────────────────────────────────── */
+
+    var app = new VXUIFramework({
+        root: '#vx-app',
+        viewContainer: '#vx-view',
+        sidebarStaticNav: '#vx-nav-managed',
+        sidebar: '#vx-sidebar',
+        sidebarOverlay: '[data-vx-sidebar-overlay]',
+        layout: '#vx-layout',
+        breadcrumbElement: '#vx-breadcrumb',
+        defaultView: 'introduction',
+        authProvider: function () {
+            return { loggedIn: true, owner: true, user: { name: 'Developer' } };
+        }
+    });
+
+    app.registerViews({
+        introduction: { title: 'Introduction',    render: viewIntroduction },
+        quickstart:   { title: 'Quick Start',     render: viewQuickstart   },
+        layout:       { title: 'Shell & Sidebar', render: viewLayout       },
+        grid:         { title: 'Grid & Page',     render: viewGrid         },
+        buttons:      { title: 'Buttons',         render: viewButtons      },
+        cards:        { title: 'Cards & Panels',  render: viewCards        },
+        badges:       { title: 'Badges & Chips',  render: viewBadges       },
+        forms:        { title: 'Forms',           render: viewForms        },
+        switches:     { title: 'Switches',        render: viewSwitches     },
+        navigation:   { title: 'Navigation',      render: viewNavigation   },
+        list:         { title: 'Data List',       render: viewList         },
+        empty:        { title: 'Empty States',    render: viewEmpty        },
+        toasts:       { title: 'Toasts',          render: viewToasts       },
+        modals:       { title: 'Modals',          render: viewModals       },
+        dialogs:      { title: 'Dialogs',         render: viewDialogs      }
+    });
+
+    app.init().then(function () {
+
+        /* Theme toggle */
+        var themeBtn   = document.getElementById('vx-theme-btn');
+        var themeIcon  = document.getElementById('vx-theme-icon');
+        var themeLabel = document.getElementById('vx-theme-label');
+
+        function syncThemeUI() {
+            var mode = app.getThemeMode();
+            var map = { light: ['sun-one', 'Light'], dark: ['moon', 'Dark'], system: ['computer', 'System'] };
+            var info = map[mode] || map.system;
+            if (themeIcon)  themeIcon.setAttribute('name', info[0]);
+            if (themeLabel) themeLabel.textContent = info[1];
+        }
+
+        if (themeBtn) {
+            themeBtn.addEventListener('click', function () {
+                app.cycleTheme();
+                syncThemeUI();
+            });
+        }
+        syncThemeUI();
+
+        /* Toast demo buttons */
+        document.addEventListener('click', function (e) {
+            var id = e.target.closest('[id]') && e.target.closest('[id]').id;
+            if (id === 'toast-success') app.toastSuccess('File uploaded successfully.');
+            else if (id === 'toast-warning') app.toastWarning('Storage is nearly full (90%).');
+            else if (id === 'toast-error')   app.toastError('Upload failed. Please try again.');
+            else if (id === 'toast-info')    app.toastInfo('A new version of vxUI is available.');
+            else if (id === 'modal-default') app.openModal({ title: 'Default Modal', body: '<p class="vx-copy">This is a default-sized modal (560 px wide). Press Escape or click outside to close.</p>', footer: '<button class="vx-btn vx-btn-primary" data-vx-modal-close>Got it</button>' });
+            else if (id === 'modal-sm')      app.openModal({ title: 'Small Modal', size: 'sm', body: '<p class="vx-copy">Compact, focused dialogs.</p>', footer: '<button class="vx-btn vx-btn-secondary" data-vx-modal-close>Close</button>' });
+            else if (id === 'modal-lg')      app.openModal({ title: 'Large Modal', size: 'lg', body: '<p class="vx-copy">Wide modals for forms, previews, or complex content.</p>', footer: '<button class="vx-btn vx-btn-secondary" data-vx-modal-close>Close</button>' });
+            else if (id === 'dlg-alert')     app.alert('This is an alert dialog from vxUI.');
+            else if (id === 'dlg-confirm')   app.confirm('Delete this file permanently?').then(function (ok) { if (ok) app.toastSuccess('Deleted.'); else app.toastInfo('Cancelled.'); });
+            else if (id === 'dlg-prompt')    app.prompt('Rename file:', 'untitled.txt').then(function (val) { if (val) app.toastSuccess('Renamed to: ' + val); });
+        });
+
+    });
+
+})();
+</script>
+</body>
+</html>

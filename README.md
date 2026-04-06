@@ -1,51 +1,50 @@
-# VXUI Framework
+# vxUI
 
-VXUI Framework 是从现有 VXUI 视觉体系中抽出的独立 UI Foundation。
+A lightweight, dependency-free UI framework for building clean admin interfaces. Design tokens, components, and a minimal SPA runtime — no jQuery, no build tools required.
 
-当前目标：
+## Quick Start
 
-- 默认视觉节奏对齐 VXUI（侧栏、顶栏、列表、焦点态）。
-- 提供通用组件抽象，不绑定钛盘业务语义。
-- 不依赖 tmpUI、TL、jQuery。
-- 核心不提供多语言能力。
+Open `index.html` in a browser to browse all components with live demos and code examples.
 
-## 当前包含
+To start a new project, copy `examples/starter.html` and adjust it to your needs.
 
-- 核心运行时：视图注册、hash 路由、主题切换、权限显隐、sidebar 控制。
-- 反馈组件：toast、alert、confirm、prompt、modal。
-- 通用组件工具：列表、标签页、开关、头部与按钮拼装器。
-- 静态展示站：中性 mock 数据，组件化渲染，不带业务预置。
-- bridge 示例：仅演示认证和路由同步。
+## Directory
 
-## 目录
+```text
+vxUI/
+├── index.html                  ← Component showcase & documentation
+├── css/
+│   ├── vxui-framework.css      ← Core design tokens + all component styles
+│   └── vxui-showcase.css       ← Additional showcase-only styles
+├── js/
+│   ├── vxui-framework.js       ← Runtime: router, sidebar, theme, auth, feedback
+│   ├── vxui-components.js      ← Component builder helpers (VXUIComponents)
+│   └── vxui-tmpui-bridge.js    ← Optional: adapter for tmpUI host integration
+├── lib/
+│   └── iconpark.js             ← Icon library (IconPark web components)
+└── examples/
+    ├── starter.html            ← Minimal integration template
+    └── bridge.html             ← tmpUI bridge demo
+```
 
-- [vxui-framework/js/vxui-framework.js](vxui-framework/js/vxui-framework.js)：核心运行时。
-- [vxui-framework/js/vxui-components.js](vxui-framework/js/vxui-components.js)：通用组件拼装工具。
-- [vxui-framework/js/vxui-tmpui-bridge.js](vxui-framework/js/vxui-tmpui-bridge.js)：tmpUI 宿主桥接层。
-- [vxui-framework/css/vxui-framework.css](vxui-framework/css/vxui-framework.css)：基础设计令牌与核心样式。
-- [vxui-framework/css/vxui-showcase.css](vxui-framework/css/vxui-showcase.css)：展示站增强样式。
-- [vxui-framework/showcase/index.html](vxui-framework/showcase/index.html)：展示站入口。
-- [vxui-framework/showcase/showcase.js](vxui-framework/showcase/showcase.js)：展示站脚本。
-- [vxui-framework/example/tmpui-bridge.html](vxui-framework/example/tmpui-bridge.html)：bridge 示例页。
-
-## 最小接入
+## Minimal Setup
 
 ```html
-<link rel="stylesheet" href="./css/vxui-framework.css">
-<script src="./plugin/icon/lib.js"></script>
-<script src="./js/vxui-framework.js"></script>
+<link rel="stylesheet" href="css/vxui-framework.css">
+<script src="lib/iconpark.js"></script>
+<script src="js/vxui-framework.js"></script>
 ```
 
 ```javascript
 const app = new VXUIFramework({
   root: '#vx-app',
-  authProvider: () => ({ loggedIn: true, owner: true, user: { name: 'Owner' } })
+  authProvider: () => ({ loggedIn: true, user: { name: 'Admin' } })
 });
 
 app.registerViews({
   overview: {
     title: 'Overview',
-    render: () => '<section class="vx-card">Hello VXUI</section>'
+    render: () => '<section class="vx-panel">Hello vxUI</section>'
   }
 });
 
@@ -56,62 +55,66 @@ app.setNavigation([
 app.init();
 ```
 
-## 核心 API
+## Core API
 
-- registerView(name, config)
-- registerViews(map)
-- setNavigation(items)
-- navigate(name, state)
-- setTheme(mode) / cycleTheme()
-- refreshAuth()
-- toastSuccess / toastWarning / toastError / toastInfo
-- alert / confirm / prompt / openModal
+| Method | Description |
+| --- | --- |
+| `registerView(name, config)` | Register a named view with a `render` function. |
+| `registerViews(map)` | Register multiple views from a plain object. |
+| `setNavigation(items)` | Set the sidebar navigation array. |
+| `navigate(name, state)` | Navigate to a view, updating the hash route. |
+| `setTheme(mode)` / `cycleTheme()` | Switch theme (`light`, `dark`, `system`). |
+| `refreshAuth()` | Re-evaluate auth state and update `data-auth` visibility. |
+| `toastSuccess / toastWarning / toastError / toastInfo` | Show a timed toast notification. |
+| `alert / confirm / prompt` | Promise-based replacement for native browser dialogs. |
+| `openModal(options)` | Open a stacked modal dialog. |
 
-## 组件工具
+## Component Helpers (VXUIComponents)
 
-详见 [vxui-framework/js/vxui-components.js](vxui-framework/js/vxui-components.js) 暴露的方法：
-
-- moduleHeader
-- dataList
-- selectionBar
-- tabStrip
-- switchItem
-- button / iconButton
-
-## 边界说明
-
-- 框架层不承载上传、文件管理、支付、AI、账户等业务 API。
-- 框架核心已移除多语言能力。
-- 如需与 tmpUI 项目联动，请通过 bridge 进行认证与路由映射。
-
-## Sidebar Replica Update (2026-04)
-
-The framework sidebar now follows the tmplink VXUI layout model:
-
-- `header -> sidebar nav -> bottom menu -> footer`
-- Desktop: `toggleSidebar()` switches collapsed mode (`260px <-> 64px`)
-- Mobile / portrait tablet: `toggleSidebar()` opens a drawer with overlay + body scroll lock
-
-### New Sidebar Options
+Include `js/vxui-components.js` for programmatic HTML builders:
 
 ```javascript
-const app = new VXUIFramework({
-  sidebarStaticNav: '#vx-sidebar-static-list',
-  languageResolver: () => localStorage.getItem('app_lang') || 'en',
-  onLanguageChange: (lang, framework) => {
-    console.log('language changed:', lang);
-  },
-  communityVisibleResolver: (lang) => ['cn', 'hk'].includes(lang)
-});
+VXUIComponents.dataList({ columns, rows })
+VXUIComponents.button({ label, icon, className })
+VXUIComponents.iconButton({ icon, title })
+VXUIComponents.moduleHeader({ title, icon, rightHtml })
+VXUIComponents.tabStrip({ items })
+VXUIComponents.selectionBar({ actions, caption })
+VXUIComponents.switchItem({ title, description, checked })
 ```
 
-### New Event
+## Design Tokens
 
-- `vxui:languagechange` with `detail: { lang }`
+All design values are CSS custom properties under `--vx-*`. Override any token to theme the framework:
 
-### Sidebar Markup Contract
+```css
+:root {
+  --vx-primary: #2563eb;
+  --vx-radius:  8px;
+  --vx-font:    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+```
 
-- Static navigation mount: `#vx-sidebar-static-list`
-- Dynamic module area: `#vx-sidebar-dynamic`
-- Optional language dropdown root: `#vx-lang-dropdown`
-- Optional community link: `#vx-community-link`
+## Sidebar Behavior
+
+- **Desktop** — `toggleSidebar()` collapses to a 64 px icon rail.
+- **Mobile / portrait tablet** — `toggleSidebar()` opens a slide-in drawer with backdrop and scroll lock.
+
+State classes are applied to the `.vx-layout` element:
+
+| Class | Effect |
+| --- | --- |
+| `sidebar-collapsed` | Desktop collapse (64 px icon rail). |
+| `sidebar-open` | Mobile drawer open. |
+| `vx-logged-in` | Auth-state CSS visibility. |
+| `vx-logged-out` | Auth-state CSS visibility. |
+
+## Optional: tmpUI Bridge
+
+For embedding vxUI inside a tmpUI host, use `js/vxui-tmpui-bridge.js`. See `examples/bridge.html` for a working demo.
+
+## Boundaries
+
+- The framework core does not handle uploads, file management, payments, AI, or any other business logic.
+- No multi-language support in the core. Language switching is available as an optional UI feature.
+- No build tools required. All files are plain CSS and vanilla JavaScript.

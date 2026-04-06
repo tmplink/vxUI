@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vxUI — tmpUI Bridge Demo</title>
+    <link rel="stylesheet" href="../css/vxui-framework.css">
+</head>
+<body>
+<div class="vx-app" id="vx-app">
+    <div class="vx-shell vx-layout">
+        <div class="vx-sidebar-overlay" data-vx-sidebar-overlay></div>
+
+        <aside class="vx-sidebar" id="vx-sidebar">
+            <div class="vx-sidebar-header">
+                <button class="vx-sidebar-brand" type="button" data-vx-route="bridge-overview">
+                    <span class="vx-sidebar-brand-text">Bridge Demo</span>
+                </button>
+                <button class="vx-btn-icon" type="button" data-vx-sidebar-toggle style="margin-left:auto" title="Close">
+                    <iconpark-icon name="close"></iconpark-icon>
+                </button>
+            </div>
+
+            <nav class="vx-sidebar-nav" id="vx-sidebar-nav"></nav>
+
+            <div class="vx-sidebar-bottom-menu">
+                <div class="vx-nav-section">
+                    <div class="vx-card" style="margin:0 12px 8px">
+                        <h3 class="vx-card-title" style="font-size:14px;margin-bottom:8px">Host Controls</h3>
+                        <div class="vx-stack">
+                            <button class="vx-btn vx-btn-secondary vx-btn-sm" type="button" id="bridge-host-login"></button>
+                            <button class="vx-btn vx-btn-ghost vx-btn-sm" type="button" id="bridge-host-owner"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="vx-main">
+            <header class="vx-header">
+                <div class="vx-header-left">
+                    <button class="vx-btn-icon vx-portrait-sidebar-btn" type="button" data-vx-sidebar-toggle title="Menu">
+                        <iconpark-icon name="hamburger-button"></iconpark-icon>
+                    </button>
+                    <div class="vx-header-meta">
+                        <span class="vx-eyebrow">tmpUI Host Sync</span>
+                        <h1 class="vx-page-title" id="vx-current-title">Bridge</h1>
+                    </div>
+                </div>
+                <div class="vx-header-right">
+                    <span class="vx-auth-pill" id="vx-auth-pill"></span>
+                </div>
+            </header>
+
+            <div class="vx-page">
+                <nav class="vx-breadcrumb" id="vx-breadcrumb"></nav>
+                <div id="vx-view"></div>
+            </div>
+        </div>
+
+        <nav class="vx-mobile-bar" id="vx-mobile-bar"></nav>
+    </div>
+</div>
+
+<script src="../lib/iconpark.js"></script>
+<script src="../js/vxui-framework.js"></script>
+<script src="../js/vxui-tmpui-bridge.js"></script>
+<script src="./bridge-demo.js"></script>
+</body>
+</html>

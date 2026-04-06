@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My App — vxUI Starter</title>
+    <link rel="stylesheet" href="../css/vxui-framework.css">
+</head>
+<body>
+<div id="vx-app" class="vx-app">
+    <div class="vx-shell vx-layout">
+
+        <div class="vx-sidebar-overlay" data-vx-sidebar-overlay></div>
+
+        <aside id="vx-sidebar" class="vx-sidebar">
+            <div class="vx-sidebar-header">
+                <button class="vx-sidebar-brand" type="button" data-vx-route="overview">
+                    <span class="vx-sidebar-brand-text">My App</span>
+                </button>
+                <button class="vx-btn-icon" type="button" data-vx-sidebar-toggle style="margin-left:auto" title="Toggle sidebar">
+                    <iconpark-icon name="alignment-horizontal-center"></iconpark-icon>
+                </button>
+            </div>
+
+            <!-- Dynamic nav rendered by setNavigation() -->
+            <nav class="vx-sidebar-nav" id="vx-sidebar-nav"></nav>
+
+            <div class="vx-sidebar-bottom-menu">
+                <div class="vx-nav-section">
+                    <button class="vx-nav-item" type="button" id="theme-toggle">
+                        <iconpark-icon name="sun-one"></iconpark-icon>
+                        <span class="vx-nav-item-text">Theme</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <div class="vx-main">
+            <header class="vx-header">
+                <div class="vx-header-left">
+                    <button class="vx-btn-icon vx-portrait-sidebar-btn" type="button" data-vx-sidebar-toggle title="Menu">
+                        <iconpark-icon name="hamburger-button"></iconpark-icon>
+                    </button>
+                    <h1 class="vx-page-title" id="vx-current-title">Overview</h1>
+                </div>
+                <div class="vx-header-right">
+                    <span id="vx-auth-pill" class="vx-auth-pill"></span>
+                </div>
+            </header>
+
+            <div id="vx-view" class="vx-content"></div>
+        </div>
+
+    </div>
+</div>
+
+<script src="../lib/iconpark.js"></script>
+<script src="../js/vxui-framework.js"></script>
+<script>
+(function () {
+    'use strict';
+
+    var app = new VXUIFramework({
+        root: '#vx-app',
+        defaultView: 'overview',
+        authProvider: function () {
+            return { loggedIn: true, owner: true, user: { name: 'Admin' } };
+        }
+    });
+
+    app.registerViews({
+        overview: {
+            title: 'Overview',
+            render: function () {
+                return [
+                    '<div class="vx-view">',
+                        '<div class="vx-stat-grid">',
+                            '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Users</span><span class="vx-stat-icon"><iconpark-icon name="user"></iconpark-icon></span></div><div class="vx-stat-value">1,024</div></div>',
+                            '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Revenue</span><span class="vx-stat-icon"><iconpark-icon name="dollar"></iconpark-icon></span></div><div class="vx-stat-value">$8.4k</div></div>',
+                            '<div class="vx-stat"><div class="vx-stat-top"><span class="vx-stat-label">Uptime</span><span class="vx-stat-icon"><iconpark-icon name="chart"></iconpark-icon></span></div><div class="vx-stat-value">99.9%</div></div>',
+                        '</div>',
+                        '<section class="vx-panel">',
+                            '<h2 class="vx-panel-title">Welcome to vxUI</h2>',
+                            '<p class="vx-copy">This is the starter template. Register more views and navigation items to build your app.</p>',
+                        '</section>',
+                    '</div>'
+                ].join('');
+            }
+        },
+
+        settings: {
+            title: 'Settings',
+            requiresAuth: true,
+            render: function () {
+                return [
+                    '<div class="vx-view">',
+                        '<section class="vx-panel">',
+                            '<h2 class="vx-panel-title">Settings</h2>',
+                            '<div class="vx-stack">',
+                                '<label class="vx-switch is-active" onclick="this.classList.toggle(\'is-active\')">',
+                                    '<div class="vx-switch-copy"><strong>Notifications</strong><span>Receive email alerts for important events.</span></div>',
+                                    '<span class="vx-switch-knob"></span>',
+                                '</label>',
+                                '<label class="vx-switch" onclick="this.classList.toggle(\'is-active\')">',
+                                    '<div class="vx-switch-copy"><strong>Two-factor authentication</strong><span>Add an extra layer of security.</span></div>',
+                                    '<span class="vx-switch-knob"></span>',
+                                '</label>',
+                            '</div>',
+                        '</section>',
+                    '</div>'
+                ].join('');
+            }
+        }
+    });
+
+    app.setNavigation([
+        { view: 'overview', label: 'Overview', icon: 'house' },
+        { view: 'settings', label: 'Settings', icon: 'setting', showWhenLoggedIn: true }
+    ]);
+
+    app.init().then(function () {
+        var btn = document.getElementById('theme-toggle');
+        if (btn) {
+            btn.addEventListener('click', function () { app.cycleTheme(); });
+        }
+    });
+
+})();
+</script>
+</body>
+</html>
