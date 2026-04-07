@@ -1741,6 +1741,7 @@ body.vx-sidebar-open .vx-sidebar {
 }
 
 .vx-sidebar-copyright {
+    margin-top: 8px;
     padding: 10px 16px;
     border-top: 1px solid var(--vx-border);
     font-size: var(--vx-text-xs);
