@@ -32,9 +32,9 @@
     --vx-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --vx-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
-    --vx-radius-sm: 6px;
-    --vx-radius: 8px;
-    --vx-radius-lg: 16px;
+    --vx-radius-sm: 4px;
+    --vx-radius: 6px;
+    --vx-radius-lg: 10px;
     --vx-radius-full: 9999px;
     --vx-radius-pill: 999px;
 
@@ -284,19 +284,23 @@ body.vx-sidebar-open {
 }
 
 .vx-lang-options {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.25s ease-out;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     background: transparent;
     border-radius: 0;
     margin: 0;
     padding: 0;
 }
 
+.vx-lang-options-inner {
+    overflow: hidden;
+    min-height: 0;
+}
+
 .vx-lang-switcher.open .vx-lang-options {
-    max-height: 200px;
+    grid-template-rows: 1fr;
     padding: 0 0 4px;
-    transition: max-height 0.3s ease-in;
 }
 
 .vx-lang-option {
@@ -353,14 +357,20 @@ html.vx-dark .vx-lang-option:hover {
     gap: 12px;
     width: 100%;
     padding: 10px 12px;
-    border-radius: 8px;
+    border-radius: var(--vx-radius);
     background: transparent;
     color: var(--vx-text-secondary);
-    transition: background var(--vx-transition), color var(--vx-transition);
+    transition: background 0.15s ease, color 0.15s ease, transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
     text-align: left;
     text-decoration: none;
     font-size: var(--vx-text-sm);
     outline: none;
+}
+
+.vx-nav-item:hover {
+    background: var(--vx-surface-hover);
+    color: var(--vx-text);
+    transform: translateX(2px);
 }
 
 .vx-nav-item:focus {
@@ -388,6 +398,7 @@ html.vx-dark .vx-lang-option:hover {
 .vx-nav-item.active {
     background: var(--vx-surface-hover);
     color: var(--vx-text);
+    transform: translateX(2px);
 }
 
 .vx-nav-item.is-active,
@@ -433,24 +444,24 @@ html.vx-dark .vx-lang-option:hover {
 }
 
 .vx-nav-submenu {
-    overflow: hidden;
-    max-height: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    margin-top: 0;
-    padding-left: 0;
-    transition: max-height 0.22s ease, opacity 0.18s ease;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.2s ease,
+                margin-top 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     opacity: 0;
+    margin-top: 0;
 }
 
 .vx-nav-group.open > .vx-nav-submenu {
-    max-height: 600px;
+    grid-template-rows: 1fr;
     opacity: 1;
     margin-top: 2px;
 }
 
 .vx-nav-submenu-inner {
+    overflow: hidden;
+    min-height: 0;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -645,12 +656,13 @@ body.vx-sidebar-open .vx-sidebar {
     border-radius: var(--vx-radius);
     color: var(--vx-text-secondary);
     cursor: pointer;
-    transition: var(--vx-transition-fast);
+    transition: background 0.15s ease, color 0.15s ease, transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .vx-btn-icon:hover {
     background: var(--vx-surface-hover);
     color: var(--vx-text);
+    transform: scale(1.06);
 }
 
 .vx-btn-icon:active:not(:disabled) {
@@ -1006,7 +1018,7 @@ body.vx-sidebar-open .vx-sidebar {
     grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.9fr);
     gap: 20px;
     padding: 28px;
-    border-radius: 32px;
+    border-radius: 16px;
 }
 
 .vx-hero-title {
@@ -1063,7 +1075,13 @@ body.vx-sidebar-open .vx-sidebar {
 .vx-empty,
 .vx-skeleton-group,
 .vx-selection-bar {
-    border-radius: 24px;
+    border-radius: 12px;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.vx-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--vx-shadow);
 }
 
 .vx-card,
@@ -1087,9 +1105,15 @@ body.vx-sidebar-open .vx-sidebar {
     flex-direction: column;
     gap: 10px;
     padding: 18px;
-    border-radius: 20px;
+    border-radius: 10px;
     background: linear-gradient(180deg, color-mix(in srgb, var(--vx-surface-strong) 88%, transparent), color-mix(in srgb, var(--vx-primary-soft) 45%, transparent));
     border: 1px solid var(--vx-border);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.vx-stat:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--vx-shadow);
 }
 
 .vx-stat-top {
@@ -1117,7 +1141,7 @@ body.vx-sidebar-open .vx-sidebar {
     justify-content: center;
     width: 42px;
     height: 42px;
-    border-radius: 14px;
+    border-radius: 8px;
     background: var(--vx-primary-soft);
     color: var(--vx-primary);
 }
@@ -1170,14 +1194,18 @@ body.vx-sidebar-open .vx-sidebar {
     border: 1px solid transparent;
     border-radius: var(--vx-radius);
     cursor: pointer;
-    transition: var(--vx-transition-fast);
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease;
     text-decoration: none;
     white-space: nowrap;
     outline: none;
 }
 
+.vx-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
 .vx-btn:active:not(:disabled) {
-    transform: scale(0.96);
+    transform: translateY(0) scale(0.97);
 }
 
 .vx-btn:disabled {
@@ -1256,10 +1284,18 @@ body.vx-sidebar-open .vx-sidebar {
     justify-content: center;
     width: 42px;
     height: 42px;
-    border-radius: 14px;
+    border-radius: 8px;
     background: var(--vx-surface-strong);
     border: 1px solid var(--vx-border);
     color: var(--vx-text-secondary);
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.vx-icon-button:hover,
+.vx-mob-topbar-btn:hover {
+    transform: scale(1.06);
+    background: var(--vx-surface-hover);
+    color: var(--vx-text);
 }
 
 .vx-auth-pill {
@@ -1299,7 +1335,7 @@ body.vx-sidebar-open .vx-sidebar {
     min-height: 46px;
     padding: 12px 14px;
     border: 1px solid var(--vx-border);
-    border-radius: 14px;
+    border-radius: 8px;
     background: color-mix(in srgb, var(--vx-surface-strong) 92%, transparent);
     color: var(--vx-text);
     font: inherit;
@@ -1325,7 +1361,7 @@ body.vx-sidebar-open .vx-sidebar {
     justify-content: space-between;
     gap: 14px;
     padding: 14px 16px;
-    border-radius: 18px;
+    border-radius: 10px;
     border: 1px solid var(--vx-border);
     background: color-mix(in srgb, var(--vx-surface-strong) 90%, transparent);
 }
@@ -1351,6 +1387,8 @@ body.vx-sidebar-open .vx-sidebar {
     height: 30px;
     border-radius: var(--vx-radius-pill);
     background: var(--vx-border-strong);
+    cursor: pointer;
+    transition: background 0.2s ease;
 }
 
 .vx-switch-knob::after {
@@ -1363,6 +1401,7 @@ body.vx-sidebar-open .vx-sidebar {
     border-radius: 50%;
     background: #fff;
     box-shadow: 0 4px 10px rgba(15, 23, 42, 0.18);
+    transition: left 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .vx-switch.is-active .vx-switch-knob {
@@ -1431,7 +1470,7 @@ body.vx-sidebar-open .vx-sidebar {
     justify-content: space-between;
     gap: 12px;
     padding: 14px 16px;
-    border-radius: 24px;
+    border-radius: 12px;
 }
 
 .vx-mob-topbar-inner,
@@ -1462,7 +1501,7 @@ body.vx-sidebar-open .vx-sidebar {
     padding: 10px;
     background: color-mix(in srgb, var(--vx-surface-strong) 92%, transparent);
     border: 1px solid var(--vx-border);
-    border-radius: 22px;
+    border-radius: 12px;
     box-shadow: var(--vx-shadow-lg);
     backdrop-filter: blur(18px);
 }
@@ -1475,7 +1514,7 @@ body.vx-sidebar-open .vx-sidebar {
     justify-content: center;
     gap: 4px;
     min-height: 52px;
-    border-radius: 16px;
+    border-radius: 8px;
     background: transparent;
     color: var(--vx-text-secondary);
     font-size: 12px;
@@ -1507,19 +1546,19 @@ body.vx-sidebar-open .vx-sidebar {
     align-items: center;
     gap: 12px;
     padding: 14px 14px 14px 12px;
-    border-radius: 18px;
+    border-radius: 10px;
     background: color-mix(in srgb, var(--vx-surface-strong) 94%, transparent);
     border: 1px solid var(--vx-border);
     box-shadow: var(--vx-shadow);
     pointer-events: auto;
     opacity: 0;
-    transform: translateY(-10px) translateX(16px);
-    transition: opacity var(--vx-transition), transform var(--vx-transition);
+    transform: translateY(-12px) translateX(20px) scale(0.96);
+    transition: opacity 0.22s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .vx-toast.is-visible {
     opacity: 1;
-    transform: translateY(0) translateX(0);
+    transform: translateY(0) translateX(0) scale(1);
 }
 
 .vx-toast-icon-wrap {
@@ -1528,7 +1567,7 @@ body.vx-sidebar-open .vx-sidebar {
     justify-content: center;
     width: 36px;
     height: 36px;
-    border-radius: 12px;
+    border-radius: 8px;
     background: var(--vx-primary-soft);
     flex-shrink: 0;
 }
@@ -1550,7 +1589,7 @@ body.vx-sidebar-open .vx-sidebar {
     justify-content: center;
     width: 28px;
     height: 28px;
-    border-radius: 10px;
+    border-radius: 6px;
     border: none;
     background: transparent;
     color: var(--vx-text-secondary);
@@ -1565,7 +1604,7 @@ body.vx-sidebar-open .vx-sidebar {
     padding: 24px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity var(--vx-transition);
+    transition: opacity 0.22s ease;
     z-index: 120;
 }
 
@@ -1588,12 +1627,12 @@ body.vx-sidebar-open .vx-sidebar {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    border-radius: 18px;
+    border-radius: 12px;
     border: 1px solid color-mix(in srgb, var(--vx-border) 88%, transparent);
     background: color-mix(in srgb, var(--vx-surface-strong) 98%, transparent);
     box-shadow: 0 22px 56px rgba(15, 23, 42, 0.14);
-    transform: translateY(12px) scale(0.985);
-    transition: transform var(--vx-transition), box-shadow var(--vx-transition);
+    transform: translateY(16px) scale(0.97);
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease;
 }
 
 .vx-modal.is-open .vx-modal-panel {
@@ -1663,7 +1702,7 @@ body.vx-sidebar-open .vx-sidebar {
     flex: 0 0 36px;
     padding: 0;
     border: 1px solid color-mix(in srgb, var(--vx-border) 72%, transparent);
-    border-radius: 12px;
+    border-radius: 8px;
     background: color-mix(in srgb, var(--vx-surface) 82%, transparent);
     color: var(--vx-text-muted);
     cursor: pointer;
@@ -1694,7 +1733,7 @@ body.vx-sidebar-open .vx-sidebar {
 
 .vx-demo-note {
     padding: 14px 16px;
-    border-radius: 18px;
+    border-radius: 10px;
     border: 1px dashed color-mix(in srgb, var(--vx-primary) 30%, transparent);
     background: color-mix(in srgb, var(--vx-primary-soft) 55%, transparent);
     color: var(--vx-text-secondary);
@@ -1790,6 +1829,30 @@ body.vx-sidebar-open .vx-sidebar {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
 }
+
+@keyframes vx-fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes vx-slide-down {
+    from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes vx-pop-in {
+    from { opacity: 0; transform: scale(0.9); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* ==================== Page View Entrance ==================== */
+#vx-view > * {
+    animation: vx-fade-in 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#vx-view > *:nth-child(2) { animation-delay: 40ms; }
+#vx-view > *:nth-child(3) { animation-delay: 80ms; }
+#vx-view > *:nth-child(4) { animation-delay: 110ms; }
+#vx-view > *:nth-child(5) { animation-delay: 140ms; }
 
 @media (max-width: 960px) {
     .vx-grid.is-three,

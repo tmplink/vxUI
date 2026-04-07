@@ -132,7 +132,7 @@ html.vx-dark .vx-showcase-shell {
 .vx-docs-note-card {
     margin: 10px 12px 0;
     padding: 14px;
-    border-radius: 14px;
+    border-radius: 8px;
     border: 1px solid var(--vx-border);
     background: linear-gradient(
         180deg,
@@ -327,7 +327,7 @@ html.vx-dark .vx-showcase-shell {
     display: flex;
     min-height: 82px;
     padding: 10px 12px;
-    border-radius: 8px;
+    border-radius: 6px;
     background: rgba(2, 6, 23, 0.42);
     border: 1px solid rgba(148, 163, 184, 0.12);
     overflow: hidden;
@@ -430,7 +430,7 @@ input.vx-switch:checked::before {
 .vx-stat-card {
     background: var(--vx-surface);
     border: 1px solid var(--vx-border);
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 16px;
     display: flex;
     align-items: center;
@@ -453,7 +453,7 @@ input.vx-switch:checked::before {
     align-items: center;
     justify-content: center;
     background: color-mix(in srgb, var(--vx-primary) 12%, transparent);
-    border-radius: 10px;
+    border-radius: 8px;
     flex-shrink: 0;
 }
 
@@ -482,7 +482,7 @@ input.vx-switch:checked::before {
 /* Profile Card */
 .vx-profile-card {
     border: 1px solid var(--vx-border);
-    border-radius: 14px;
+    border-radius: 10px;
     overflow: hidden;
     margin-bottom: 20px;
 }
@@ -503,7 +503,7 @@ input.vx-switch:checked::before {
 .vx-profile-avatar-placeholder {
     width: 88px;
     height: 88px;
-    border-radius: 16px;
+    border-radius: 12px;
     border: 3px solid rgba(255, 255, 255, 0.3);
     background: rgba(255, 255, 255, 0.15);
     display: flex;
@@ -580,7 +580,7 @@ input.vx-switch:checked::before {
 
 .vx-settings-card {
     border: 1px solid var(--vx-border);
-    border-radius: 16px;
+    border-radius: 10px;
     background: color-mix(in srgb, var(--vx-surface) 90%, transparent);
     padding: 20px 24px;
     display: grid;
@@ -605,7 +605,7 @@ input.vx-switch:checked::before {
 
 .vx-copy-style-card {
     border: 1px solid var(--vx-border);
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 10px;
     background: color-mix(in srgb, var(--vx-surface-strong) 70%, transparent);
 }
@@ -632,7 +632,7 @@ input.vx-switch:checked::before {
 }
 
 .vx-profile-hero {
-    border-radius: 16px;
+    border-radius: 10px;
     min-height: 140px;
     padding: 16px;
     background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
@@ -658,7 +658,7 @@ input.vx-switch:checked::before {
 
 .vx-profile-stat-card {
     border: 1px solid var(--vx-border);
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 12px;
     background: color-mix(in srgb, var(--vx-surface) 92%, transparent);
     display: grid;
@@ -702,7 +702,7 @@ input.vx-switch:checked::before {
     border: 1px solid var(--vx-border);
     background: color-mix(in srgb, var(--vx-surface) 92%, transparent);
     color: var(--vx-text-secondary);
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 10px;
     font-weight: 600;
     cursor: pointer;
@@ -716,7 +716,7 @@ input.vx-switch:checked::before {
 
 .vx-points-balance-panel {
     border: 1px solid var(--vx-border);
-    border-radius: 14px;
+    border-radius: 8px;
     padding: 14px;
     text-align: center;
     background: color-mix(in srgb, var(--vx-surface) 92%, transparent);
@@ -741,7 +741,7 @@ input.vx-switch:checked::before {
 
 .vx-points-quick-btn {
     border: 1px solid var(--vx-border);
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 10px;
     background: color-mix(in srgb, var(--vx-surface) 92%, transparent);
     color: var(--vx-text-secondary);
@@ -761,7 +761,7 @@ input.vx-switch:checked::before {
 
 .vx-points-log-panel {
     border: 1px solid var(--vx-border);
-    border-radius: 14px;
+    border-radius: 8px;
     padding: 12px;
     background: color-mix(in srgb, var(--vx-surface) 92%, transparent);
     display: grid;
@@ -778,7 +778,7 @@ input.vx-switch:checked::before {
     justify-content: space-between;
     gap: 12px;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 6px;
     border: 1px solid color-mix(in srgb, var(--vx-border) 78%, transparent);
     background: color-mix(in srgb, var(--vx-surface-strong) 80%, transparent);
 }
@@ -838,7 +838,7 @@ input.vx-switch:checked::before {
 .vx-module-placeholder-icon {
     width: 72px;
     height: 72px;
-    border-radius: 20px;
+    border-radius: 12px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -878,7 +878,7 @@ input.vx-switch:checked::before {
 
 .vx-shop-card {
     border: 1px solid var(--vx-border);
-    border-radius: 14px;
+    border-radius: 8px;
     padding: 14px;
     background: color-mix(in srgb, var(--vx-surface) 90%, transparent);
     display: grid;
@@ -904,7 +904,7 @@ input.vx-switch:checked::before {
 .vx-notes-list,
 .vx-notes-editor {
     border: 1px solid var(--vx-border);
-    border-radius: 14px;
+    border-radius: 8px;
     background: color-mix(in srgb, var(--vx-surface) 92%, transparent);
     padding: 12px;
     display: grid;
@@ -919,7 +919,7 @@ input.vx-switch:checked::before {
 
 .vx-ai-chat {
     border: 1px solid var(--vx-border);
-    border-radius: 14px;
+    border-radius: 8px;
     background: color-mix(in srgb, var(--vx-surface) 92%, transparent);
     padding: 12px;
     display: grid;
@@ -929,7 +929,7 @@ input.vx-switch:checked::before {
 
 .vx-ai-msg {
     border: 1px solid var(--vx-border);
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 10px;
     background: color-mix(in srgb, var(--vx-surface-strong) 84%, transparent);
 }
