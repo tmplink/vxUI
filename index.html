@@ -128,33 +128,77 @@
 
                 <div class="vx-nav-divider"></div>
 
-                <!-- Components -->
+                <!-- Components — submenu groups -->
                 <div class="vx-nav-section">
                     <span class="vx-nav-title">Components</span>
-                    <button class="vx-nav-item" type="button" data-vx-route="buttons">
-                        <i data-lucide="mouse-pointer-click"></i>
-                        <span class="vx-nav-item-text">Buttons</span>
-                    </button>
-                    <button class="vx-nav-item" type="button" data-vx-route="cards">
-                        <i data-lucide="rectangle-horizontal"></i>
-                        <span class="vx-nav-item-text">Cards &amp; Panels</span>
-                    </button>
-                    <button class="vx-nav-item" type="button" data-vx-route="badges">
-                        <i data-lucide="tag"></i>
-                        <span class="vx-nav-item-text">Badges &amp; Chips</span>
-                    </button>
-                    <button class="vx-nav-item" type="button" data-vx-route="forms">
-                        <i data-lucide="pencil"></i>
-                        <span class="vx-nav-item-text">Forms</span>
-                    </button>
-                    <button class="vx-nav-item" type="button" data-vx-route="switches">
-                        <i data-lucide="toggle-right"></i>
-                        <span class="vx-nav-item-text">Switches</span>
-                    </button>
-                    <button class="vx-nav-item" type="button" data-vx-route="navigation">
-                        <i data-lucide="compass"></i>
-                        <span class="vx-nav-item-text">Navigation</span>
-                    </button>
+
+                    <!-- Elements group -->
+                    <div class="vx-nav-group" data-vx-group="comp-elements">
+                        <button class="vx-nav-item vx-nav-group-toggle" type="button" data-vx-submenu="comp-elements">
+                            <i data-lucide="shapes"></i>
+                            <span class="vx-nav-item-text">Elements</span>
+                            <i data-lucide="chevron-right" class="vx-nav-chevron"></i>
+                        </button>
+                        <div class="vx-nav-submenu" id="comp-elements">
+                            <div class="vx-nav-submenu-inner">
+                                <button class="vx-nav-item vx-nav-subitem" type="button" data-vx-route="buttons">
+                                    <i data-lucide="mouse-pointer-click"></i>
+                                    <span class="vx-nav-item-text">Buttons</span>
+                                </button>
+                                <button class="vx-nav-item vx-nav-subitem" type="button" data-vx-route="cards">
+                                    <i data-lucide="rectangle-horizontal"></i>
+                                    <span class="vx-nav-item-text">Cards &amp; Panels</span>
+                                </button>
+                                <button class="vx-nav-item vx-nav-subitem" type="button" data-vx-route="badges">
+                                    <i data-lucide="tag"></i>
+                                    <span class="vx-nav-item-text">Badges &amp; Chips</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Controls group -->
+                    <div class="vx-nav-group" data-vx-group="comp-forms">
+                        <button class="vx-nav-item vx-nav-group-toggle" type="button" data-vx-submenu="comp-forms">
+                            <i data-lucide="pencil-line"></i>
+                            <span class="vx-nav-item-text">Form Controls</span>
+                            <i data-lucide="chevron-right" class="vx-nav-chevron"></i>
+                        </button>
+                        <div class="vx-nav-submenu" id="comp-forms">
+                            <div class="vx-nav-submenu-inner">
+                                <button class="vx-nav-item vx-nav-subitem" type="button" data-vx-route="forms">
+                                    <i data-lucide="pencil"></i>
+                                    <span class="vx-nav-item-text">Forms</span>
+                                </button>
+                                <button class="vx-nav-item vx-nav-subitem" type="button" data-vx-route="switches">
+                                    <i data-lucide="toggle-right"></i>
+                                    <span class="vx-nav-item-text">Switches</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation group -->
+                    <div class="vx-nav-group" data-vx-group="comp-nav">
+                        <button class="vx-nav-item vx-nav-group-toggle" type="button" data-vx-submenu="comp-nav">
+                            <i data-lucide="compass"></i>
+                            <span class="vx-nav-item-text">Navigation</span>
+                            <i data-lucide="chevron-right" class="vx-nav-chevron"></i>
+                        </button>
+                        <div class="vx-nav-submenu" id="comp-nav">
+                            <div class="vx-nav-submenu-inner">
+                                <button class="vx-nav-item vx-nav-subitem" type="button" data-vx-route="navigation">
+                                    <i data-lucide="sidebar"></i>
+                                    <span class="vx-nav-item-text">Nav Items</span>
+                                </button>
+                                <button class="vx-nav-item vx-nav-subitem" type="button" data-vx-route="subnavigation">
+                                    <i data-lucide="layers"></i>
+                                    <span class="vx-nav-item-text">Submenus</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                     <button class="vx-nav-item" type="button" data-vx-route="list">
                         <i data-lucide="list"></i>
                         <span class="vx-nav-item-text">Data List</span>
@@ -167,7 +211,7 @@
 
                 <div class="vx-nav-divider"></div>
 
-                <!-- Feedback -->
+                <!-- Feedback — flat, each item is distinct -->
                 <div class="vx-nav-section">
                     <span class="vx-nav-title">Feedback</span>
                     <button class="vx-nav-item" type="button" data-vx-route="toasts">
@@ -813,6 +857,127 @@
         ].join('');
     }
 
+    function viewSubnavigation() {
+        var staticHtmlDemo =
+            '<div style="display:flex;flex-direction:column;width:220px">' +
+            '<div class="vx-nav-group" data-vx-group="demo-group-1">' +
+                '<button class="vx-nav-item vx-nav-group-toggle" type="button" data-vx-submenu="demo-group-1">' +
+                    '<i data-lucide="settings"></i>' +
+                    '<span class="vx-nav-item-text">Settings</span>' +
+                    '<i data-lucide="chevron-right" class="vx-nav-chevron"></i>' +
+                '</button>' +
+                '<div class="vx-nav-submenu" id="demo-group-1">' +
+                    '<div class="vx-nav-submenu-inner">' +
+                        '<button class="vx-nav-item vx-nav-subitem" type="button">' +
+                            '<i data-lucide="user"></i>' +
+                            '<span class="vx-nav-item-text">Profile</span>' +
+                        '</button>' +
+                        '<button class="vx-nav-item vx-nav-subitem is-active" type="button">' +
+                            '<i data-lucide="lock"></i>' +
+                            '<span class="vx-nav-item-text">Security</span>' +
+                        '</button>' +
+                        '<button class="vx-nav-item vx-nav-subitem" type="button">' +
+                            '<i data-lucide="bell"></i>' +
+                            '<span class="vx-nav-item-text">Notifications</span>' +
+                        '</button>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '<button class="vx-nav-item" type="button">' +
+                '<i data-lucide="help-circle"></i>' +
+                '<span class="vx-nav-item-text">Help</span>' +
+            '</button>' +
+            '</div>';
+
+        var staticCode =
+            '&lt;div class="vx-nav-group" data-vx-group="settings-group"&gt;\n' +
+            '  &lt;button class="vx-nav-item vx-nav-group-toggle" type="button"\n' +
+            '          data-vx-submenu="settings-group"&gt;\n' +
+            '    &lt;i data-lucide="settings"&gt;&lt;/i&gt;\n' +
+            '    &lt;span class="vx-nav-item-text"&gt;Settings&lt;/span&gt;\n' +
+            '    &lt;i data-lucide="chevron-right" class="vx-nav-chevron"&gt;&lt;/i&gt;\n' +
+            '  &lt;/button&gt;\n' +
+            '  &lt;div class="vx-nav-submenu" id="settings-group"&gt;\n' +
+            '    &lt;div class="vx-nav-submenu-inner"&gt;\n' +
+            '      &lt;button class="vx-nav-item vx-nav-subitem" data-vx-route="profile"&gt;Profile&lt;/button&gt;\n' +
+            '      &lt;button class="vx-nav-item vx-nav-subitem" data-vx-route="security"&gt;Security&lt;/button&gt;\n' +
+            '    &lt;/div&gt;\n' +
+            '  &lt;/div&gt;\n' +
+            '&lt;/div&gt;';
+
+        var jsCode =
+            'app.setNavigation([\n' +
+            '  { view: \'overview\', label: \'Overview\', icon: \'home\' },\n' +
+            '  {\n' +
+            '    label: \'Settings\',\n' +
+            '    icon: \'settings\',\n' +
+            '    children: [\n' +
+            '      { view: \'profile\',  label: \'Profile\',  icon: \'user\' },\n' +
+            '      { view: \'security\', label: \'Security\', icon: \'lock\' },\n' +
+            '      { view: \'notifs\',   label: \'Notifications\', icon: \'bell\' }\n' +
+            '    ]\n' +
+            '  }\n' +
+            ']);';
+
+        return [
+            '<div class="vx-view">',
+
+                '<div class="vx-doc-section">',
+                    '<h1 class="vx-doc-heading">Submenus</h1>',
+                    '<p class="vx-doc-desc">',
+                        'Sidebar nav items can be nested into collapsible groups.',
+                        ' Two approaches are supported: static HTML or the <code class="vx-mono">setNavigation()</code> API with a <code class="vx-mono">children</code> array.',
+                    '</p>',
+                '</div>',
+
+                '<div class="vx-doc-section">',
+                    '<h2 class="vx-doc-heading">Live demo</h2>',
+                    '<p class="vx-doc-desc">Click "Settings" below to toggle the submenu. The active child item is pre-highlighted. This same structure is used in the sidebar of this page (see the <strong>Feedback</strong> group).</p>',
+                    '<div class="vx-demo-area">',
+                        staticHtmlDemo,
+                    '</div>',
+                    '<div class="vx-code-block">',
+                        '<div class="vx-code-head"><span>HTML</span></div>',
+                        '<pre>', staticCode, '</pre>',
+                    '</div>',
+                '</div>',
+
+                '<div class="vx-doc-section">',
+                    '<h2 class="vx-doc-heading">setNavigation() — children API</h2>',
+                    '<p class="vx-doc-desc">Pass a <code class="vx-mono">children</code> array instead of a <code class="vx-mono">view</code> key to create a submenu group. The parent item does not navigate — it only toggles.</p>',
+                    '<div class="vx-code-block">',
+                        '<div class="vx-code-head"><span>JavaScript</span></div>',
+                        '<pre>', jsCode, '</pre>',
+                    '</div>',
+                '</div>',
+
+                '<div class="vx-doc-section">',
+                    '<h2 class="vx-doc-heading">Behaviour</h2>',
+                    '<div class="vx-panel">',
+                        '<table style="width:100%;border-collapse:collapse;font-size:13px">',
+                            '<thead><tr style="border-bottom:1px solid var(--vx-border)">',
+                                '<th style="padding:10px 12px;text-align:left;color:var(--vx-text-secondary);font-weight:600">Scenario</th>',
+                                '<th style="padding:10px 12px;text-align:left;color:var(--vx-text-secondary);font-weight:600">Result</th>',
+                            '</tr></thead>',
+                            '<tbody>',
+                                [
+                                    ['Click parent item',          'Toggles the submenu open / closed — does not navigate.'],
+                                    ['Navigate to a child view',   'Parent group auto-expands and child is highlighted.'],
+                                    ['Navigate away from child',   'Group stays open (user can close manually).'],
+                                    ['Sidebar collapsed (desktop)','Chevron and submenu are hidden; groups behave as flat items.'],
+                                    ['children + auth / ownerOnly','Each child inherits the same auth filtering as top-level items.']
+                                ].map(function (r) {
+                                    return '<tr style="border-bottom:1px solid var(--vx-border)"><td style="padding:10px 12px;font-family:var(--vx-mono);color:var(--vx-primary)">' + esc(r[0]) + '</td><td style="padding:10px 12px;color:var(--vx-text-secondary)">' + r[1] + '</td></tr>';
+                                }).join(''),
+                            '</tbody>',
+                        '</table>',
+                    '</div>',
+                '</div>',
+
+            '</div>'
+        ].join('');
+    }
+
     function viewList() {
         var rows = [
             { name: 'Project Proposal', size: '248 KB', date: 'Apr 5, 2026', type: 'doc' },
@@ -983,6 +1148,7 @@
         forms:        { title: 'Forms',           render: viewForms        },
         switches:     { title: 'Switches',        render: viewSwitches     },
         navigation:   { title: 'Navigation',      render: viewNavigation   },
+        subnavigation:{ title: 'Submenus',         render: viewSubnavigation },
         list:         { title: 'Data List',       render: viewList         },
         empty:        { title: 'Empty States',    render: viewEmpty        },
         toasts:       { title: 'Toasts',          render: viewToasts       },

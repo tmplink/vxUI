@@ -396,6 +396,92 @@ html.vx-dark .vx-lang-option:hover {
     color: var(--vx-primary);
 }
 
+/* ==================== Submenu ==================== */
+.vx-nav-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.vx-nav-group-toggle {
+    position: relative;
+}
+
+.vx-nav-chevron {
+    margin-left: auto;
+    flex-shrink: 0;
+    width: 16px !important;
+    height: 16px;
+    opacity: 0.5;
+    transition: transform var(--vx-transition), opacity var(--vx-transition);
+}
+
+.vx-nav-group-toggle:hover .vx-nav-chevron {
+    opacity: 0.9;
+}
+
+.vx-nav-group.open > .vx-nav-group-toggle .vx-nav-chevron {
+    transform: rotate(90deg);
+    opacity: 0.9;
+}
+
+.vx-nav-group.has-active > .vx-nav-group-toggle {
+    color: var(--vx-primary);
+}
+
+.vx-nav-group.has-active > .vx-nav-group-toggle .vx-nav-chevron {
+    opacity: 1;
+}
+
+.vx-nav-submenu {
+    overflow: hidden;
+    max-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 0;
+    padding-left: 0;
+    transition: max-height 0.22s ease, opacity 0.18s ease;
+    opacity: 0;
+}
+
+.vx-nav-group.open > .vx-nav-submenu {
+    max-height: 600px;
+    opacity: 1;
+    margin-top: 2px;
+}
+
+.vx-nav-submenu-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-left: 12px;
+    padding-bottom: 4px;
+}
+
+
+
+.vx-nav-subitem {
+    font-size: var(--vx-text-sm);
+    padding-left: 32px;
+    color: var(--vx-text-secondary);
+}
+
+.vx-nav-subitem:hover {
+    color: var(--vx-text);
+}
+
+.vx-nav-subitem.active,
+.vx-nav-subitem.is-active {
+    background: var(--vx-primary-light);
+    color: var(--vx-primary);
+}
+
+.vx-layout.sidebar-collapsed .vx-nav-chevron,
+.vx-layout.sidebar-collapsed .vx-nav-submenu {
+    display: none !important;
+}
+
 .vx-main {
     display: flex;
     flex: 1;

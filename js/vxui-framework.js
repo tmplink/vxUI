@@ -412,6 +412,17 @@
                     return;
                 }
 
+                const submenuToggle = event.target.closest('[data-vx-submenu]');
+                if (submenuToggle) {
+                    event.preventDefault();
+                    const groupId = submenuToggle.getAttribute('data-vx-submenu');
+                    const group = document.querySelector('[data-vx-group="' + groupId + '"]');
+                    if (group) {
+                        group.classList.toggle('open');
+                    }
+                    return;
+                }
+
                 const sidebarToggle = event.target.closest('[data-vx-sidebar-toggle]');
                 if (sidebarToggle) {
                     event.preventDefault();
@@ -549,6 +560,14 @@
                 element.classList.toggle('active', active);
                 element.classList.toggle('is-active', active);
             });
+
+            document.querySelectorAll('.vx-nav-group').forEach((group) => {
+                const hasActive = group.querySelector('[data-vx-route].active') !== null;
+                group.classList.toggle('has-active', hasActive);
+                if (hasActive) {
+                    group.classList.add('open');
+                }
+            });
         }
 
         renderNavigation() {
@@ -560,12 +579,7 @@
             const sidebarHtml = [];
             const mobileHtml = [];
 
-            this.navigation.forEach((item) => {
-                const view = this.views.get(item.view);
-                if (!view) {
-                    return;
-                }
-
+            this.navigation.forEach((item, index) => {
                 if (item.showWhenLoggedIn && !auth.loggedIn) {
                     return;
                 }
@@ -574,10 +588,68 @@
                     return;
                 }
 
-                const title = item.label || view.title || item.view;
-                const icon = item.icon ? '<i data-lucide="' + escapeHtml(item.icon) + '"></i>' : '';
                 const authAttr = item.auth ? ' data-auth="' + escapeHtml(item.auth) + '"' : '';
                 const ownerAttr = item.ownerOnly ? ' data-owner="true"' : '';
+
+                if (item.children && item.children.length) {
+                    const groupId = 'vx-sub-' + index;
+                    const title = item.label || '';
+                    const icon = item.icon ? '<i data-lucide="' + escapeHtml(item.icon) + '"></i>' : '';
+                    const childrenHtml = [];
+
+                    item.children.forEach((child) => {
+                        const childView = this.views.get(child.view);
+                        if (!childView) {
+                            return;
+                        }
+                        const childTitle = child.label || childView.title || child.view;
+                        const childIcon = child.icon ? '<i data-lucide="' + escapeHtml(child.icon) + '"></i>' : '';
+                        const childAuthAttr = child.auth ? ' data-auth="' + escapeHtml(child.auth) + '"' : '';
+                        const childOwnerAttr = child.ownerOnly ? ' data-owner="true"' : '';
+
+                        childrenHtml.push(
+                            '<button class="vx-nav-item vx-nav-subitem" type="button" data-vx-route="' + escapeHtml(child.view) + '"' + childAuthAttr + childOwnerAttr + '>' +
+                                childIcon +
+                                '<span class="vx-nav-item-text">' + escapeHtml(childTitle) + '</span>' +
+                            '</button>'
+                        );
+
+                        if (child.mobile !== false && item.mobile !== false) {
+                            mobileHtml.push(
+                                '<button class="vx-mobile-btn" type="button" data-vx-route="' + escapeHtml(child.view) + '"' + childAuthAttr + childOwnerAttr + '>' +
+                                    childIcon +
+                                    '<span>' + escapeHtml(childTitle) + '</span>' +
+                                '</button>'
+                            );
+                        }
+                    });
+
+                    if (childrenHtml.length) {
+                        sidebarHtml.push(
+                            '<div class="vx-nav-group" data-vx-group="' + groupId + '"' + authAttr + ownerAttr + '>' +
+                                '<button class="vx-nav-item vx-nav-group-toggle" type="button" data-vx-submenu="' + groupId + '">' +
+                                    icon +
+                                    '<span class="vx-nav-item-text">' + escapeHtml(title) + '</span>' +
+                                    '<i data-lucide="chevron-right" class="vx-nav-chevron"></i>' +
+                                '</button>' +
+                                '<div class="vx-nav-submenu" id="' + groupId + '">' +
+                                    '<div class="vx-nav-submenu-inner">' +
+                                        childrenHtml.join('') +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>'
+                        );
+                    }
+                    return;
+                }
+
+                const view = this.views.get(item.view);
+                if (!view) {
+                    return;
+                }
+
+                const title = item.label || view.title || item.view;
+                const icon = item.icon ? '<i data-lucide="' + escapeHtml(item.icon) + '"></i>' : '';
 
                 sidebarHtml.push(
                     '<button class="vx-nav-item" type="button" data-vx-route="' + escapeHtml(item.view) + '"' + authAttr + ownerAttr + '>' +
