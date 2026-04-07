@@ -835,6 +835,8 @@
             const modalId = 'vx-modal-' + Date.now() + '-' + Math.floor(Math.random() * 10000);
             const modal = document.createElement('div');
             const actions = Array.isArray(options.actions) ? options.actions : [];
+            const bodyContent = options.content != null ? options.content : options.body;
+            const footerContent = options.footer;
             const sizeClass = this._modalSizeClass(options.size || 'md');
 
             modal.className = 'vx-modal';
@@ -843,11 +845,11 @@
                 '<div class="vx-modal-backdrop" data-vx-modal-close></div>',
                 '<div class="vx-modal-panel ' + sizeClass + '" role="dialog" aria-modal="true" aria-labelledby="' + modalId + '-title">',
                     '<div class="vx-modal-header">',
-                        '<div>',
-                            '<div class="vx-eyebrow">' + escapeHtml(options.eyebrow || '') + '</div>',
+                        '<div class="vx-modal-heading">',
+                            '<div class="vx-eyebrow vx-modal-eyebrow">' + escapeHtml(options.eyebrow || '') + '</div>',
                             '<h3 class="vx-modal-title" id="' + modalId + '-title">' + escapeHtml(options.title || '') + '</h3>',
                         '</div>',
-                        '<button class="vx-icon-button" type="button" data-vx-modal-close aria-label="close"><i data-lucide="x-circle"></i></button>',
+                        '<button class="vx-modal-close" type="button" data-vx-modal-close aria-label="Close modal"><i data-lucide="x"></i></button>',
                     '</div>',
                     '<div class="vx-modal-body"></div>',
                     '<div class="vx-modal-footer"></div>',
@@ -857,10 +859,16 @@
             const body = modal.querySelector('.vx-modal-body');
             const footer = modal.querySelector('.vx-modal-footer');
 
-            if (typeof options.content === 'string') {
-                body.innerHTML = options.content;
-            } else if (options.content instanceof window.Node) {
-                body.replaceChildren(options.content);
+            if (typeof bodyContent === 'string') {
+                body.innerHTML = bodyContent;
+            } else if (bodyContent instanceof window.Node) {
+                body.replaceChildren(bodyContent);
+            }
+
+            if (typeof footerContent === 'string') {
+                footer.innerHTML = footerContent;
+            } else if (footerContent instanceof window.Node) {
+                footer.replaceChildren(footerContent);
             }
 
             actions.forEach((action, index) => {
@@ -879,7 +887,11 @@
                 footer.appendChild(button);
             });
 
-            if (!actions.length) {
+            if (!body.childNodes.length) {
+                body.remove();
+            }
+
+            if (!footer.childNodes.length) {
                 footer.remove();
             }
 
@@ -891,6 +903,7 @@
 
             this.elements.modalRoot.appendChild(modal);
             this.refreshAuth(modal);
+            this._renderIcons();
 
             window.requestAnimationFrame(() => {
                 modal.classList.add('is-open');

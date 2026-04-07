@@ -1464,7 +1464,7 @@ body.vx-sidebar-open .vx-sidebar {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 24px;
     opacity: 0;
     pointer-events: none;
     transition: opacity var(--vx-transition);
@@ -1479,21 +1479,27 @@ body.vx-sidebar-open .vx-sidebar {
 .vx-modal-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(15, 23, 42, 0.56);
-    backdrop-filter: blur(8px);
+    background: rgba(15, 23, 42, 0.32);
+    backdrop-filter: blur(14px);
 }
 
 .vx-modal-panel {
     position: relative;
     width: min(560px, 100%);
-    max-height: min(86vh, 900px);
+    max-height: min(82vh, 840px);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    border-radius: 28px;
-    border: 1px solid var(--vx-border);
-    background: color-mix(in srgb, var(--vx-surface-strong) 96%, transparent);
-    box-shadow: var(--vx-shadow-lg);
+    border-radius: 18px;
+    border: 1px solid color-mix(in srgb, var(--vx-border) 88%, transparent);
+    background: color-mix(in srgb, var(--vx-surface-strong) 98%, transparent);
+    box-shadow: 0 22px 56px rgba(15, 23, 42, 0.14);
+    transform: translateY(12px) scale(0.985);
+    transition: transform var(--vx-transition), box-shadow var(--vx-transition);
+}
+
+.vx-modal.is-open .vx-modal-panel {
+    transform: translateY(0) scale(1);
 }
 
 .vx-modal-sm { width: min(420px, 100%); }
@@ -1507,24 +1513,80 @@ body.vx-sidebar-open .vx-sidebar {
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    padding: 18px 20px;
-    border-bottom: 1px solid var(--vx-border);
+    padding: 18px 20px 0;
+}
+
+.vx-modal-heading {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.vx-modal-eyebrow:empty {
+    display: none;
 }
 
 .vx-modal-footer {
     justify-content: flex-end;
-    border-top: 1px solid var(--vx-border);
-    border-bottom: none;
+    gap: 10px;
+    padding: 16px 20px 20px;
+    border-top: 1px solid color-mix(in srgb, var(--vx-border) 72%, transparent);
+    background: transparent;
 }
 
 .vx-modal-title {
     margin: 0;
-    font-size: 22px;
+    font-size: 18px;
+    line-height: 1.2;
 }
 
 .vx-modal-body {
-    padding: 20px;
+    padding: 12px 20px 20px;
     overflow: auto;
+}
+
+.vx-modal-body > :first-child {
+    margin-top: 0;
+}
+
+.vx-modal-body > :last-child {
+    margin-bottom: 0;
+}
+
+.vx-modal-close {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    padding: 0;
+    border: 1px solid color-mix(in srgb, var(--vx-border) 72%, transparent);
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--vx-surface) 82%, transparent);
+    color: var(--vx-text-muted);
+    cursor: pointer;
+    font: inherit;
+    transition: background var(--vx-transition), border-color var(--vx-transition), color var(--vx-transition), transform var(--vx-transition);
+}
+
+.vx-modal-close:hover {
+    background: var(--vx-surface-hover);
+    border-color: color-mix(in srgb, var(--vx-border) 82%, transparent);
+    color: var(--vx-text-primary);
+}
+
+.vx-modal-close:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--vx-primary-light);
+}
+
+.vx-modal-close svg {
+    width: 18px;
+    height: 18px;
 }
 
 .vx-kicker {
